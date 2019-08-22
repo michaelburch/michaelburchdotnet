@@ -1,0 +1,22 @@
+#recipe Blog
+#theme theme
+#n Wyam.Minification
+
+// Customize your settings and add new ones here
+Settings[Keys.Host] = "michaelburch.net";
+Settings[BlogKeys.Title] = "Michael Burch's Blog";
+Settings[BlogKeys.PostsPath] = "blog";
+Settings[BlogKeys.Description] = "Welcome!";
+Settings["Author"] = "Michael Burch";
+Settings["GravatarEmail"] = "***REMOVED***";
+
+// Add any pipeline customizations here
+Pipelines.Remove("Less");
+Pipelines.Remove("Sass");
+Pipelines.Add("CC",
+    ReadFiles("cookieconsent/main.scss"),
+    Sass().WithCompactOutputStyle(),
+    MinifyCss(),
+	Combine(),
+	WriteFiles((doc, ctx) =>  "assets/css/cookieconsent.min.css").UseWriteMetadata(false)
+);
