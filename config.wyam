@@ -1,5 +1,5 @@
 #recipe Blog
-#theme theme
+#theme themes/future-imperfect
 #n Wyam.Minification
 
 // Customize your settings and add new ones here
@@ -13,10 +13,17 @@ Settings["GravatarEmail"] = "***REMOVED***";
 // Add any pipeline customizations here
 Pipelines.Remove("Less");
 Pipelines.Remove("Sass");
-Pipelines.Add("CC",
+Pipelines.Add("cookieConsent",
     ReadFiles("cookieconsent/main.scss"),
     Sass().WithCompactOutputStyle(),
     MinifyCss(),
 	Combine(),
 	WriteFiles((doc, ctx) =>  "assets/css/cookieconsent.min.css").UseWriteMetadata(false)
+);
+Pipelines.Add("theme",
+    ReadFiles("assets/sass/main.scss"),
+    Sass().WithCompactOutputStyle(),
+    MinifyCss(),
+	Combine(),
+	WriteFiles((doc, ctx) =>  "assets/css/main.css").UseWriteMetadata(false)
 );
