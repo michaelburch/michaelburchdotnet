@@ -3,11 +3,14 @@
 #n Wyam.Minification
 
 // Customize your settings and add new ones here
+System.Globalization.CultureInfo.DefaultThreadCurrentCulture
+    = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 Settings[Keys.Host] = "michaelburch.net";
 Settings[BlogKeys.Title] = "Michael Burch's Blog";
 Settings[BlogKeys.PostsPath] = "blog";
 Settings[BlogKeys.Description] = "Welcome!";
 Settings["Author"] = "Michael Burch";
+Settings["Intro"] = "Cloud Enthusiast, Runner, Blogger";
 Settings["GravatarEmail"] = "michaelburch@outlook.com";
 
 // Add any pipeline customizations here
@@ -27,3 +30,15 @@ Pipelines.Add("theme",
 	Combine(),
 	WriteFiles((doc, ctx) =>  "assets/css/main.css").UseWriteMetadata(false)
 );
+int renderPagesIndex = Pipelines.IndexOf(Blog.RenderPages);
+Pipelines.Remove(Blog.RenderPages);
+Pipelines.Insert(
+  renderPagesIndex,
+  Blog.RenderPages,
+  (IPipeline)new Wyam.Web.Pipelines.RenderPages(
+    Blog.RenderPages,
+    new Wyam.Web.Pipelines.RenderPagesSettings
+    {
+      Pipelines = new string[] { Blog.Pages },
+      Layout = (doc, ctx) => "/_PageLayout.cshtml"
+    }));

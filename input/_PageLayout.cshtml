@@ -18,7 +18,7 @@ string imgUrl = Model.String(BlogKeys.Image);
                 @Html.Partial("_Header")
                 
                 <div id="main">
-                        	<article class="post">
+                        	<article class="post page">
 								<header>
 									<div class="title">
 										<h2>@Model.String(BlogKeys.Title)</h2>
@@ -37,13 +37,7 @@ string imgUrl = Model.String(BlogKeys.Image);
 											<img src="@imgUrl" alt="" />
 										}
 									</span>
-								@RenderBody()
-								<footer>
-									<ul class="stats">
-										<li><a href="#">General</a></li>
-										<li><a href="#" class="icon solid fa-comment">128</a></li>
-									</ul>
-								</footer>
+								<p>@RenderBody()</p>
 							</article>
                 </div>
 
