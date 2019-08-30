@@ -12,7 +12,7 @@ string PageTitle = Context.String(BlogKeys.Title) + (string.IsNullOrWhiteSpace(T
 <body class="is-preload">
         <div id="wrapper">
                 @Html.Partial("_Header")
-                
+                @Html.Partial("_Menu")
                 <div id="main">
                         @RenderBody()
                 </div>
