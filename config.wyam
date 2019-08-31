@@ -3,8 +3,7 @@
 #n Wyam.Minification
 
 // Customize your settings and add new ones here
-System.Globalization.CultureInfo.DefaultThreadCurrentCulture
-    = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
+System.Globalization.CultureInfo.DefaultThreadCurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 Settings[Keys.Host] = "michaelburch.net";
 Settings[BlogKeys.Title] = "Michael Burch's Blog";
 Settings[BlogKeys.PostsPath] = "blog";
@@ -12,6 +11,9 @@ Settings[BlogKeys.Description] = "Welcome!";
 Settings["Author"] = "Michael Burch";
 Settings["Intro"] = "Cloud Enthusiast, Runner, Blogger";
 Settings["GravatarEmail"] = "michaelburch@outlook.com";
+Settings["IndexPageSize"] = 4;
+Settings[BlogKeys.IndexPaging] = true;
+Settings[BlogKeys.ArchivePageSize] = 4;
 
 // Add any pipeline customizations here
 Pipelines.Remove("Less");
@@ -42,3 +44,4 @@ Pipelines.Insert(
       Pipelines = new string[] { Blog.Pages },
       Layout = (doc, ctx) => "/_PageLayout.cshtml"
     }));
+
