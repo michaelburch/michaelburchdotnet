@@ -50,7 +50,7 @@ foreach(IDocument post in Model.Get<IEnumerable<IDocument>>("PageDocuments"))
                             }
                         }
                     }
-                        <li><a href="#" class="icon solid fa-comment">1</a></li>
+                        <li><a href="@Context.GetLink(post)#disqus_thread" class="icon solid fa-comment"></a></li>
                 </ul>
             </footer>
         </article>
