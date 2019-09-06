@@ -18,12 +18,6 @@ string PageTitle = Context.String(BlogKeys.Title) + (string.IsNullOrWhiteSpace(T
                 </div>
 
                 @Html.Partial("_Sidebar")
-                <script src=@Context.GetLink("assets/js/jquery.min.js")></script>
-		<script src=@Context.GetLink("assets/js/browser.min.js")></script>
-		<script src=@Context.GetLink("assets/js/breakpoints.min.js")></script>
-		<script src=@Context.GetLink("assets/js/util.js")></script>
-		<script src=@Context.GetLink("assets/js/main.js")></script>
-                <script src=@Context.GetLink("assets/js/cookieconsent.min.js")></script>
         </div>
         @Html.Partial("_Footer")
         </body>
