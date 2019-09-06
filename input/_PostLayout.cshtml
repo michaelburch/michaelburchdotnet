@@ -3,7 +3,7 @@
 @{
 	var Title = Model.WithoutSettings.String(BlogKeys.Title);
 	var PageTitle = Context.String(BlogKeys.Title) + (string.IsNullOrWhiteSpace(Title) ? string.Empty : " - " + Title);
-	var Slug = Model.String(Keys.RelativeFilePath).ToLower().Substring(Model.String(Keys.RelativeFilePath).LastIndexOf('/') +1).Replace(".html","");
+	var Slug = Context.GetLink(Model);
 	var SourceFile = Model.String(Keys.SourceFileName);
 	var lead = Model.String(BlogKeys.Lead);
 	var imgUrl = Model.String(BlogKeys.Image);
@@ -63,7 +63,7 @@
 
         
         </div>
-        @Html.Partial("_Footer")
+        @Html.Partial("_PostFooter")
         </body>
         
 </html>
