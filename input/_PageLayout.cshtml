@@ -16,7 +16,7 @@ string imgUrl = Model.String(BlogKeys.Image);
 <body class="is-preload">
         <div id="wrapper">
                 @Html.Partial("_Header")
-                
+                @Html.Partial("_Menu")
                 <div id="main">
                         	<article class="post page">
 								<header>
@@ -41,12 +41,7 @@ string imgUrl = Model.String(BlogKeys.Image);
 							</article>
                 </div>
 
-                <script src=@Context.GetLink("assets/js/jquery.min.js")></script>
-		<script src=@Context.GetLink("assets/js/browser.min.js")></script>
-		<script src=@Context.GetLink("assets/js/breakpoints.min.js")></script>
-		<script src=@Context.GetLink("assets/js/util.js")></script>
-		<script src=@Context.GetLink("assets/js/main.js")></script>
-                <script src=@Context.GetLink("assets/js/cookieconsent.min.js")></script>
+
         </div>
         @Html.Partial("_Footer")
         </body>
