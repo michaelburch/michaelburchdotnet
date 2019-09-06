@@ -3,9 +3,11 @@
 	string PageTitle = Context.String(BlogKeys.Title) + (string.IsNullOrWhiteSpace(Title) ? string.Empty : " - " + Title);
 }
 <meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<meta http-equiv="Content-Language" content="en">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="@Context.GetLink("assets/css/main.css")" />
-        <link rel="stylesheet" type="text/css" href="@Context.GetLink("assets/css/cookieconsent.min.css")" />
+		<link rel="preload" href="@Context.GetLink("assets/css/cookieconsent.min.css")" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<meta name="description" content="Michael Burch is a cloud enthusiast, programmer, runner, hiker, technologist, and more.">
 @if (Context.String(BlogKeys.RssPath) != null) {
 <link type="application/rss+xml" rel="alternate" title="@Context.String(BlogKeys.Title)"
     href="@Context.GetLink(Context.String(BlogKeys.RssPath))" />
