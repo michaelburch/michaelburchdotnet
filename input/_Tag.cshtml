@@ -3,16 +3,52 @@
     string tag = Model.String(BlogKeys.Tag).ToLowerInvariant().Replace(' ', '-'); 
     tag = tag.StartsWith(".") ? tag.Substring(1) : tag; 
 }
-
+<section>
+								
+<h2>@tag (@Model.String("TotalItems"))</h2>
+<div class="mini-posts">
 <ul>
     @foreach(var post in postPages){
-    <li>
-        <a href="@Context.GetLink(post)">
-            <h2>@post.WithoutSettings.String(BlogKeys.Title)</h2>
-            @Html.Raw(post.String(BlogKeys.Excerpt))
-        </a>
-    </li>
+    string lead = post.String(BlogKeys.Lead);
+<article class="mini-post">
+											<header>
+												<h3><a href="@Context.GetLink(post)">@post.WithoutSettings.String(BlogKeys.Title)</a></h3>
+												                                            @if(!string.IsNullOrWhiteSpace(lead))
+                        {
+                            <p>@lead</p>
+                        }
+                                                <div class="meta">
+                        <time class="published" datetime='@(post.Get<DateTime>(BlogKeys.Published).ToString("MMMM dd, yyyy"))'>@(post.Get<DateTime>(BlogKeys.Published).ToString("MMMM dd, yyyy"))</time>
+                    </div>
+											</header>
+                                            
+										</article>
+                                        
+   
+ 
+
     }
 </ul>
+</div>
+</section>
+<ul class="actions pagination">
+            
+    @{
+        var nextPageClass = "button large previous";  
+        var previousPageClass = "button large next";
+    }
+    @if(!Model.Bool(Keys.HasPreviousPage))
+    {
+        previousPageClass += " disabled";
+    }                
 
-<a href="@Context.GetLink(Context.String(BlogKeys.PostsPath))">Back To posts</a>
+    @if(!Model.Bool(Keys.HasNextPage))
+    {
+        nextPageClass += " disabled";
+        
+    }
+    <li><a href="@(Context.GetLink(Model.Document(Keys.PreviousPage)))" class="@previousPageClass">Previous Page</a></li>
+    <li><a href="@(Context.GetLink(Model.Document(Keys.NextPage)))" class="@nextPageClass">Next Page</a></li>
+
+</ul>   
+<p>Page @Model.String("CurrentPage") of @Model.String("TotalPages")</p>   

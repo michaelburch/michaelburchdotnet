@@ -3,6 +3,8 @@
 @{
 string Title = Model.WithoutSettings.String(BlogKeys.Title);
 string PageTitle = Context.String(BlogKeys.Title) + (string.IsNullOrWhiteSpace(Title) ? string.Empty : " - " + Title);
+string Slug = Model.String(Keys.RelativeFilePath).ToLower().Substring(Model.String(Keys.RelativeFilePath).LastIndexOf('/') +1).Replace(".html","");
+string SourceFile = Model.String(Keys.SourceFileName);
 string lead = Model.String(BlogKeys.Lead);
 string imgUrl = Model.String(BlogKeys.Image);
 }
@@ -21,14 +23,14 @@ string imgUrl = Model.String(BlogKeys.Image);
                         	<article class="post">
 								<header>
 									<div class="title">
-										<h2>@Model.String(BlogKeys.Title)</h2>
+										<h2>@Title</h2>
 										@if(!string.IsNullOrWhiteSpace(lead))
                                         {
                                             <p>@lead</p>
                                         }
 									</div>
 									<div class="meta">
-										<time class="published" datetime='@(Model.Get<DateTime>(BlogKeys.Published).ToString("MMMM dd, yyyy"))'>@(Model.Get<DateTime>(BlogKeys.Published).ToString("MMMM dd, yyyy"))</time>
+										<time class="published" datetime='@(Model.Get<DateTime>(BlogKeys.Published))'>@(Model.Get<DateTime>(BlogKeys.Published).ToString("MMMM dd, yyyy"))</time>
 									</div>
 								</header>
 								<span class="image featured">
@@ -38,6 +40,8 @@ string imgUrl = Model.String(BlogKeys.Image);
 										}
 									</span>
 								@RenderBody()
+								@foreach(var key in Context.Keys)
+    { key.ToString(); }
 								<footer>
 									<ul class="stats">
 										<li><a href="#">General</a></li>
@@ -47,12 +51,12 @@ string imgUrl = Model.String(BlogKeys.Image);
 							</article>
                 </div>
 
-                <script src=@Context.GetLink("assets/js/jquery.min.js")></script>
+        <script src=@Context.GetLink("assets/js/jquery.min.js")></script>
 		<script src=@Context.GetLink("assets/js/browser.min.js")></script>
 		<script src=@Context.GetLink("assets/js/breakpoints.min.js")></script>
 		<script src=@Context.GetLink("assets/js/util.js")></script>
 		<script src=@Context.GetLink("assets/js/main.js")></script>
-                <script src=@Context.GetLink("assets/js/cookieconsent.min.js")></script>
+        <script defer src=@Context.GetLink("assets/js/cookieconsent.min.js")></script>
         </div>
         @Html.Partial("_Footer")
         </body>
