@@ -3,7 +3,7 @@ string Title = Model.WithoutSettings.String(BlogKeys.Title);
 string PageTitle = Context.String(BlogKeys.Title) + (string.IsNullOrWhiteSpace(Title) ? string.Empty : " - " + Title);
 }
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
         @Html.Partial("_Head")
@@ -21,5 +21,4 @@ string PageTitle = Context.String(BlogKeys.Title) + (string.IsNullOrWhiteSpace(T
         </div>
         @Html.Partial("_Footer")
         </body>
-        
 </html>
