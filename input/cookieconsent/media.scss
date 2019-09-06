@@ -11,6 +11,7 @@
   }
 }
 
+
 /* dimensions for 'iPhone6 Plus' and lower */
 @media screen and (max-width: 414px) and (orientation: portrait),
   screen and (max-width: 736px) and (orientation: landscape) {
@@ -85,4 +86,10 @@
     width: calc( 100% - 16px);
   }
 }
-
+@media (prefers-color-scheme: dark) {
+  body > div.cc-window.cc-banner.cc-type-info.cc-theme-edgeless.cc-bottom.cc-color-override--1762072787 {
+    color: #ddd;
+    background-color: #646468;
+  }
+  }
+  
