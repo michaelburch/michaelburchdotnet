@@ -13,7 +13,8 @@ Settings["Intro"] = "Cloud Enthusiast, Runner, Blogger";
 Settings["GravatarEmail"] = "michaelburch@outlook.com";
 Settings["IndexPageSize"] = 4;
 Settings[BlogKeys.IndexPaging] = true;
-Settings[BlogKeys.ArchivePageSize] = 4;
+Settings[BlogKeys.ArchivePageSize] = 12;
+Settings[BlogKeys.TagPageSize] = 12;
 
 // Add any pipeline customizations here
 Pipelines.Remove("Less");

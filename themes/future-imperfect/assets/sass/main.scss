@@ -57,3 +57,22 @@
 	@import 'layout/intro';
 	@import 'layout/footer';
 	@import 'layout/menu';
+	@media (prefers-color-scheme: dark) {
+		body, #menu {
+		  color: _palette(fg-dark);
+		  background-color: _palette(bg-dark);
+		}
+		h1,h2,h3,h4,h5,h6,strong {
+			color: _palette(fg-bold-dark);
+		}
+		input[type=submit],input[type=reset],input[type=button], button, .button {
+			color: _palette(fg-bold-dark) !important; 
+		}
+
+		.post, #header, .mini-post {
+			background: _palette(bg-dark-alt);
+		}
+		.post > header .meta .published {
+			color: _palette(fg-dark);
+		}
+	  }

@@ -3,16 +3,15 @@
     foreach(IDocument post in Model.Get<IEnumerable<IDocument>>("PageDocuments"))
     {                
     string lead = post.String(BlogKeys.Lead);
+    var Tags = post.Get<string[]>(BlogKeys.Tags);
     string imgUrl = post.String(BlogKeys.Image);
     <article class="post">
         <header>
                 <div class="title">
                         <h2><a href="@Context.GetLink(post)">@post.WithoutSettings.String(BlogKeys.Title) </a></h2>
-                        @if(!string.IsNullOrWhiteSpace(lead))
-                        {
-                            <p>@lead</p>
-                        }
+                        
                     </div>
+                    
                     <div class="meta">
                         <time class="published" datetime='@(post.Get<DateTime>(BlogKeys.Published).ToString("MMMM dd, yyyy"))'>@(post.Get<DateTime>(BlogKeys.Published).ToString("MMMM dd, yyyy"))</time>
                     </div>
@@ -34,7 +33,19 @@
                     <li><a href="@Context.GetLink(post)" class="button large">Continue Reading</a></li>
                 </ul>
                 <ul class="stats">
-                    <li><a href="#">General</a></li>
+                    @if (Tags != null)
+    {
+        
+            @foreach (string tag in Tags.OrderBy(x => x))
+            {
+                IDocument tagDocument = Documents[Blog.Tags].FirstOrDefault(x => x.String(BlogKeys.Tag) == tag && x.Get<int>(Keys.CurrentPage) == 1);
+                if(tagDocument != null)
+                {                
+                    <li><a role="button" href="@Context.GetLink(tagDocument)" class="btn btn-default btn-xs">@tag</a></li>
+                }
+            }
+ 
+    } 
                     <li><a href="#" class="icon solid fa-comment">1</a></li>
                 </ul>
             </footer>             
@@ -58,8 +69,8 @@
         nextPageClass += " disabled";
         
     }
-    <li><a href="@(Context.GetLink(Model.Document(Keys.PreviousPage)))" class="@previousPageClass">Previous Page</a></li>
-    <li><a href="@(Context.GetLink(Model.Document(Keys.NextPage)))" class="@nextPageClass">Next Page</a></li>
+    <li><a href="@(Context.GetLink(Model.Document(Keys.PreviousPage)))" class="@previousPageClass">Newer Posts</a></li>
+    <li><a href="@(Context.GetLink(Model.Document(Keys.NextPage)))" class="@nextPageClass">Older Posts</a></li>
 
 </ul>   
 <p>Page @Model.String("CurrentPage") of @Model.String("TotalPages")</p>        
