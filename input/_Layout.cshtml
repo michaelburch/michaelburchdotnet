@@ -18,8 +18,9 @@ string PageTitle = Context.String(BlogKeys.Title) + (string.IsNullOrWhiteSpace(T
                 </div>
 
                 @Html.Partial("_Sidebar")
+                <script id="dsq-count-scr" src="//michaelburch.disqus.com/count.js" async></script>
         </div>
         @Html.Partial("_Footer")
-        <script id="dsq-count-scr" src="//michaelburch.disqus.com/count.js" async></script>
+        
         </body>
 </html>

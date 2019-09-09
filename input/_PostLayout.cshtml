@@ -55,14 +55,33 @@
                             					}
                         					}
                     					}
-                        				<li><a href="#" class="icon solid fa-comment">1</a></li>
+                        				<li><a href="@Context.GetLink(Model)#disqus_thread" class="icon solid fa-comment">0 Comments</a></li>
                 					</ul>
+									
 								</footer>
+								<div id="disqus_thread"></div>
+<script>
+
+
+var disqus_config = function () {
+this.page.url = "@Context.GetLink(Model, true)";  
+this.page.identifier = "@Model.FilePath(Keys.RelativeFilePath).FileNameWithoutExtension.FullPath"; 
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://michaelburch.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 							</article>
                 </div>
 
         
         </div>
+		<script id="dsq-count-scr" src="//michaelburch.disqus.com/count.js" async></script>
         @Html.Partial("_PostFooter")
         </body>
         
