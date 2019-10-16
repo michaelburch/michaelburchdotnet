@@ -1,6 +1,7 @@
 #recipe Blog
 #theme themes/future-imperfect
 #n Wyam.Minification
+#n Wyam.Json
 
 // Customize your settings and add new ones here
 System.Globalization.CultureInfo.DefaultThreadCurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
@@ -45,4 +46,48 @@ Pipelines.Insert(
       Pipelines = new string[] { Blog.Pages },
       Layout = (doc, ctx) => "/_PageLayout.cshtml"
     }));
-
+Pipelines.Add("Posts Search Data",
+    GenerateJson((doc, ctx) =>
+        ctx.Documents.FromPipeline("BlogPosts").Select(x => {
+            var result = (IDictionary<string,object>)x.GetMetadata("Author","Title","Published","RelativeFilePath"); 
+            var tags = new List<string>();
+            foreach (var item in (IDictionary<string,object>)x.GetMetadata("Tags"))
+            {
+                if (item.Value.GetType().Equals(typeof(string[])))
+                {
+                    tags.AddRange((string[])item.Value);
+                }
+                else 
+                {
+                    tags.Add(item.Value.ToString());
+                }
+            }
+            result.Add("Tags",tags);
+            result.Add("id",x.Id);
+            result.Add("Content",x.Content);
+            return result;})
+            .Concat(ctx.Documents.FromPipeline("Pages").Select(x => {
+            var result = (IDictionary<string,object>)x.GetMetadata("Author","Title","Published");
+            var tags = new List<string>();
+            foreach (var item in (IDictionary<string,object>)x.GetMetadata("Tags"))
+            {
+                if (item.Value.GetType().Equals(typeof(string[])))
+                {
+                    tags.AddRange((string[])item.Value);
+                }
+                else 
+                {
+                    tags.Add(item.Value.ToString());
+                }
+            };
+            var path = (x.GetMetadata("SourceFilePath").Values.ToList())[0].ToString();
+            var filePath = "/" + FilePath.FromString(path).FileName.ChangeExtension("html");
+            result.Add("Tags",tags); 
+            result.Add("id",x.Id);
+            result.Add("RelativeFilePath", filePath);
+            result.Add("Content",x.Content);
+            return result;})))
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "search.json")
+);
