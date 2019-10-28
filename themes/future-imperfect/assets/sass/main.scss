@@ -75,4 +75,18 @@
 		.post > header .meta .published {
 			color: _palette(fg-dark);
 		}
+		.commento-root * {
+			color: _palette(fg-dark) !important;
+		}
+		.commento-root textarea {
+			background: _palette(bg-dark-alt) !important;
+			color: _palette(fg-dark) !important;
+			border: 1px solid _palette(border) !important;
+		}
+		.commento-root .commento-login-box-container .commento-login-box {
+			background: _palette(bg-dark) !important;
+		}
+		.commento-root .commento-login-box-container .commento-login-box .commento-login-box-close:after, .commento-root .commento-login-box-container .commento-login-box .commento-login-box-close:before {
+			background-color: _palette(fg-dark) !important;
+		}
 	  }
