@@ -1,13 +1,36 @@
 @{ 
 	string Title = Model.WithoutSettings.String(BlogKeys.Title); 
-	string PageTitle = Context.String(BlogKeys.Title) + (string.IsNullOrWhiteSpace(Title) ? string.Empty : " - " + Title);
+	string PageTitle =  (string.IsNullOrWhiteSpace(Title) ? Context.String(BlogKeys.Title) : Title);
+	string ImageUrl = (string.IsNullOrWhiteSpace(Model.WithoutSettings.String(BlogKeys.Image)) ? Context.GetLink("/images/logo.png", true) : Context.GetLink(Model.WithoutSettings.String(BlogKeys.Image),true));
+	var Tags = Model.Get<string[]>(BlogKeys.Tags);
+	var KeywordList = new List<string>()
+	{
+		"Michael",
+		"Burch",
+		"Azure", 
+		"Cloud",
+		".NET",
+		"C#",
+		"Python",
+		"michaelburch",
+		"Austin",
+		"ATX"
+	};
+	if (Tags != null)
+    {
+		foreach (string tag in Tags.OrderBy(x => x))
+        {
+            KeywordList.Add(tag);
+        }
+    }
+	var Keywords = string.Join(",",KeywordList);
 }
 <meta charset="utf-8" />
 <meta http-equiv="Content-Language" content="en">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="@Context.GetLink("assets/css/main.css")" />
 		<link rel="preload" href="@Context.GetLink("assets/css/cookieconsent.min.css")" as="style" onload="this.onload=null;this.rel='stylesheet'">
-		<meta name="description" content="Michael Burch is a cloud enthusiast, programmer, runner, hiker, technologist, and more.">
+		<meta name="description" content="Michael Burch is a technologist, cloud enthusiast, programmer, runner, hiker, and more.">
 @if (Context.String(BlogKeys.RssPath) != null) {
 <link type="application/rss+xml" rel="alternate" title="@Context.String(BlogKeys.Title)"
     href="@Context.GetLink(Context.String(BlogKeys.RssPath))" />
@@ -24,7 +47,8 @@
 <meta name="msapplication-tooltip" content="@Context.String(BlogKeys.Title)" />
 <meta name="msapplication-starturl" content="@Context.GetLink("/")" />
 
-<meta property="og:title" content="@PageTitle" /> @*
-<meta property="og:image" content="@Blog.Image" /> *@
-<meta property="og:type" content="website" />
+<meta property="og:title" content="@PageTitle" /> 
+<meta property="og:image" content="@ImageUrl" /> 
+<meta property="og:type" content="blog" />
 <meta property="og:url" content="@Context.GetLink(Model, true)" />
+<meta name="keywords" content="@Keywords" />
