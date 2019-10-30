@@ -3,12 +3,12 @@ Published: 8/28/2019
 Tags: Introduction
 Image: images/about.jpg
 ---
-My name is Michael Burch. I [write code](https://github.com/michaelburch) and [encourage companies to adopt cloud computing](https://linkedin.com/in/michaelpburch). I work out of my home office, currently in Duncan, Oklahoma although that seems to change about every year or so. This kind of work leads to a sedentary lifestyle, so to offset the negative effects of that I also [run](https://www.strava.com/athletes/20297841), [hike](https://www.alltrails.com/members/michael-burch-9) and generally make an effort to be more active.
+My name is Michael Burch. I [write code](https://github.com/michaelburch) and [encourage companies to adopt cloud computing](https://linkedin.com/in/michaelpburch). I work out of my home office in Round Rock, Texas. This kind of work leads to a sedentary lifestyle; to offset the negative effects of that I also [run](https://www.strava.com/athletes/20297841), [hike](https://www.alltrails.com/members/michael-burch-9) and generally make an effort to be more active.
 
 I started this blog to write about things that interest me - cloud computing, code, running, technology, gadgets, hiking, and open source. As such, 
 **all content and opinions here are my own and do not represent my employer's view in any way.**
 
-I don't feel compelled to particpate in social media, and when it comes to Facebook I consider myself a [conscientious objector](https://www.theatlantic.com/technology/archive/2012/05/facebook-conscientious-objectors/327694/). So while you won't find me there, I would enjoy hearing from you either through the comments on this blog or via an e-mail to [me@michaelburch.net](mailto:me@michaelburch.net?subject=%20hello%20from%20michaelburch.net) 
+I purposefully limit my participation in social media, and when it comes to Facebook I consider myself a [conscientious objector](https://www.theatlantic.com/technology/archive/2012/05/facebook-conscientious-objectors/327694/). So while you won't find me there, I would enjoy hearing from you either through the comments on this blog or via an e-mail to [me@michaelburch.net](mailto:me@michaelburch.net?subject=%20hello%20from%20michaelburch.net) 
 
 
 
