@@ -17,10 +17,10 @@ stages:
   jobs:
   - job: wyam
     steps:
-    - script: dotnet tool install -g Wyam.Tool
+    - pwsh: dotnet tool install -g Wyam.Tool
       displayName: 'install wyam global tool'
 
-    - script: $env:USERPROFILE\.dotnet\tools\wyam build -o $(Build.ArtifactStagingDirectory)\content
+    - pwsh: $env:USERPROFILE\.dotnet\tools\wyam build -o $(Build.ArtifactStagingDirectory)\content
       displayName: 'build site'
 
     - task: PublishBuildArtifacts@1
