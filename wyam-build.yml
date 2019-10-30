@@ -22,7 +22,10 @@ stages:
 
     - pwsh: pwsh -C $env:USERPROFILE\.dotnet\tools\wyam build -o $(Build.ArtifactStagingDirectory)\content
       displayName: 'build site'
-
+    - pwsh: ls -l
+      displayName: 'list cwd'
+    - pwsh: ls -l $(Build.ArtifactStagingDirectory)
+      displayName: 'list stage'
     - task: PublishBuildArtifacts@1
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)\content\**\*'
