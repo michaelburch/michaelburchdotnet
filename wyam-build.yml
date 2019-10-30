@@ -20,7 +20,7 @@ stages:
     - pwsh: dotnet tool install -g Wyam.Tool
       displayName: 'install wyam global tool'
 
-    - pwsh: $env:USERPROFILE\.dotnet\tools\wyam build -o $(Build.ArtifactStagingDirectory)\content
+    - pwsh: $env:USERPROFILE/.dotnet/tools/wyam build -o $(Build.ArtifactStagingDirectory)/content
       displayName: 'build site'
 
     - task: PublishBuildArtifacts@1
