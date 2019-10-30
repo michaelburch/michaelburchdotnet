@@ -14,10 +14,7 @@ steps:
 - script: dotnet tool install -g Wyam.Tool
   displayName: 'install wyam global tool'
 
-- script:  sh /etc/profile.d/dotnet-cli-tools-bin-path.sh
-  displayName: 'update path'
-
-- script: wyam build
+- script: $HOME/.dotnet/tools/wyam build
   displayName: 'build site'
 
 
