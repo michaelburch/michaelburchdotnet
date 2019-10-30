@@ -17,9 +17,9 @@ steps:
 - script: $HOME/.dotnet/tools/wyam build -o $(Build.ArtifactStagingDirectory)/html
   displayName: 'build site'
 
-- script: ls -l
-  displayName: 'list cwd'
-
-- script: ls -l $(Build.ArtifactStagingDirectory)
-  displayName: 'list staging'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/html'
+    ArtifactName: 'html'
+    publishLocation: 'Container'
 
