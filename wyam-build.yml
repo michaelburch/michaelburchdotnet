@@ -28,7 +28,7 @@ stages:
       displayName: 'list stage'
     - task: PublishBuildArtifacts@1
       inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)\content\**\*'
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)\content\'
         ArtifactName: 'content'
         publishLocation: 'Container'
 
