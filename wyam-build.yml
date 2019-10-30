@@ -1,5 +1,5 @@
 # Wyam build pipeline
-# Publishes content produced by Wyam to an Artifact named 'html'
+# Publishes content produced by Wyam to an Artifact named 'content'
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
@@ -14,12 +14,12 @@ steps:
 - script: dotnet tool install -g Wyam.Tool
   displayName: 'install wyam global tool'
 
-- script: $HOME/.dotnet/tools/wyam build -o $(Build.ArtifactStagingDirectory)/html
+- script: $HOME/.dotnet/tools/wyam build -o $(Build.ArtifactStagingDirectory)/content
   displayName: 'build site'
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/html'
-    ArtifactName: 'html'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/content/**'
+    ArtifactName: 'content'
     publishLocation: 'Container'
 
