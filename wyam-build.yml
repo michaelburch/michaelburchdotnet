@@ -9,19 +9,15 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-stages:
-- stage: setup
-  jobs:
-  - job: install
-    steps:
-    - script: dotnet tool install -g Wyam.Tool
-      displayName: 'install wyam global tool'
 
-- stage: build
-  jobs:
-  - job: build
-    steps:
-    - script: wyam build
-      displayName: 'build site'
+steps:
+- script: dotnet tool install -g Wyam.Tool
+  displayName: 'install wyam global tool'
+
+- script:  sh /etc/profile.d/dotnet-cli-tools-bin-path.sh
+  displayName: 'update path'
+
+- script: wyam build
+  displayName: 'build site'
 
 
