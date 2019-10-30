@@ -17,4 +17,9 @@ steps:
 - script: $HOME/.dotnet/tools/wyam build
   displayName: 'build site'
 
+- script: ls -l
+  displayName: 'list cwd'
+
+- script: ls -l $(Build.ArtifactStagingDirectory)
+  displayName: 'list staging'
 
