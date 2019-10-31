@@ -171,48 +171,4 @@
 		text-align: right;
 	}
 
-	.icon-envelope:before {
-		content: "\e901";
-	}
 	
-	.icon-github {
-		&:before {
-			content: "\e900";
-		}
-	}
-	
-	.icon-linkedin {
-		&:before {
-			content: "\eac9";
-		}
-	}
-	
-	.icon-rss:before {
-		content: "\ea9b";
-	}
-	@font-face {
-		font-family: 'icomoon';
-		src:  url('../webfonts/icomoon.eot?mz97yq');
-		src:  url('../webfonts/icomoon.eot?mz97yq#iefix') format('embedded-opentype'),
-		  url('../webfonts/icomoon.ttf?mz97yq') format('truetype'),
-		  url('../webfonts/icomoon.woff?mz97yq') format('woff'),
-		  url('../webfonts/icomoon.svg?mz97yq#icomoon') format('svg');
-		font-weight: normal;
-		font-style: normal;
-		font-display: block;
-	  }
-	[class^="icon-"], [class*=" icon-"] {
-		/* use !important to prevent issues with browser extensions that change fonts */
-		font-family: 'icomoon' !important;
-		speak: none;
-		font-style: normal;
-		font-weight: normal;
-		font-variant: normal;
-		text-transform: none;
-		line-height: 1;
-	  
-		/* Better Font Rendering =========== */
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-	}
-	  

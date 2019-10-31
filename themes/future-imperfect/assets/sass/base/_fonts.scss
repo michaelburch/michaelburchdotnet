@@ -1,0 +1,54 @@
+.icon-envelope {
+    &:before
+    {
+        content: "\e901";
+    }
+}
+
+.icon-github {
+    &:before {
+        content: "\e900";
+    }
+}
+
+.icon-bars {
+    &:before {
+        content: "\e902";
+    }
+}
+
+.icon-linkedin {
+    &:before {
+        content: "\eac9";
+    }
+}
+
+.icon-rss:before {
+    content: "\ea9b";
+}
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../webfonts/icomoon.eot?2ud09i');
+    src:  url('../webfonts/icomoon.eot?2ud09i#iefix') format('embedded-opentype'),
+      url('../webfonts/icomoon.ttf?2ud09i') format('truetype'),
+      url('../webfonts/icomoon.woff?2ud09i') format('woff'),
+      url('../webfonts/icomoon.svg?2ud09i#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+  }
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: inherit;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+  

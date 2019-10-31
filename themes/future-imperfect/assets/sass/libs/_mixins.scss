@@ -22,14 +22,14 @@
 		text-transform: none !important;
 
 		@if ($category == brands) {
-			font-family: 'Font Awesome 5 Brands';
+			font-family: 'icomoon';
 		}
 		@elseif ($category == solid) {
-			font-family: 'Font Awesome 5 Free';
+			font-family: 'icomoon';
 			font-weight: 900;
 		}
 		@else {
-			font-family: 'Font Awesome 5 Free';
+			font-family: 'icomoon';
 			font-weight: 400;
 		}
 
