@@ -1,7 +1,7 @@
 Title: About Me
 Published: 8/28/2019
 Tags: Introduction
-Image: images/about.jpg
+Image: ../images/about.jpg
 ---
 My name is Michael Burch. I [write code](https://github.com/michaelburch) and [encourage companies to adopt cloud computing](https://linkedin.com/in/michaelpburch). I work out of my home office in Round Rock, Texas. This kind of work leads to a sedentary lifestyle; to offset the negative effects of that I also [run](https://www.strava.com/athletes/20297841), [hike](https://www.alltrails.com/members/michael-burch-9) and generally make an effort to be more active.
 
