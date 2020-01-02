@@ -1,25 +1,49 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Wyam build pipeline
+# Publishes content produced by Wyam to an Artifact named 'content'
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
 trigger:
 - master
 
+variables:
+  - group: blog
+
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
 
+stages:
+- stage: Build
+  jobs:
+  - job: wyam
+    steps:
+    - pwsh: dotnet tool install -g Wyam.Tool
+      displayName: 'install wyam global tool'
 
-steps:
-- script: dotnet tool install -g Wyam.Tool
-  displayName: 'install wyam global tool'
+    - pwsh: pwsh -C $env:USERPROFILE\.dotnet\tools\wyam build -o $(Build.ArtifactStagingDirectory)\content
+      displayName: 'build site'
+    - pwsh: ls -l .
+      displayName: 'list cwd'
+    - pwsh: ls -l $(Build.ArtifactStagingDirectory)
+      displayName: 'list stage'
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)\content\'
+        ArtifactName: 'content'
+        publishLocation: 'Container'
 
-- script: $HOME/.dotnet/tools/wyam build -o $(Build.ArtifactStagingDirectory)/html
-  displayName: 'build site'
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/html'
-    ArtifactName: 'html'
-    publishLocation: 'Container'
-
+- stage: Deploy
+  jobs:
+  - job: CopyBlob
+    steps:
+    - download: current
+      artifact: content
+    - task: AzureFileCopy@3
+      displayName: copy
+      inputs:
+        sourcePath: $(Pipeline.Workspace)/content
+        azureSubscription: michael-azure
+        destination: azureBlob
+        storage: $(StorageAccountName)
+        containerName: $(StorageContainer)
+        cleanTargetBeforeCopy: true

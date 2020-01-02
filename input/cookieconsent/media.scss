@@ -11,6 +11,7 @@
   }
 }
 
+
 /* dimensions for 'iPhone6 Plus' and lower */
 @media screen and (max-width: 414px) and (orientation: portrait),
   screen and (max-width: 736px) and (orientation: landscape) {
@@ -33,7 +34,7 @@
       flex-direction: column;
       align-items: unset;
       .cc-compliance {
-        flex: 1 1 auto;
+        //flex: 1 1 auto;
       }
       .cc-message {
         margin-right: 0;
@@ -85,3 +86,13 @@
     width: calc( 100% - 16px);
   }
 }
+@media (prefers-color-scheme: dark) {
+  body > div.cc-window.cc-banner.cc-type-info.cc-theme-edgeless.cc-bottom.cc-color-override--1762072787 {
+    color: #ddd;
+    background-color: #646468;
+  }
+  a.cc-link {
+    color: #ffffff !important;
+  }
+  }
+  

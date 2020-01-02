@@ -1,0 +1,52 @@
+
+
+@{
+string Title = Model.WithoutSettings.String(BlogKeys.Title);
+string PageTitle = Context.String(BlogKeys.Title) + (string.IsNullOrWhiteSpace(Title) ? string.Empty : " - " + Title);
+string lead = Model.String(BlogKeys.Lead);
+string imgUrl = Model.String(BlogKeys.Image);
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        @Html.Partial("_Head")
+</head>
+
+<body class="is-preload">
+        <div id="wrapper">
+                @Html.Partial("_Header")
+                @Html.Partial("_Menu")
+                <div id="main">
+                        	<article class="post page">
+								<header>
+									<div class="title">
+										<h2>@Model.String(BlogKeys.Title)</h2>
+										@if(!string.IsNullOrWhiteSpace(lead))
+                                        {
+                                            <p>@lead</p>
+                                        }
+									</div>
+									<div class="meta">
+										<time class="published" datetime='@(Model.Get<DateTime>(BlogKeys.Published).ToString("MMMM dd, yyyy"))'>@(Model.Get<DateTime>(BlogKeys.Published).ToString("MMMM dd, yyyy"))</time>
+									</div>
+								</header>
+								<span class="image featured">
+									@if(!string.IsNullOrWhiteSpace(imgUrl))
+                                        {
+											<img src="@imgUrl" alt="" />
+										}
+									</span>
+								<p>@RenderBody()</p>
+							</article>
+                </div>
+
+
+        </div>
+        @Html.Partial("_Footer")
+        </body>
+        
+</html>
+
+
+
