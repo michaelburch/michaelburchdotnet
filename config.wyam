@@ -1,22 +1,102 @@
 #recipe Blog
-#theme theme
+#theme themes/future-imperfect
 #n Wyam.Minification
+#n Wyam.Json
 
 // Customize your settings and add new ones here
+System.Globalization.CultureInfo.DefaultThreadCurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
 Settings[Keys.Host] = "michaelburch.net";
 Settings[BlogKeys.Title] = "Michael Burch's Blog";
 Settings[BlogKeys.PostsPath] = "blog";
 Settings[BlogKeys.Description] = "Welcome!";
 Settings["Author"] = "Michael Burch";
+Settings["Intro"] = "Cloud Enthusiast, Runner, Blogger";
 Settings["GravatarEmail"] = "michaelburch@outlook.com";
+Settings["IndexPageSize"] = 4;
+Settings[BlogKeys.IndexPaging] = true;
+Settings[BlogKeys.ArchivePageSize] = 12;
+Settings[BlogKeys.TagPageSize] = 12;
+Settings[Keys.LinkHideExtensions] = false;
 
 // Add any pipeline customizations here
 Pipelines.Remove("Less");
 Pipelines.Remove("Sass");
-Pipelines.Add("CC",
+Pipelines.Add("cookieConsent",
     ReadFiles("cookieconsent/main.scss"),
     Sass().WithCompactOutputStyle(),
     MinifyCss(),
 	Combine(),
 	WriteFiles((doc, ctx) =>  "assets/css/cookieconsent.min.css").UseWriteMetadata(false)
+);
+Pipelines.Add("theme",
+    ReadFiles("assets/sass/main.scss"),
+    Sass().WithCompactOutputStyle(),
+    MinifyCss(),
+	Combine(),
+	WriteFiles((doc, ctx) =>  "assets/css/main.css").UseWriteMetadata(false)
+);
+int renderPagesIndex = Pipelines.IndexOf(Blog.RenderPages);
+Pipelines.Remove(Blog.RenderPages);
+Pipelines.Insert(
+  renderPagesIndex,
+  Blog.RenderPages,
+  (IPipeline)new Wyam.Web.Pipelines.RenderPages(
+    Blog.RenderPages,
+    new Wyam.Web.Pipelines.RenderPagesSettings
+    {
+      Pipelines = new string[] { Blog.Pages },
+      Layout = (doc, ctx) => "/_PageLayout.cshtml"
+    }));
+// About and privacy pages
+Pipelines.Add("Markdown",
+    ReadFiles("about/index.md"),
+    ReadFiles("privacy/index.md"),
+    FrontMatter(Yaml()),
+    Markdown().EscapeAt(true),
+    WriteFiles((doc, ctx) => doc.Source.FileName)
+);
+Pipelines.Add("Posts Search Data",
+    GenerateJson((doc, ctx) =>
+        ctx.Documents.FromPipeline("BlogPosts").Select(x => {
+            var result = (IDictionary<string,object>)x.GetMetadata("Author","Title","Published","RelativeFilePath"); 
+            var tags = new List<string>();
+            foreach (var item in (IDictionary<string,object>)x.GetMetadata("Tags"))
+            {
+                if (item.Value.GetType().Equals(typeof(string[])))
+                {
+                    tags.AddRange((string[])item.Value);
+                }
+                else 
+                {
+                    tags.Add(item.Value.ToString());
+                }
+            }
+            result.Add("Tags",tags);
+            result.Add("id",x.Id);
+            result.Add("Content",x.Content);
+            return result;})
+            .Concat(ctx.Documents.FromPipeline("Pages").Select(x => {
+            var result = (IDictionary<string,object>)x.GetMetadata("Author","Title","Published");
+            var tags = new List<string>();
+            foreach (var item in (IDictionary<string,object>)x.GetMetadata("Tags"))
+            {
+                if (item.Value.GetType().Equals(typeof(string[])))
+                {
+                    tags.AddRange((string[])item.Value);
+                }
+                else 
+                {
+                    tags.Add(item.Value.ToString());
+                }
+            };
+            var path = (x.GetMetadata("SourceFilePath").Values.ToList())[0].ToString();
+            var filePath = "/" + FilePath.FromString(path).FileName.ChangeExtension("html");
+            result.Add("Tags",tags); 
+            result.Add("id",x.Id);
+            result.Add("RelativeFilePath", filePath);
+            result.Add("Content",x.Content);
+            return result;})))
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "search.json")
 );

@@ -3,7 +3,7 @@ string Title = Model.WithoutSettings.String(BlogKeys.Title);
 string PageTitle = Context.String(BlogKeys.Title) + (string.IsNullOrWhiteSpace(Title) ? string.Empty : " - " + Title);
 }
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
         @Html.Partial("_Head")
@@ -12,20 +12,15 @@ string PageTitle = Context.String(BlogKeys.Title) + (string.IsNullOrWhiteSpace(T
 <body class="is-preload">
         <div id="wrapper">
                 @Html.Partial("_Header")
-                
+                @Html.Partial("_Menu")
                 <div id="main">
                         @RenderBody()
                 </div>
 
                 @Html.Partial("_Sidebar")
-                <script src=@Context.GetLink("assets/js/jquery.min.js")></script>
-		<script src=@Context.GetLink("assets/js/browser.min.js")></script>
-		<script src=@Context.GetLink("assets/js/breakpoints.min.js")></script>
-		<script src=@Context.GetLink("assets/js/util.js")></script>
-		<script src=@Context.GetLink("/assets/js/main.js")></script>
-                <script src=@Context.GetLink("/assets/js/cookieconsent.min.js")></script>
+                <script src="https://cdn.commento.io/js/count.js" async></script>
         </div>
         @Html.Partial("_Footer")
-        </body>
         
+        </body>
 </html>
