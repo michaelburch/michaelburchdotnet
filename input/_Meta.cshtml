@@ -1,7 +1,7 @@
 @{ 
 	string Title = Model.WithoutSettings.String(BlogKeys.Title); 
 	string PageTitle =  (string.IsNullOrWhiteSpace(Title) ? Context.String(BlogKeys.Title) : Title);
-	string ImageUrl = (string.IsNullOrWhiteSpace(Model.WithoutSettings.String(BlogKeys.Image)) ? Context.GetLink("/images/logo.png", true) : Context.GetLink(Model.WithoutSettings.String(BlogKeys.Image),true));
+	string ImageUrl = (string.IsNullOrWhiteSpace(Model.WithoutSettings.String(BlogKeys.Image)) ? Context.GetLink("/images/profile2.jpeg", true) : Context.GetLink(Model.WithoutSettings.String(BlogKeys.Image),true));
 	var Tags = Model.Get<string[]>(BlogKeys.Tags);
 	var KeywordList = new List<string>()
 	{
