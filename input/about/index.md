@@ -1,7 +1,7 @@
 Title: About Me
 Published: 8/28/2019
 Tags: Introduction
-Image: ../images/about.jpg
+Image: ../images/about.jpeg
 ---
 My name is Michael Burch. I am a Christian. I [write code](https://github.com/michaelburch){rel="noopener"} and [promote cloud computing](https://linkedin.com/in/michaelpburch){rel="noopener"}. I work out of my home office in Round Rock, Texas. I also [run](https://www.strava.com/athletes/michaelburch){rel="noopener"}, [hike](https://www.alltrails.com/members/michael-burch-9){rel="noopener"} and generally make an effort to be more active because this kind of work is very sedentary. 
 
