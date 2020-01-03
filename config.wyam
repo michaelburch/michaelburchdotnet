@@ -51,6 +51,7 @@ Pipelines.Insert(
 Pipelines.Add("Markdown",
     ReadFiles("about/index.md"),
     ReadFiles("privacy/index.md"),
+    ReadFiles("404.md"),
     FrontMatter(Yaml()),
     Markdown().EscapeAt(true),
     WriteFiles((doc, ctx) => doc.Source.FileName)
