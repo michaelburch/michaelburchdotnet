@@ -22,13 +22,21 @@ string imgUrl = Model.String(BlogKeys.Image);
 								<header>
 									<div class="title">
 										<h2>@Model.String(BlogKeys.Title)</h2>
-										@if(!string.IsNullOrWhiteSpace(lead))
-                                        {
-                                            <p>@lead</p>
-                                        }
+										
 									</div>
 									<div class="meta">
-										<time class="published" datetime='@(Model.Get<DateTime>(BlogKeys.Published).ToString("MMMM dd, yyyy"))'>@(Model.Get<DateTime>(BlogKeys.Published).ToString("MMMM dd, yyyy"))</time>
+										@if(Model.Get<DateTime>(BlogKeys.Published) > DateTime.Parse("01/01/1970"))
+										{
+											<time class="published" datetime='@(Model.Get<DateTime>(BlogKeys.Published).ToString("MMMM dd, yyyy"))'>@(Model.Get<DateTime>(BlogKeys.Published).ToString("MMMM dd, yyyy"))</time>
+										}
+										else
+										{
+											@if(!string.IsNullOrWhiteSpace(lead))
+                                        	{
+                                            	<h2>@lead</h2>
+                                        	}
+										}
+										
 									</div>
 								</header>
 								<span class="image featured">
