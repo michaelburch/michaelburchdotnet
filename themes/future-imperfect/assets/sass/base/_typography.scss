@@ -120,7 +120,8 @@
 	}
 
 	blockquote {
-		border-left: solid 4px _palette(border);
+		background: _palette(border-bg);
+		border-left: solid 4px _palette(accent);
 		font-style: italic;
 		margin: 0 0 _size(element-margin) 0;
 		padding: (_size(element-margin) / 4) 0 (_size(element-margin) / 4) _size(element-margin);
