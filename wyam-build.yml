@@ -54,9 +54,31 @@ stages:
       displayName: set-cache-control
       inputs:
         azureSubscription: 'michael-azure'
-        scriptType: 'bash'
+        scriptType: 'pscore'
         scriptLocation: 'inlineScript'
         inlineScript: |
-          for i in `az storage blob list --container-name "$web" --query "[].name" --output tsv`; do
-           echo $i
-          done
+          $containerName = "$web";
+          
+          # Blob Update Settings
+          $contentCacheControl = "public, max-age=28800"; # 8 hours
+          $extensions = @(".gif", ".jpg", ".jpeg", ".ico", ".png", ".css", ".js");
+          
+          # Read all blobs
+          $blobs = az storage blob list --container-name $containerName --num-results * --output json | ConvertFrom-Json
+          
+          # iterate all blobs
+          foreach($blob in $blobs)
+          {
+              # use name as identifier
+              $blobName = $blob.name;
+          
+              # get extension
+              $extension = [System.IO.Path]::GetExtension($blobName).ToLower();
+           
+              # update blob if extension is affected
+              if($extensions.Contains($extension))
+              {
+                  az storage blob update  --container-name $containerName --name $blobName --content-cache-control $contentCacheControl
+                  Write-Host "Updated $blobName" 
+              }
+          }
