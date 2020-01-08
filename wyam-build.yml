@@ -57,6 +57,6 @@ stages:
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
-          for i in `az storage blob list --container-name "`$web" --output table | awk '{print $1}'| sed '1,2d' | sed '/^$/d'` ; do
+          for i in `az storage blob list --container-name "$web" --query "[].name" --output tsv; do
            echo $i
           done
