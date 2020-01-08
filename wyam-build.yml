@@ -60,8 +60,8 @@ stages:
           $containerName = "$web";
           
           # Blob Update Settings
-          $contentCacheControl = "public, max-age=28800"; # 8 hours
-          $extensions = @(".gif", ".jpg", ".jpeg", ".ico", ".png", ".css", ".js");
+          $contentCacheControl = "max-age=31536000"; # 1 year, lighthouse recommended
+          $extensions = @(".gif", ".jpg", ".jpeg", ".ico", ".png", ".css", ".js", ".ttf", ".eot", ".svg", ".woff",".woff2");
           
           # Read all blobs
           $blobs = az storage blob list --account-name $env:StorageAccountName --container-name $env:StorageContainer --num-results * --output json | ConvertFrom-Json
