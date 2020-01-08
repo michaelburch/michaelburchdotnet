@@ -68,6 +68,7 @@ var Tags = Model.Get<string[]>(BlogKeys.Tags);
 
 			</div>
 			<script src="https://cdn.commento.io/js/count.js" async></script>
+			<script src=@Context.GetLink("assets/js/cookieconsent.min.js")></script>
 			<script defer>
 				function highlightCode() {
 					var pres = document.querySelectorAll("pre>code");

@@ -19,6 +19,7 @@ string PageTitle = Context.String(BlogKeys.Title) + (string.IsNullOrWhiteSpace(T
 
                 @Html.Partial("_Sidebar")
                 <script src="https://cdn.commento.io/js/count.js" async></script>
+                <script src=@Context.GetLink("assets/js/cookieconsent.min.js")></script>
         </div>
         @Html.Partial("_Footer")
         
