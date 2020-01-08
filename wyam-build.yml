@@ -50,3 +50,13 @@ stages:
         storage: $(StorageAccountName)
         containerName: $(StorageContainer)
         cleanTargetBeforeCopy: true
+    - task: AzureCLI@2
+      displayName: set-cache-control
+      inputs:
+        azureSubscription: 'michael-azure'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          for i in `az storage blob list --container-name "`$web" --output table | awk '{print $1}'| sed '1,2d' | sed '/^$/d'` ; do
+           echo $i
+          done
