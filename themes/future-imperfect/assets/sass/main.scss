@@ -58,6 +58,12 @@
 	@import 'layout/intro';
 	@import 'layout/footer';
 	@import 'layout/menu';
+	.commento-root .commento-card .commento-option-button {
+		background-color: _palette(bg-dark) !important;
+		&:hover {
+			background-color: _palette(accent) !important;
+		}
+	}
 	@media (prefers-color-scheme: dark) {
 		body, #menu {
 		  color: _palette(fg-dark);
@@ -92,5 +98,8 @@
 		}
 		.commento-root input[type=text], .commento-root textarea {
 			color:_palette(fg-dark) !important;
+		}
+		.commento-root .commento-card .commento-option-button {
+			background-color: _palette(fg-dark) !important;
 		}
 	  }
