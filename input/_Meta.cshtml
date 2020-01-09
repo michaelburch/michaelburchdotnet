@@ -1,5 +1,7 @@
 @{ 
-	string Title = Model.WithoutSettings.String(BlogKeys.Title); 
+	string Title = Model.WithoutSettings.String(BlogKeys.Title);
+	string Description = "Michael Burch is a technologist, cloud enthusiast, programmer, runner, hiker, and more.";
+	string Excerpt =  (string.IsNullOrWhiteSpace(Model.WithoutSettings.String(BlogKeys.Excerpt)) ? Description : Model.WithoutSettings.String(BlogKeys.Excerpt));
 	string PageTitle =  (string.IsNullOrWhiteSpace(Title) ? Context.String(BlogKeys.Intro) : Title);
 	string ImageUrl = (string.IsNullOrWhiteSpace(Model.WithoutSettings.String(BlogKeys.Image)) ? Context.GetLink("/images/profile2.jpeg", true) : Context.GetLink(Model.WithoutSettings.String(BlogKeys.Image),true));
 	var Tags = Model.Get<string[]>(BlogKeys.Tags);
@@ -32,7 +34,7 @@
 		<link rel="stylesheet" href="@Context.GetLink("assets/css/xcode.min.css")" >
 		<link rel="stylesheet" href="@Context.GetLink("assets/css/vs2015.min.css")" media='(prefers-color-scheme: dark)'>
 		<link rel="preload" href="@Context.GetLink("assets/css/cookieconsent.min.css")" as="style" onload="this.onload=null;this.rel='stylesheet'">
-		<meta name="description" content="Michael Burch is a technologist, cloud enthusiast, programmer, runner, hiker, and more.">
+		<meta name="description" content="@Description">
 @if (Context.String(BlogKeys.RssPath) != null) {
 <link type="application/rss+xml" rel="alternate" title="@Context.String(BlogKeys.Title)"
     href="@Context.GetLink(Context.String(BlogKeys.RssPath))" />
@@ -66,4 +68,5 @@
 <meta property="og:image" content="@ImageUrl" /> 
 <meta property="og:type" content="blog" />
 <meta property="og:url" content="@Context.GetLink(Model, true)" />
+<meta property="og:description" content="@Excerpt" />
 <meta name="keywords" content="@Keywords" />
