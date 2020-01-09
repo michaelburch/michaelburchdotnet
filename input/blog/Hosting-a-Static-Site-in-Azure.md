@@ -4,7 +4,9 @@ Tags: Azure, Wyam, blob storage, dotnet
 Lead: 
 ---
 
-When I decided to start a blog, I wanted to run it without paying for a dedicated server. After all, this is a simple blog with mostly text articles and only a few images which shouldn't amount to much more than some basic HTML. There are plenty of options for running a blog, (like Wordpress.com, running it your own server hardware, a VPS, etc.) but most of them require a server running database software and an HTTP server. That's a very common and reliable way of hosting a site, but for this project I  wanted to explore other options. I decided to create a static site -  just a pile of HTML, CSS and images - and host it in Azure Blob Storage. In this post, I'll walk through the options I evaluated and the process of getting content into Azure Storage and configuring it for static site hosting.
+When I decided to start a blog, I wanted to run it without paying for a dedicated server. After all, this is a simple blog with mostly text articles and only a few images which shouldn't amount to much more than some basic HTML.  In this post, I'll walk through the options I evaluated and the process of getting content into Azure Storage and configuring it for static site hosting.
+
+There are plenty of options for running a blog, (like Wordpress.com, running it your own server hardware, a VPS, etc.) but most of them require a server running database software and an HTTP server. That's a very common and reliable way of hosting a site, but for this project I  wanted to explore other options. I decided to create a static site -  just a pile of HTML, CSS and images - and host it in Azure Blob Storage.
 
 ## Goals
 First, I had a few goals in mind for the site:
