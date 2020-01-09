@@ -1,6 +1,10 @@
 Title: Hosting a Static Site in Azure
 Published: 9/04/2019
-Tags: Azure, Wyam, blob storage, dotnet
+Tags: 
+  - Azure
+  - Wyam
+  - blob storage
+  - dotnet
 Lead: 
 ---
 
