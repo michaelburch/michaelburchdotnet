@@ -17,6 +17,7 @@ Settings[BlogKeys.IndexPaging] = true;
 Settings[BlogKeys.ArchivePageSize] = 12;
 Settings[BlogKeys.TagPageSize] = 12;
 Settings[Keys.LinkHideExtensions] = false;
+Settings[Keys.LinksUseHttps] = true;
 
 // Add any pipeline customizations here
 Pipelines.Remove("Less");
