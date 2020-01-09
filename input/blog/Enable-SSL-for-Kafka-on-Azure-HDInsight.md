@@ -1,6 +1,11 @@
 Title: Enable SSL for Kafka on Azure HDInsight
 Published: 01/07/2020
-Tags: Cloud, Azure, Kafka, HDInsight, SSL
+Tags: 
+  - Cloud
+  - Azure
+  - Kafka
+  - HDInsight
+  - SSL
 Lead: 
 ---
 
