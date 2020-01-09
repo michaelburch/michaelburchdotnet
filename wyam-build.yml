@@ -88,6 +88,5 @@ stages:
         azureSubscription: 'michael-azure'
         scriptType: 'pscore'
         scriptLocation: 'inlineScript'
-        inlineScript: |
-          Remove-AzFrontDoorContent -ResourceGroupName $env:ResourceGroupName -Name $env:FrontDoorName -ContentPath "/*";
+        inlineScript: 'az network front-door purge-endpoint --content-paths "/*" --name $env:FrontDoorName --resource-group $env:ResourceGroupName'
               
