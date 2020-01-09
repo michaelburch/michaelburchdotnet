@@ -5,7 +5,7 @@
 
 // Customize your settings and add new ones here
 System.Globalization.CultureInfo.DefaultThreadCurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
-Settings[Keys.Host] = "michaelburch.net";
+Settings[Keys.Host] = "www.michaelburch.net";
 Settings[BlogKeys.Title] = "Michael Burch's Blog";
 Settings[BlogKeys.PostsPath] = "blog";
 Settings[BlogKeys.Description] = "Welcome!";
