@@ -3,18 +3,23 @@
 	string Description = "Michael Burch is a technologist, cloud enthusiast, programmer, runner, hiker, and more.";
 	string Excerpt =  (string.IsNullOrWhiteSpace(Model.WithoutSettings.String(BlogKeys.Excerpt)) ? Description : Model.WithoutSettings.String(BlogKeys.Excerpt));
 	string PageTitle =  (string.IsNullOrWhiteSpace(Title) ? Context.String(BlogKeys.Intro) : Title);
-	string ImageUrl = (string.IsNullOrWhiteSpace(Model.WithoutSettings.String(BlogKeys.Image)) ? Context.GetLink("/images/profile2.jpeg", true) : Context.GetLink(Model.WithoutSettings.String(BlogKeys.Image),true));
+	string ImageUrl = (string.IsNullOrWhiteSpace(Model.WithoutSettings.String(BlogKeys.Image)) ? Context.GetLink("/images/ogcard.jpeg", true) : Context.GetLink(Model.WithoutSettings.String(BlogKeys.Image),true));
+	string Author = Model.String("Author");
 	var Tags = Model.Get<string[]>(BlogKeys.Tags);
 	var KeywordList = new List<string>()
 	{
+		"Michael Burch",
 		"Michael",
 		"Burch",
 		"Azure", 
 		"Cloud",
+		"dotnet",
 		".NET",
 		"C#",
 		"Python",
 		"michaelburch",
+		"Round Rock",
+		"Texas",
 		"Austin",
 		"ATX"
 	};
@@ -69,4 +74,5 @@
 <meta property="og:type" content="blog" />
 <meta property="og:url" content="@Context.GetLink(Model, true)" />
 <meta property="og:description" content="@Excerpt" />
+<meta property="og:author" content="@Author" />
 <meta name="keywords" content="@Keywords" />
