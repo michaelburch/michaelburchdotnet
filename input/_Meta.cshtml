@@ -1,7 +1,8 @@
+@using System.Text.RegularExpressions;
 @{ 
 	string Title = Model.WithoutSettings.String(BlogKeys.Title);
 	string Description = "Michael Burch is a technologist, cloud enthusiast, programmer, runner, hiker, and more.";
-	string Excerpt =  (string.IsNullOrWhiteSpace(Model.WithoutSettings.String(BlogKeys.Excerpt)) ? Description : Model.WithoutSettings.String(BlogKeys.Excerpt));
+	string Excerpt =  Regex.Replace((string.IsNullOrWhiteSpace(Model.WithoutSettings.String(BlogKeys.Excerpt)) ? Description : Model.WithoutSettings.String(BlogKeys.Excerpt)), "<.*?>", String.Empty);
 	string PageTitle =  (string.IsNullOrWhiteSpace(Title) ? Context.String(BlogKeys.Intro) : Title);
 	string ImageUrl = (string.IsNullOrWhiteSpace(Model.WithoutSettings.String(BlogKeys.Image)) ? Context.GetLink("/images/ogcard.jpeg", true) : Context.GetLink(Model.WithoutSettings.String(BlogKeys.Image),true));
 	string Author = Model.String("Author");
