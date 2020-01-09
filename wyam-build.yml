@@ -82,3 +82,12 @@ stages:
                   Write-Host "Updated $blobName" 
               }
           }
+    - task: AzureCLI@2
+      displayName: purge front door
+      inputs:
+        azureSubscription: 'michael-azure'
+        scriptType: 'pscore'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          Remove-AzFrontDoorContent -ResourceGroupName $env:ResourceGroupName -Name $env:FrontDoorName -ContentPath "/*";
+              
