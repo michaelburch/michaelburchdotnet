@@ -96,8 +96,11 @@
 		.commento-root .commento-login-box-container .commento-login-box .commento-login-box-close:after, .commento-root .commento-login-box-container .commento-login-box .commento-login-box-close:before {
 			background-color: _palette(fg-dark) !important;
 		}
-		.commento-root input[type=text], .commento-root textarea {
+		.commento-root .commento-root textarea {
 			color:_palette(fg-dark) !important;
+		}
+		.commento-root .input[type=text], .commento-input {
+			color: _palette(fg-bold) !important;
 		}
 		.commento-root .commento-card .commento-option-button {
 			background-color: _palette(fg-dark) !important;
