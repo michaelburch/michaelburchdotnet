@@ -103,9 +103,8 @@ Pipelines.Add("Posts Search Data",
     WriteFiles((doc, ctx) => "search.json")
 );
 
-// Code syntax highlighting
-Pipelines.Add("highlightjs",
-    ReadFiles("hljs/*.css"),
-    MinifyCss(),
-	WriteFiles((doc, ctx) => "assets/css/" + doc.Source.FileNameWithoutExtension + ".min.css")
+Pipelines.Add("JS",
+    ReadFiles("assets/js/*.js"),
+    MinifyJs(),
+    WriteFiles(".js")
 );
