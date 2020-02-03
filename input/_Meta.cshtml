@@ -39,7 +39,7 @@
 		<link rel="stylesheet" href="@Context.GetLink("assets/css/main.css")" />
 		<link rel="stylesheet" href="@Context.GetLink("assets/css/xcode.min.css")" >
 		<link rel="stylesheet" href="@Context.GetLink("assets/css/vs2015.min.css")" media='(prefers-color-scheme: dark)'>
-		<link rel="preload" href="@Context.GetLink("assets/css/cookieconsent.min.css")" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<link rel="stylesheet" href="@Context.GetLink("assets/css/cookieconsent.min.css")" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
 		<meta name="description" content="@Description">
 @if (Context.String(BlogKeys.RssPath) != null) {
 <link type="application/rss+xml" rel="alternate" title="@Context.String(BlogKeys.Title)"
