@@ -67,8 +67,18 @@ stages:
           # Read all blobs
           $blobs = az storage blob list --auth-mode login --account-name $env:StorageAccountName --container-name $env:StorageContainer --num-results * --output json | ConvertFrom-Json
           
-          # iterate all blobs
-          foreach($blob in $blobs)
+          # Iterate all blobs with .rss extension
+          foreach($blob in ($blobs | ? {$_.name -notlike '*.rss'}))
+          {
+            # use name as identifier
+            $blobName = $blob.name;
+            # set content-type to text/xml
+            az storage blob update  --auth-mode login --account-name $env:StorageAccountName --container-name $env:StorageContainer --name $blobName --content-type "text/xml"
+            Write-Host "Updated $blobName" 
+          }
+          
+          # iterate all blobs with a different cache control setting
+          foreach($blob in ($blobs | ? {$_.Properties.contentSettings.cacheControl -notlike $contentCacheControl}))
           {
               # use name as identifier
               $blobName = $blob.name;
