@@ -48,15 +48,7 @@ Pipelines.Insert(
       Pipelines = new string[] { Blog.Pages },
       Layout = (doc, ctx) => "/_PageLayout.cshtml"
     }));
-// About and privacy pages
-Pipelines.Add("Markdown",
-    ReadFiles("about/index.md"),
-    ReadFiles("privacy/index.md"),
-    ReadFiles("404.md"),
-    FrontMatter(Yaml()),
-    Markdown().EscapeAt(true),
-    WriteFiles((doc, ctx) => doc.Source.FileName)
-);
+
 Pipelines.Add("Posts Search Data",
     GenerateJson((doc, ctx) =>
         ctx.Documents.FromPipeline("BlogPosts").Select(x => {
