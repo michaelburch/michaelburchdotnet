@@ -56,6 +56,7 @@ stages:
         azureSubscription: 'michael-azure'
         scriptType: 'pscore'
         scriptLocation: 'inlineScript'
+        powerShellErrorActionPreference: 'continue'
         inlineScript: |
           $containerName = "$web";
           
@@ -64,10 +65,20 @@ stages:
           $extensions = @(".gif", ".jpg", ".jpeg", ".ico", ".png", ".css", ".js", ".ttf", ".eot", ".svg", ".woff",".woff2");
           
           # Read all blobs
-          $blobs = az storage blob list --account-name $env:StorageAccountName --container-name $env:StorageContainer --num-results * --output json | ConvertFrom-Json
+          $blobs = az storage blob list --auth-mode login --account-name $env:StorageAccountName --container-name $env:StorageContainer --num-results * --output json | ConvertFrom-Json
           
-          # iterate all blobs
-          foreach($blob in $blobs)
+          # Iterate all blobs with .rss extension
+          foreach($blob in ($blobs | ? {$_.name -like '*.rss'}))
+          {
+            # use name as identifier
+            $blobName = $blob.name;
+            # set content-type to text/xml
+            az storage blob update  --auth-mode login --account-name $env:StorageAccountName --container-name $env:StorageContainer --name $blobName --content-type "text/xml"
+            Write-Host "Updated $blobName with content type text/xml" 
+          }
+          
+          # iterate all blobs with a different cache control setting
+          foreach($blob in ($blobs | ? {$_.Properties.contentSettings.cacheControl -notlike $contentCacheControl}))
           {
               # use name as identifier
               $blobName = $blob.name;
@@ -78,8 +89,8 @@ stages:
               # update blob if extension is affected
               if($extensions.Contains($extension))
               {
-                  az storage blob update  --account-name $env:StorageAccountName --container-name $env:StorageContainer --name $blobName --content-cache-control $contentCacheControl
-                  Write-Host "Updated $blobName" 
+                  az storage blob update  --auth-mode login --account-name $env:StorageAccountName --container-name $env:StorageContainer --name $blobName --content-cache-control $contentCacheControl
+                  Write-Host "Updated $blobName with cache-control setting" 
               }
           }
     - task: AzureCLI@2
