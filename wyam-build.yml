@@ -56,6 +56,7 @@ stages:
         azureSubscription: 'michael-azure'
         scriptType: 'pscore'
         scriptLocation: 'inlineScript'
+        powerShellErrorActionPreference: 'continue'
         inlineScript: |
           $containerName = "$web";
           
@@ -82,7 +83,7 @@ stages:
                   Write-Host "Updated $blobName" 
               }
           }
-        powerShellErrorActionPreference: 'continue'
+    - task: AzureCLI@2
       displayName: purge front door
       inputs:
         azureSubscription: 'michael-azure'
