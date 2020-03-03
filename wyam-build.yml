@@ -82,7 +82,7 @@ stages:
                   Write-Host "Updated $blobName" 
               }
           }
-    - task: AzureCLI@2
+        powerShellErrorActionPreference: 'continue'
       displayName: purge front door
       inputs:
         azureSubscription: 'michael-azure'
