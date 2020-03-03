@@ -36,6 +36,16 @@ Pipelines.Add("theme",
 	Combine(),
 	WriteFiles((doc, ctx) =>  "assets/css/main.css").UseWriteMetadata(false)
 );
+Pipelines.Add("hljs-light",
+    ReadFiles("../hljs/xcode.css"),
+    MinifyCss(),
+	WriteFiles((doc, ctx) =>  "assets/css/xcode.css").UseWriteMetadata(false)
+);
+Pipelines.Add("hljs-dark",
+    ReadFiles("../hljs/vs2015.css"),
+    MinifyCss(),
+	WriteFiles((doc, ctx) =>  "assets/css/vs2015.css").UseWriteMetadata(false)
+);
 int renderPagesIndex = Pipelines.IndexOf(Blog.RenderPages);
 Pipelines.Remove(Blog.RenderPages);
 Pipelines.Insert(
