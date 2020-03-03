@@ -74,7 +74,7 @@ stages:
             $blobName = $blob.name;
             # set content-type to text/xml
             az storage blob update  --auth-mode login --account-name $env:StorageAccountName --container-name $env:StorageContainer --name $blobName --content-type "text/xml"
-            Write-Host "Updated $blobName" 
+            Write-Host "Updated $blobName with content type text/xml" 
           }
           
           # iterate all blobs with a different cache control setting
@@ -90,7 +90,7 @@ stages:
               if($extensions.Contains($extension))
               {
                   az storage blob update  --auth-mode login --account-name $env:StorageAccountName --container-name $env:StorageContainer --name $blobName --content-cache-control $contentCacheControl
-                  Write-Host "Updated $blobName" 
+                  Write-Host "Updated $blobName with cache-control setting" 
               }
           }
     - task: AzureCLI@2
