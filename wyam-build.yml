@@ -68,7 +68,7 @@ stages:
           $blobs = az storage blob list --auth-mode login --account-name $env:StorageAccountName --container-name $env:StorageContainer --num-results * --output json | ConvertFrom-Json
           
           # Iterate all blobs with .rss extension
-          foreach($blob in ($blobs | ? {$_.name -notlike '*.rss'}))
+          foreach($blob in ($blobs | ? {$_.name -like '*.rss'}))
           {
             # use name as identifier
             $blobName = $blob.name;
