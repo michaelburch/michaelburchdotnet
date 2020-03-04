@@ -32,11 +32,12 @@ foreach(IDocument post in Model.Get<IEnumerable<IDocument>>("PageDocuments"))
             else
             {
                 var excerptString = post.String(BlogKeys.Excerpt);
-                var lastCharIndex = excerptString.LastIndexOf('<') - 1;
+                var lastCharIndex = excerptString.LastIndexOf('<') - 1 ;
                 @if (excerptString.Substring(lastCharIndex,1) == ".") { 
                     excerptString = excerptString.Remove(lastCharIndex);
+                    lastCharIndex = lastCharIndex - 1;
                 };
-                var excerpt = excerptString.Insert(lastCharIndex,"\u2026");
+                var excerpt = excerptString.Insert(lastCharIndex + 1,"\u2026");
                 
                 @Html.Raw(excerpt)
             }

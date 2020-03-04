@@ -60,7 +60,7 @@ var Tags = Model.Get<string[]>(BlogKeys.Tags);
 										onClick="if($('#commento').is(':empty') ) {window.commento.main();}"
 										class="icon solid fa-comment">0 Comments</a></li>
 						</ul>
-					<script  src=@Context.GetLink("assets/js/highlight.min.js")></script>
+					<script  src=@Context.GetLink("assets/js/highlight.pack.js")></script>
 					</footer>
 					<div id="commento"></div>
 					<script defer src="https://cdn.commento.io/js/commento.js" data-auto-init="false"></script>
