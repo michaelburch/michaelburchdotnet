@@ -9,6 +9,7 @@ Tags:
   - RBAC
   - PowerShell
 Lead: 
+Card: /images/storage-iam-sp.png
 ---
 
 I depend on the Azure CLI in my deployment pipeline for this site to push content into Blob Storage. The pipeline failed yesterday, with only the following message in the logs *WARNING: No connection string, account key or sas token found, we will query account keys for your storage account. Please try to use --auth-mode login or provide one of the following parameters: connection string, account key or sas token for your storage account.*
