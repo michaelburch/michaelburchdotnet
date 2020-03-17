@@ -5,7 +5,8 @@ Tags:
   - Wyam
   - blob storage
   - dotnet
-Lead: 
+Lead:
+Card: /images/mbdotnet-azure-storage-account.png
 ---
 
 When I decided to start a blog, I wanted to run it without paying for a dedicated server. After all, this is a simple blog with mostly text articles and only a few images which shouldn't amount to much more than some basic HTML.  In this post, I'll walk through the options I evaluated and the process of getting content into Azure Storage and configuring it for static site hosting.
