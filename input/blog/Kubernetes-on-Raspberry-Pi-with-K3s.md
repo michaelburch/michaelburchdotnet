@@ -6,7 +6,8 @@ Tags:
   - Kubernetes
   - K3s
   - MongoDB
-Lead: 
+Lead:
+Card: /images/raspi-config-txt-arm64.png 
 ---
 
 Kubernetes makes it possible to describe an application and deploy it to the cloud or to on-premise infrastructure using the same code and deployment tools. Using K3s, that on-premise infrastructure can even be a Raspberry Pi (or a cluster of them!). This post describes deploying MongoDB to Kubernetes running on a Raspberry Pi 3. 
