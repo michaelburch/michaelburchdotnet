@@ -70,8 +70,10 @@
 <meta name="msapplication-tooltip" content="@Context.String(BlogKeys.Title)" />
 <meta name="msapplication-starturl" content="@Context.GetLink("/")" />
 
-<meta property="og:title" content="@PageTitle" /> 
-<meta name="image" property="og:image" content="@ImageUrl" /> 
+<meta property="og:title" content="@PageTitle" />
+@if (string.IsNullOrWhiteSpace(Model.WithoutSettings.String(BlogKeys.Excerpt))) {
+ <meta name="image" property="og:image" content="@ImageUrl" /> 
+} 
 <meta property="og:type" content="Article" />
 <meta property="og:url" content="@Context.GetLink(Model, true)" />
 <meta property="og:description" content="@Excerpt" />
