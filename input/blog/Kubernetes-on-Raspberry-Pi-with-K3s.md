@@ -12,9 +12,9 @@ Lead:
 Kubernetes makes it possible to describe an application and deploy it to the cloud or to on-premise infrastructure using the same code and deployment tools. Using K3s, that on-premise infrastructure can even be a Raspberry Pi (or a cluster of them!). This post describes deploying MongoDB to Kubernetes running on a Raspberry Pi 3. 
 
 ## Preparing the Raspberry Pi
-The first step is to install an operating system image on the Pi. There are plenty of tutorials out there for this, so I won't cover it here. The [official instructions](https://github.com/Azure/azure-cli/issues/12242){rel="noopener" target="_blank"} work just fine. 
+The first step is to install an operating system image on the Pi. There are plenty of tutorials out there for this, so I won't cover it here. The [official instructions](https://www.raspberrypi.org/documentation/installation/installing-images/README.md){rel="noopener" target="_blank"} work just fine. 
 
-I'll be deploying MongoDB, which is 64-bit only so I need an OS image with at least a 64-bit kernel. The [latest Raspbian image](https://github.com/Azure/azure-cli/issues/12242){rel="noopener" target="_blank"} (Buster Lite, 2020-02-13) can support this with a simple option change.
+I'll be deploying MongoDB, which is 64-bit only so I need an OS image with at least a 64-bit kernel. The [latest Raspbian image](https://www.raspberrypi.org/downloads/raspbian/){rel="noopener" target="_blank"} (Buster Lite, 2020-02-13) can support this with a simple option change.
 
 I'm starting fresh, so I'll apply the image and then set a couple of config options before booting up the Pi:
 
