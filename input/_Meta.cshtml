@@ -4,7 +4,7 @@
 	string Description = "Michael Burch is a technologist, cloud enthusiast, programmer, runner, hiker, husband, father and more.";
 	string Excerpt =  Regex.Replace((string.IsNullOrWhiteSpace(Model.WithoutSettings.String(BlogKeys.Excerpt)) ? Description : Model.WithoutSettings.String(BlogKeys.Excerpt)), "<.*?>", String.Empty);
 	string PageTitle =  (string.IsNullOrWhiteSpace(Title) ? Context.String(BlogKeys.Intro) : Title);
-	string ImageUrl = (string.IsNullOrWhiteSpace(Model.WithoutSettings.String(BlogKeys.Image)) ? Context.GetLink("images/ogcard.jpeg", true) : Context.GetLink(Model.WithoutSettings.String(BlogKeys.Image),true));
+	string ImageUrl = (string.IsNullOrWhiteSpace(Model.WithoutSettings.String("Card")) ? Context.GetLink("images/ogcard.jpeg", true) : Context.GetLink(Model.WithoutSettings.String("Card"),true));
 	string Author = Model.String("Author");
 	var Tags = Model.Get<string[]>(BlogKeys.Tags);
 	var KeywordList = new List<string>()
@@ -71,9 +71,7 @@
 <meta name="msapplication-starturl" content="@Context.GetLink("/")" />
 
 <meta property="og:title" content="@PageTitle" />
-@if (string.IsNullOrWhiteSpace(Model.WithoutSettings.String(BlogKeys.Excerpt))) {
- <meta name="image" property="og:image" content="@ImageUrl" /> 
-} 
+<meta name="image" property="og:image" content="@ImageUrl" /> 
 <meta property="og:type" content="Article" />
 <meta property="og:url" content="@Context.GetLink(Model, true)" />
 <meta property="og:description" content="@Excerpt" />

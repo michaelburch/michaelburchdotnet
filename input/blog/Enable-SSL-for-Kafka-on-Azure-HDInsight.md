@@ -6,7 +6,8 @@ Tags:
   - Kafka
   - HDInsight
   - SSL
-Lead: 
+Lead:
+Card: /images/editing-configuration-ambari.png  
 ---
 
 Azure HDInsight is a great way to get started with popular open source frameworks like Hadoop and Kafka. Besides offering simplified deployment, it also offers native integration with other Azure services like Data Lake Storage, CosmosDB and Data Factory. Kafka on HDInsight is an easy way to get started establishing a data integration layer and enabling analysis with modern tools. The out of the box configuration doesn't provide much in the way of security though, and enabling SSL is a good first step.
