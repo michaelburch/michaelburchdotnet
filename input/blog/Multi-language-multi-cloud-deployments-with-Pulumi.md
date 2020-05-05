@@ -32,6 +32,7 @@ resource "azurerm_virtual_network" "example" {
 
 This is simple enough, but it does require an understanding of [Terraform's domain specific language](https://www.terraform.io/docs/configuration/syntax.html){rel="noopener" target="_blank"}. Not a problem for a DevOps team, but as we start to see DevOps staff become integrated into other teams there a some serious productivity gains to be had from everyone working in the same language. Just think of all the extra PR reviewers that could be available to you! That's where [Pulumi](https://www.pulumi.com/){rel="noopener" target="_blank"} comes in - as an SDK, it can be used from a number of languages:
 
+<pre>
 <table>
 <tr>
 <td style="text-align: center;">C#</td><td style="text-align: center">TypeScript</td>
@@ -56,6 +57,7 @@ const network = new azure.network.VirtualNetwork(`${stackId}-vnet`,
 </td>
 </tr>
 </table>
+</pre>
 
 ### Starting a Pulumi project
 Installing Pulumi is easy - I'm using Ubuntu on Windows with WSL, so I just open a terminal and run:
