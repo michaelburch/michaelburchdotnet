@@ -41,7 +41,7 @@ var Tags = Model.Get<string[]>(BlogKeys.Tags);
 					</span>
 					@RenderBody()
 					<footer>
-						<ul class="stats">
+											<ul class="stats">
 							@if (Tags != null)
 							{
 
@@ -60,8 +60,29 @@ var Tags = Model.Get<string[]>(BlogKeys.Tags);
 										onClick="if($('#commento').is(':empty') ) {window.commento.main();}"
 										class="icon solid fa-comment">0 Comments</a></li>
 						</ul>
+						
+				
+						
 					<script  src=@Context.GetLink("assets/js/highlight.pack.js")></script>
 					</footer>
+							<section id="post-footer"> 
+				
+							
+							
+								<p>
+								<div><a href="#" class="logo"><img src='/images/profile2020.jpg' alt="Michael Burch profile." /></a></div>
+								Michael Burch is a technology professional and consultant focused on cloud modernization
+								<ul class="icons">
+									<li><a href="https://github.com/michaelburch" class="icon-github" target="_blank" rel="noopener"> GitHub<span class="label">GitHub</span></a></li>
+									<li><a href="https://linkedin.com/in/michaelpburch" class="icon-linkedin" target="_blank" rel="noopener"> LinkedIn<span class="label">LinkedIn</span></a></li>
+									<li><a href="/subscribe.html" class="icon-envelope"> Subscribe<span class="label">Subscribe</span></a></li>
+									<li><a href="/about" class="icon-none" target="_blank"> About<span class="label">About</span></a></li>
+								</ul>
+								</p>	
+							
+					
+				
+						</section> 
 					<div id="commento"></div>
 					<script defer src="https://cdn.commento.io/js/commento.js" data-auto-init="false"></script>
 
