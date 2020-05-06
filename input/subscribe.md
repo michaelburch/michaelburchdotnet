@@ -1,7 +1,7 @@
 Title: Subscribe
 Published: 8/28/2019
 ---
-Enter your e-mail address and click subscribe below to be notified when new posts are added. 
+Enter your e-mail address and click subscribe below to be notified when new posts are added. You will receive an e-mail once a week with the latest posts.
 
 Need to unsubscribe? [Click here](https://michaelburch.us19.list-manage.com/unsubscribe?u=f0c08361c874ad3d7e05174e0&id=bad331a888){rel="noopener" target="_blank"}
 <!-- Begin Mailchimp Signup Form -->
