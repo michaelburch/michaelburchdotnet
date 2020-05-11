@@ -110,3 +110,13 @@ Pipelines.Add("JS",
     MinifyJs(),
     WriteFiles(".js")
 );
+Pipelines.Add("EmailFeed",
+    Documents(Blog.BlogPosts),
+    GenerateFeeds()
+    .WithRssPath(_ => "feed/index.xml")
+    .WithFeedAuthor(_ => _.String("GravatarEmail"))
+    .WithItemDescription((doc, ctx) => doc.String("Excerpt"))
+    .WithItemContent((doc, ctx) => doc)
+    .WithItemImageLink((doc, ctx) =>  ctx.GetLink(doc.Get("Card", "/images/ogcard.jpeg"), true)),
+    WriteFiles()
+);
