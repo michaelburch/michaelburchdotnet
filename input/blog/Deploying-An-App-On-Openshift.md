@@ -26,12 +26,12 @@ The code for both the web app and API is available in my [GitHub todo repo](http
 ## Starting a project
 I'll begin with a new project in OpenShift. As I've mentioned before, OpenShift is an Enterprise Distribution of Kubernetes much like RHEL is an Enterprise Distribution of Linux. OpenShift introduces some custom resources on top of vanilla Kubernetes, and the first one is a Kubernetes namespace with additional annotations. This resource is called a project. 
 
-I created a project named todo-demo in the UI by clicking the drop down next to '_Projects_'m typing the name and clicking '_Create_'
+I created a project named todo-demo in the UI by clicking the drop down next to '_Projects_', typing the name and clicking '_Create_'
 
 ![screenshot of creating new project in OpenShift](/images/openshift-create-proj.png "screenshot of creating new project in OpenShift") 
 
 
-> I'll also note the command-line equivalent of each step like so
+> I'll also note the command-line equivalent of each step like so:
 
 ```bash
 oc new-project todo-demo
