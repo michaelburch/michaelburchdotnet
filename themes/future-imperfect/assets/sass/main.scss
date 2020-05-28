@@ -65,6 +65,48 @@
 			background-color: _palette(accent) !important;
 		}
 	}
+	.container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding-bottom: 1rem;
+		padding-right: 2rem;
+	}
+	.container-right {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding-bottom: 1rem;
+		padding-left: 2rem;
+		float: right;
+	}
+	.container-left {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding-bottom: 1rem;
+		padding-right: 2rem;
+		float: left;
+	}
+	.post figure {
+		margin: 0;
+			position: relative;
+			background-color: rgb(27, 27, 27);
+		}
+		 
+	.post figure img {
+			max-width: 100%;
+			max-height: 350px;
+			display: block;
+			position: relative;
+		}
+	.post figure figcaption {
+		
+		top: 25%;
+		left: 0;
+		width: 100%;
+		text-align: center;
+	}
 	@media (prefers-color-scheme: dark) {
 		body, #menu {
 		  color: _palette(fg-dark);
@@ -76,7 +118,6 @@
 		input[type=submit],input[type=reset],input[type=button], button, .button {
 			color: _palette(fg-bold-dark) !important; 
 		}
-
 		.post, #header, .mini-post {
 			background: _palette(bg-dark-alt);
 		}
