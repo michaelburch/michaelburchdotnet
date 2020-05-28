@@ -19,6 +19,10 @@ Settings[BlogKeys.TagPageSize] = 12;
 Settings[Keys.LinkHideExtensions] = false;
 Settings[Keys.LinksUseHttps] = true;
 
+ShortcodeCollection.Add("CaptionImage", (KeyValuePair<string, string>[] args, string x) => $"<div class='container'><figure><img src='{args[0].Value}' /><figcaption>{x}</figcaption></figure></div>");
+ShortcodeCollection.Add("CaptionImageRight", (KeyValuePair<string, string>[] args, string x) => $"<div class='container-right'><figure><img src='{args[0].Value}' /><figcaption>{x}</figcaption></figure></div>");
+ShortcodeCollection.Add("CaptionImageLeft", (KeyValuePair<string, string>[] args, string x) => $"<div class='container-left'><figure><img src='{args[0].Value}' /><figcaption>{x}</figcaption></figure></div>");
+
 // Add any pipeline customizations here
 Pipelines.Remove("Less");
 Pipelines.Remove("Sass");
