@@ -106,6 +106,7 @@
 		left: 0;
 		width: 100%;
 		text-align: center;
+		color: _palette(fg-dark);
 	}
 	@media (prefers-color-scheme: dark) {
 		body, #menu {

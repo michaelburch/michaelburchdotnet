@@ -28,7 +28,7 @@ I'll begin with a new project in OpenShift. As I've mentioned before, OpenShift 
 
 I created a project named todo-demo in the UI by clicking the drop down next to '_Projects_', typing the name and clicking '_Create_'
 
-![screenshot of creating new project in OpenShift](/images/openshift-create-proj.png "screenshot of creating new project in OpenShift") 
+![screenshot of creating new project in OpenShift](/images/openshift-create-proj.png "screenshot of creating new project in OpenShift"){ style=max-height:350px} 
 
 
 > I'll also note the command-line equivalent of each step like so:
@@ -43,15 +43,15 @@ The first component I want to deploy in my new project is the database. I've cho
 > I named this component "database". This is important to remember as it is also the DNS name that SQL will be known by within the cluster, so later when connecting the API to this database I will use this name.  
 
 <table>
-<tr>
-<td style="text-align: center;">1. Select Image</td><td style="text-align: center">2. Provide names and click create</td>
-</tr>
+
 <tr>
 <td v-align="middle" align="center">
-<img src='~/images/openshift-deploy-image.png' style="max-height:350px;"/> 
+<?# CaptionImage Src="/images/openshift-deploy-image.png"?>1. Select image<?#/CaptionImage ?>
+
 </td>
 <td v-align="middle" align="center">
-<img src='~/images/openshift-deploy-image-2.png' style="max-height:350px;"/> 
+<?# CaptionImage Src="/images/openshift-deploy-image-2.png"?>2. Provide names and click create<?#/CaptionImage ?>
+
 </td>
 </tr>
 </table>
@@ -64,15 +64,13 @@ When creating the component in the web interface, it's deployed as soon as you c
 
 
 <table>
-<tr>
-<td style="text-align: center;">3. Right-click, select Edit Deployment</td><td style="text-align: center">4. Select Environment,set values, click save</td>
-</tr>
+
 <tr>
 <td v-align="middle" align="center">
-<img src='~/images/openshift-edit-deploy.png' style="max-height:350px;"/> 
+<?# CaptionImage Src="/images/openshift-edit-deploy.png"?>3. Right-click, select Edit Deployment<?#/CaptionImage ?>
 </td>
 <td v-align="middle" align="center">
-<img src='~/images/openshift-edit-deploy-2.png' style="max-height:350px;"/> 
+<?# CaptionImage Src="/images/openshift-edit-deploy-2.png"?>4. Select Environment,set values, click save<?#/CaptionImage ?>
 </td>
 </tr>
 </table>
@@ -93,15 +91,15 @@ This is where it really gets exciting. I haven't created a dockerfile for the AP
 First, I'll click '_Add_' and select the '_From Git_' option. On the following screen I'll provide my Git repo URL, [https://github.com/michaelburch/todo](https://github.com/michaelburch/todo){rel="noopener" target="_blank"}, and since I have both the web app and API in a single repo I will use advanced options to specify a path so that only the API is built.  
 
 <table>
-<tr>
-<td style="text-align: center;">1. Add from Git</td><td style="text-align: center">2. Provide repository details</td>
-</tr>
+
 <tr>
 <td v-align="middle" align="center">
-<img src='~/images/openshift-add-git.png' style="max-height:350px;"/> 
+<?# CaptionImage Src="/images/openshift-add-git.png"?>1. Add from Git<?#/CaptionImage ?>
+
 </td>
 <td v-align="middle" align="center">
-<img src='~/images/openshift-config-repo.png' style="max-height:350px;"/> 
+<?# CaptionImage Src="/images/openshift-config-repo.png"?>2. Provide repository details<?#/CaptionImage ?>
+
 </td>
 </tr>
 </table>
@@ -115,30 +113,30 @@ DB_CSTR="Server=database;Database=TodoItems;User Id=sa;Password=BHP2gE5#+;"
 The API itself is built on dotnet core, so I'll select the latest dotnet core builder image.
 
 <table>
-<tr>
-<td style="text-align: center;">3. Select builder image</td><td style="text-align: center">4. Name and create</td>
-</tr>
+
 <tr>
 <td v-align="middle" align="center">
-<img src='~/images/openshift-select-builder.png' style="max-height:350px;"/> 
+<?# CaptionImage Src="/images/openshift-select-builder.png"?>3. Select builder image<?#/CaptionImage ?>
+
 </td>
 <td v-align="middle" align="center">
-<img src='~/images/openshift-name-api.png' style="max-height:350px;"/> 
+<?# CaptionImage Src="/images/openshift-name-api.png"?>4. Name and create<?#/CaptionImage ?>
+
 </td>
 </tr>
 </table>
 
 
 <table>
-<tr>
-<td style="text-align: center;">5. Right-click, select Edit DeploymentConfig</td><td style="text-align: center">6. Select Environment,set values, click save</td>
-</tr>
+
 <tr>
 <td v-align="middle" align="center">
-<img src='~/images/openshift-edit-api.png' style="max-height:350px;"/> 
+<?# CaptionImage Src="/images/openshift-edit-api.png"?>5. Right-click, select Edit DeploymentConfig<?#/CaptionImage ?>
+
 </td>
 <td v-align="middle" align="center">
-<img src='~/images/openshift-edit-api-2.png' style="max-height:350px;"/> 
+<?# CaptionImage Src="/images/openshift-edit-api-2.png"?>6. Select Environment,set values, click save<?#/CaptionImage ?>
+
 </td>
 </tr>
 </table>
@@ -153,7 +151,7 @@ oc expose service/api
 
 I'll need to know the URL for the API before I deploy the app. I can see that through the topology view by clicking on my API component and looking at the route value:
 
-![screenshot showing OpenShift route](/images/openshift-show-route.png "screenshot showing OpenShift route") 
+![screenshot showing OpenShift route](/images/openshift-show-route.png "screenshot showing OpenShift route"){style=max-height:350px}
 
 or via this command:
 
@@ -172,15 +170,15 @@ Since this is a Javascript app that runs in the browser, there is no 'environmen
 
 
 <table>
-<tr>
-<td style="text-align: center;">1. Click build configuration under advanced options</td><td style="text-align: center">2. Enter values, click create</td>
-</tr>
+
 <tr>
 <td v-align="middle" align="center">
-<img src='~/images/openshift-edit-buildconfig.png' style="max-height:350px;"/> 
+<?# CaptionImage Src="/images/openshift-edit-buildconfig.png"?>1. Click build configuration under advanced options<?#/CaptionImage ?>
+
 </td>
 <td v-align="middle" align="center">
-<img src='~/images/openshift-edit-buildconfig-2.png' style="max-height:350px;"/> 
+<?# CaptionImage Src="/images/openshift-edit-buildconfig-2.png"?>2. Enter values, click create<?#/CaptionImage ?>
+
 </td>
 </tr>
 </table>
