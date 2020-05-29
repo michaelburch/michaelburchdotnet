@@ -9,7 +9,7 @@
     <article class="post">
         <header>
                 <div class="title">
-                        <h2><a href="@Context.GetLink(post)">@post.WithoutSettings.String(BlogKeys.Title)</a></h2>
+                        <h2><a class="header" href="@Context.GetLink(post)">@post.WithoutSettings.String(BlogKeys.Title)</a></h2>
                         @if(!string.IsNullOrWhiteSpace(lead))
                         {
                             <p>@lead</p>

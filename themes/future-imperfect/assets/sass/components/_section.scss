@@ -24,6 +24,12 @@ article {
 			color: _palette(accent);
 		}
 	}
+	&.post {
+
+		a:not(.icon):not(.btn):not(.header) {
+			color: _palette(accent);
+		}
+	}
 }
 
 header {
@@ -34,6 +40,6 @@ header {
 		letter-spacing: _font(kerning-heading);
 		line-height: 2.5;
 		margin-top: -1em;
-		text-transform: uppercase;
+		text-transform: uppercase
 	}
 }
