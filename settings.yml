@@ -1,0 +1,3 @@
+Host: www.michaelburch.net
+PostsPath: blog
+Layout: ../theme/_layout.cshtml
