@@ -4,3 +4,5 @@ config.wyam.hash
 packages.xml
 config.wyam.packages.xml
 .DS_store
+bin/
+obj/
