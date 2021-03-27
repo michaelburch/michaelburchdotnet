@@ -46,11 +46,11 @@ The first component I want to deploy in my new project is the database. I've cho
 
 <tr>
 <td v-align="middle" align="center">
-<?# CaptionImage Src="/images/openshift-deploy-image.png"?>1. Select image<?#/CaptionImage ?>
+<?# Figure Src="/images/openshift-deploy-image.png"?>1. Select image<?#/Figure ?>
 
 </td>
 <td v-align="middle" align="center">
-<?# CaptionImage Src="/images/openshift-deploy-image-2.png"?>2. Provide names and click create<?#/CaptionImage ?>
+<?# Figure Src="/images/openshift-deploy-image-2.png"?>2. Provide names and click create<?#/Figure ?>
 
 </td>
 </tr>
@@ -67,10 +67,10 @@ When creating the component in the web interface, it's deployed as soon as you c
 
 <tr>
 <td v-align="middle" align="center">
-<?# CaptionImage Src="/images/openshift-edit-deploy.png"?>3. Right-click, select Edit Deployment<?#/CaptionImage ?>
+<?# Figure Src="/images/openshift-edit-deploy.png"?>3. Right-click, select Edit Deployment<?#/Figure ?>
 </td>
 <td v-align="middle" align="center">
-<?# CaptionImage Src="/images/openshift-edit-deploy-2.png"?>4. Select Environment,set values, click save<?#/CaptionImage ?>
+<?# Figure Src="/images/openshift-edit-deploy-2.png"?>4. Select Environment,set values, click save<?#/Figure ?>
 </td>
 </tr>
 </table>
@@ -94,11 +94,11 @@ First, I'll click '_Add_' and select the '_From Git_' option. On the following s
 
 <tr>
 <td v-align="middle" align="center">
-<?# CaptionImage Src="/images/openshift-add-git.png"?>1. Add from Git<?#/CaptionImage ?>
+<?# Figure Src="/images/openshift-add-git.png"?>1. Add from Git<?#/Figure ?>
 
 </td>
 <td v-align="middle" align="center">
-<?# CaptionImage Src="/images/openshift-config-repo.png"?>2. Provide repository details<?#/CaptionImage ?>
+<?# Figure Src="/images/openshift-config-repo.png"?>2. Provide repository details<?#/Figure ?>
 
 </td>
 </tr>
@@ -116,11 +116,11 @@ The API itself is built on dotnet core, so I'll select the latest dotnet core bu
 
 <tr>
 <td v-align="middle" align="center">
-<?# CaptionImage Src="/images/openshift-select-builder.png"?>3. Select builder image<?#/CaptionImage ?>
+<?# Figure Src="/images/openshift-select-builder.png"?>3. Select builder image<?#/Figure ?>
 
 </td>
 <td v-align="middle" align="center">
-<?# CaptionImage Src="/images/openshift-name-api.png"?>4. Name and create<?#/CaptionImage ?>
+<?# Figure Src="/images/openshift-name-api.png"?>4. Name and create<?#/Figure ?>
 
 </td>
 </tr>
@@ -131,11 +131,11 @@ The API itself is built on dotnet core, so I'll select the latest dotnet core bu
 
 <tr>
 <td v-align="middle" align="center">
-<?# CaptionImage Src="/images/openshift-edit-api.png"?>5. Right-click, select Edit DeploymentConfig<?#/CaptionImage ?>
+<?# Figure Src="/images/openshift-edit-api.png"?>5. Right-click, select Edit DeploymentConfig<?#/Figure ?>
 
 </td>
 <td v-align="middle" align="center">
-<?# CaptionImage Src="/images/openshift-edit-api-2.png"?>6. Select Environment,set values, click save<?#/CaptionImage ?>
+<?# Figure Src="/images/openshift-edit-api-2.png"?>6. Select Environment,set values, click save<?#/Figure ?>
 
 </td>
 </tr>
@@ -173,11 +173,11 @@ Since this is a Javascript app that runs in the browser, there is no 'environmen
 
 <tr>
 <td v-align="middle" align="center">
-<?# CaptionImage Src="/images/openshift-edit-buildconfig.png"?>1. Click build configuration under advanced options<?#/CaptionImage ?>
+<?# Figure Src="/images/openshift-edit-buildconfig.png"?>1. Click build configuration under advanced options<?#/Figure ?>
 
 </td>
 <td v-align="middle" align="center">
-<?# CaptionImage Src="/images/openshift-edit-buildconfig-2.png"?>2. Enter values, click create<?#/CaptionImage ?>
+<?# Figure Src="/images/openshift-edit-buildconfig-2.png"?>2. Enter values, click create<?#/Figure ?>
 
 </td>
 </tr>

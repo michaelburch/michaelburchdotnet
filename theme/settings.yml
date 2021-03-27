@@ -1,0 +1,15 @@
+MinimumStatiqWebVersion-CleanBlog: "1.0.0-beta.3"
+SiteTitle: michaelburch.net
+Author: Michael Burch
+Intro: Cloud Enthusiast, Christian, Runner, Blogger
+PageTitle: |
+  =>
+  {
+    string siteTitle = Context.GetString("SiteTitle");
+    string title = GetString("Title");
+    return string.IsNullOrWhiteSpace(siteTitle) ? title : (string.IsNullOrWhiteSpace(title) ? siteTitle : $"{siteTitle} - {title}");
+  }
+Copyright: => $"Copyright © {DateTime.Now.Year}"
+PostSources: blog/*
+IsPost: => Outputs.FilterSources(Context.GetString("PostSources")).ContainsById(Document)
+Layout: /_postlayout.cshtml

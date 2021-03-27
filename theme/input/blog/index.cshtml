@@ -1,0 +1,69 @@
+ArchiveSources: => GetString("PostSources")
+ArchiveFilter: => GetBool("IsPost")
+ArchiveOrderKey: Published
+ArchiveOrderDescending: true
+ArchiveKey: => GetDateTime("Published").Year
+ArchiveDestination: >
+  => GetInt("Index") <= 1 ? $"blog/{NormalizedPath.OptimizeFileName(GetString("GroupKey"))}/index.html" : $"blog/{NormalizedPath.OptimizeFileName(GetString("GroupKey"))}/{GetInt("Index")}.html"
+ArchiveTitle: => GetString("GroupKey")
+Title: Archive
+Layout: /_layout.cshtml
+---
+@using System.Globalization
+@model IDocument
+@if (Document.ContainsKey(Keys.GroupKey))
+{
+
+string Title = Document.GetString("Title");
+@foreach (IGrouping<int, IDocument> group in Document
+.GetChildren()
+.GroupBy(x => x.GetDateTime(WebKeys.Published).Month)
+.OrderByDescending(x => x.Key))
+{
+    var month = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(group.Key); 
+    <h1 class="bg-dark text-light p-2">@month</h1>
+    foreach (IDocument post in group)
+    {
+        var lead = post.GetString("Lead");
+        
+        var imgUrl = post.GetString("Image");
+        var excerptString = post.GetString("Excerpt");
+        var lastCharIndex = excerptString.LastIndexOf('<') - 1 ;
+        var excerpt = excerptString.Insert(lastCharIndex + 1,"\u2026");
+        <article class="mini-post">
+            <header>
+                <div class="title">
+                    <h3><a class="header" href="@Context.GetLink(post)">@post.GetString("Title")</a></h3>
+                    @if(!string.IsNullOrWhiteSpace(lead))
+                    {
+                        <p>@lead</p>
+                    }
+                </div>
+
+                <div class="meta">
+                    <time class="published"
+                        datetime='@(post.GetDateTime(WebKeys.Published).ToString("MMMM dd, yyyy"))'>@(post.GetDateTime(WebKeys.Published).ToString("MMMM dd, yyyy"))</time>
+                </div>
+            </header>
+        @if(!string.IsNullOrWhiteSpace(imgUrl))
+            {
+                <a href="@Context.GetLink(post)" class="image featured"><img src="@imgUrl" alt="" /></a>
+            }
+           
+        
+        </article>
+    }
+    
+}
+}
+else
+{ 
+
+    @foreach (IDocument year in Document.GetChildren().OrderByDescending(x => x.GetChildren().Count()))
+    {
+        string postCount = year.GetChildren().Count().ToString();
+    <h1 class="bg-dark text-light p-2">@year.GetTitle()</h1> 
+        <li style="display:inline"><a role="button" href="@Context.GetLink(year)" class="btn btn-default btn-xs"> @year.GetTitle() (@postCount)</a> </li>
+    }
+
+}

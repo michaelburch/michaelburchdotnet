@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+
+<head>
+        @Html.Partial("_head")
+</head>
+
+<body class="is-preload">
+        <div id="wrapper">
+                @Html.Partial("_header")
+                
+                <div id="main">
+                        @RenderBody()
+                </div>
+
+                @Html.Partial("_sidebar")
+        </div>
+        @Html.Partial("_footer")
+        
+        </body>
+</html>

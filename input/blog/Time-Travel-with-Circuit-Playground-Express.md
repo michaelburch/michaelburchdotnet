@@ -16,10 +16,10 @@ My 6 year old daughter has been using her imagination to help make homeschool hi
 <table style="float:right; padding-left: 2rem;">
 <tr>
 <td v-align="middle" align="center">
-<?# CaptionImageRight Src="/images/helmet-design.jpg" ?>Design<?#/CaptionImageRight ?>
+<?# CaptionImage Src="/images/helmet-design.jpg" Style="container-right"?>Design<?#/CaptionImage ?>
 </td>
 <td v-align="middle" align="center">
-<?# CaptionImageRight Src="/images/helmet-complete.jpg" ?>Finished Product<?#/CaptionImageRight ?>
+<?# CaptionImage Src="/images/helmet-complete.jpg" Style="container-right"?>Finished Product<?#/CaptionImage ?>
 </td>
 </tr>
 </table>  
@@ -37,7 +37,7 @@ Since Flux Capacitor was taken, my daughter named our time travel electronics "t
 Here is the small subset of features used in our time travel helmet:
 <table>
 <tr>
-<td><?# CaptionImageLeft Src="/images/cpx.jpg" ?>Circuit Playground Express<?#/CaptionImageLeft ?>
+<td><?# CaptionImage Src="/images/cpx.jpg" Style="container-left"?>Circuit Playground Express<?#/CaptionImage ?>
 
 <ul class="spaced">
 <li> 10 x mini NeoPixels, (for colorful indicator lights)
@@ -57,7 +57,7 @@ Here is the small subset of features used in our time travel helmet:
 </table>
 
 ## Supplies
-<?# CaptionImageRight Src="/images/cpx-battery.jpg"?>Battery holder<?#/CaptionImageRight ?>
+<?# CaptionImage Src="/images/cpx-battery.jpg" Style="container-right"?>Battery holder<?#/CaptionImage ?>
 Aside from the cardboard box and some tape, here are the supplies used in the project:
 
   * [Circuit Playground Express](https://smile.amazon.com/Adafruit-Circuit-Playground-Express/dp/B0764NQ1WW/?ref=smi_se_dshb_sn_smi&ein=22-3886094&ref_=smi_chpf_redirect&ref_=smi_ext_ch_22-3886094_cl){rel="noopener" target="_blank"}
@@ -121,7 +121,7 @@ traveling = 0
 
 Once the code was completed, we attached the Circuit Playground and battery holder to the helmet, switched it on and it was ready to go. I'm really impressed with the Circuit Playground Express. It has a wealth of features, is totally approachable for beginners, and can also be programmed with Circuit Python and Javascript for more advanced use. My daughter will surely come up with some new feature requests for her time travel helmet soon - and I'm looking forward to it! In the mean time, her homeschool history lessons should be much more entertaining.  
 
-<div style="align: left">
+
 <?# CaptionImage Src="/images/mavis-helmet.jpg" ?>It's time traveler time!<?#/CaptionImage ?>
-</div>
+
 

@@ -1,0 +1,96 @@
+
+@using System.Security.Cryptography;
+@using System.Text;
+@{
+
+string GravatarHash;
+using (var md5 = MD5.Create())
+{
+var result = md5.ComputeHash(Encoding.ASCII.GetBytes("GravatarEmail"));
+GravatarHash = BitConverter.ToString(result).Replace("-", "").ToLower();
+}
+
+}
+		<section id="sidebar">
+
+						<!-- Intro -->
+							<section id="intro">
+								<a href="#" class="logo"><img src='/images/profile2020.jpg' alt="Michael Burch profile." /></a>
+								<header>
+									<h2>@Document.GetString("Author")</h2>
+								</header>
+							</section>
+                        <!-- About -->
+							<section class="blurb">
+								<p>@Document.GetString("Intro")</p>
+								<!-- <ul class="actions">
+									<li><a href="#" class="button">Learn More</a></li>
+								</ul> -->
+								<ul class="icons">
+									<li><a href="https://github.com/michaelburch" class="icon-github" target="_blank" rel="noopener"> GitHub<span class="label">GitHub</span></a></li>
+									<li><a href="https://linkedin.com/in/michaelpburch" class="icon-linkedin" target="_blank" rel="noopener"> LinkedIn<span class="label">LinkedIn</span></a></li>
+									<li><a href="/feed.rss" class="icon-rss" target="_blank"> RSS<span class="label">RSS</span></a></li>
+									<li><a href="mailto:me@michaelburch.net?subject=%20hello%20from%20michaelburch.net" class="icon-envelope"> E-mail<span class="label">Email</span></a></li>
+								</ul>
+							</section>
+						<!-- Mini Posts -->
+							<!-- <section>
+								<div class="mini-posts">
+
+							
+										<article class="mini-post">
+											<header>
+												<h3><a href="single.html">Vitae sed condimentum</a></h3>
+												<time class="published" datetime="2015-10-20">October 20, 2015</time>
+												<a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a>
+											</header>
+											<a href="single.html" class="image"><img src="images/pic04.jpg" alt="" /></a>
+										</article>
+
+					
+										<article class="mini-post">
+											<header>
+												<h3><a href="single.html">Rutrum neque accumsan</a></h3>
+												<time class="published" datetime="2015-10-19">October 19, 2015</time>
+												<a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a>
+											</header>
+											<a href="single.html" class="image"><img src="images/pic05.jpg" alt="" /></a>
+										</article>
+
+					
+										<article class="mini-post">
+											<header>
+												<h3><a href="single.html">Odio congue mattis</a></h3>
+												<time class="published" datetime="2015-10-18">October 18, 2015</time>
+												<a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a>
+											</header>
+											<a href="single.html" class="image"><img src="images/pic06.jpg" alt="" /></a>
+										</article>
+
+						
+										<article class="mini-post">
+											<header>
+												<h3><a href="single.html">Enim nisl veroeros</a></h3>
+												<time class="published" datetime="2015-10-17">October 17, 2015</time>
+												<a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a>
+											</header>
+											<a href="single.html" class="image"><img src="images/pic07.jpg" alt="" /></a>
+										</article>
+
+								</div>
+							</section> -->
+
+						<!-- Footer -->
+							<section id="footer">
+								<!--<ul class="icons">
+									<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon solid fa-rss"><span class="label">RSS</span></a></li>
+									<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+								</ul> -->
+								<p class="copyright">&copy; Copyright @DateTime.Now.ToString("yyyy"), @Document.GetString("Author"). Design: <a href="https://html5up.net" target="_blank" rel="noopener">HTML5Up</a></p>
+                                <p></p>     
+							</section>
+
+					</section>
