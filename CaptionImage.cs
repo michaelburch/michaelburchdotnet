@@ -15,17 +15,19 @@ namespace michaelburchdotnet
     {
         
         private const string Src = nameof(Src);
-        private const string Caption = nameof(Caption);
+        private const string Style = nameof(Style);
 
         public override ShortcodeResult Execute(KeyValuePair<string, string>[] args, string content, IDocument document, IExecutionContext context)
         {
             IMetadataDictionary arguments = args.ToDictionary(
                 Src,
-                Caption);
+                Style);
+            
+            var style = arguments.GetString(Style) ?? "container";
 
             XElement container = new XElement(
                 "div",
-                arguments.XAttribute("container"));
+                new XAttribute("class",style));
 
             XElement figure = new XElement(
                 "figure");
@@ -42,12 +44,13 @@ namespace michaelburchdotnet
             }
 
             // Caption
-            if (Caption is object)
+            if (content is object)
             {
-                figure.Add(new XElement("figcaption", Caption));
+                figure.Add(new XElement("figcaption", content));
             }
+            container.Add(figure);
 
-            return figure.ToString();
+            return container.ToString();
         }
     }
     
