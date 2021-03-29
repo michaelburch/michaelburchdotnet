@@ -1,23 +1,25 @@
+@model IDocument
 @{
-var Title = Model.WithoutSettings.String(BlogKeys.Title);
-var PageTitle = Context.String(BlogKeys.Title) + (string.IsNullOrWhiteSpace(Title) ? string.Empty : " - " + Title);
-var Slug = Context.GetLink(Model);
-var SourceFile = Model.String(Keys.SourceFileName);
-var lead = Model.String(BlogKeys.Lead);
-var imgUrl = Model.String(BlogKeys.Image);
-var Tags = Model.Get<string[]>(BlogKeys.Tags);
+var Title = Document.GetString("Title");
+var PageTitle = Document.GetString("PageTitle");
+// string lead = Model.String(BlogKeys.Lead);
+string imgUrl = Document.GetString("Image");
+
+//var Slug = Context.GetLink("/");
+var lead = Document.GetString("Lead");
+var Tags = new string[]{""};
 }
 	<!DOCTYPE html>
 	<html lang="en">
 
 	<head>
-		@Html.Partial("_Head")
+		@Html.Partial("_head")
 	</head>
 
 	<body class="is-preload">
 		<div id="wrapper">
-			@Html.Partial("_Header")
-			@Html.Partial("_Menu")
+			@Html.Partial("_header")
+			@Html.Partial("_menu")
 			<div id="main">
 				<article class="post">
 					<header>
@@ -28,10 +30,9 @@ var Tags = Model.Get<string[]>(BlogKeys.Tags);
 							<p>@lead</p>
 							}
 						</div>
-						<div class="meta">
-							<time class="published" datetime='@(Model.Get<DateTime>(BlogKeys.Published))'>@(Model.Get
-								<DateTime>(BlogKeys.Published).ToString("MMMM dd, yyyy"))</time>
-						</div>
+						 <div class="meta">
+                            <time class="published" datetime='@(Model.GetDateTime(Statiq.Web.WebKeys.Published).ToString("MMMM dd, yyyy"))'>@(Model.GetDateTime(Statiq.Web.WebKeys.Published).ToString("MMMM dd, yyyy"))</time>
+                        </div>
 					</header>
 					<span class="image featured">
 						@if(!string.IsNullOrWhiteSpace(imgUrl))
@@ -42,20 +43,19 @@ var Tags = Model.Get<string[]>(BlogKeys.Tags);
 					@RenderBody()
 					<footer>
 											<ul class="stats">
-							@if (Tags != null)
-							{
+		            @if (Tags != null)
+                    {
 
-							@foreach (string tag in Tags.OrderBy(x => x))
-							{
-							IDocument tagDocument = Documents[Blog.Tags].FirstOrDefault(x => x.String(BlogKeys.Tag) ==
-							tag && x.Get<int>(Keys.CurrentPage) == 1);
-								if(tagDocument != null)
-								{
-								<li><a role="button" href="@Context.GetLink(tagDocument)"
-										class="btn btn-default btn-xs">@tag</a></li>
-								}
-								}
-								}
+                        @foreach (IDocument tag in OutputPages.Get("tags.html").GetChildren())
+                        {
+                            if (Tags.Contains(tag.GetTitle()))
+                            {
+                                <li><a role="button" href="@Context.GetLink(tag)" class="btn btn-default btn-xs" > @tag.GetTitle()</a></li>
+                            }
+                   
+                        }
+                        
+                    }
 								<li><a href="@Context.GetLink(Model)#commento"
 										onClick="if($('#commento').is(':empty') ) {window.commento.main();}"
 										class="icon solid fa-comment">0 Comments</a></li>
@@ -100,7 +100,7 @@ var Tags = Model.Get<string[]>(BlogKeys.Tags);
 				}
 				highlightCode();
 			</script>
-			@Html.Partial("_PostFooter")
+			@Html.Partial("_footer")
 	</body>
 
 	</html>

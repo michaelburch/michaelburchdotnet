@@ -1,0 +1,96 @@
+Order: 0
+ArchiveSources: => GetString("PostSources")
+ArchiveFilter: => GetBool("IsPost")
+ArchiveDestination: >
+  => GetInt("Index") <= 1 ? $"index.html" : $"page/{GetInt("Index")}.html"
+ArchivePageSize: 3
+ArchiveOrderKey: Published
+ArchiveOrderDescending: true
+ArchiveTitle: => GetString("Title")
+Layout: _layout.cshtml
+---
+
+@Html.Partial("_menu")
+@foreach (IGrouping<int, IDocument> group in Document
+.GetChildren()
+.GroupBy(x => x.GetDateTime(WebKeys.Published).Year)
+.OrderByDescending(x => x.Key))
+{
+    foreach (IDocument post in group) {
+        var lead = post.GetString("Lead");
+        var Tags = post.Get<string[]>("Tags");
+        var imgUrl = post.GetString("Image");
+        var excerptString = post.GetString("Excerpt");
+        var lastCharIndex = excerptString.LastIndexOf('<') - 1 ;
+        var excerpt = excerptString.Insert(lastCharIndex + 1,"\u2026");
+        <article class="post">
+            <header>
+                <div class="title">
+                    <h2><a class="header" href="@Context.GetLink(post)">@post.GetString("Title")</a></h2>
+                    @if(!string.IsNullOrWhiteSpace(lead))
+                    {
+                        <p>@lead</p>
+                    }
+                </div>
+
+                <div class="meta">
+                    <time class="published"
+                        datetime='@(post.GetDateTime(Statiq.Web.WebKeys.Published).ToString("MMMM dd, yyyy"))'>@(post.GetDateTime(Statiq.Web.WebKeys.Published).ToString("MMMM dd, yyyy"))</time>
+                </div>
+            </header>
+        @if(!string.IsNullOrWhiteSpace(imgUrl))
+            {
+                <a href="@Context.GetLink(post)" class="image featured"><img src="@imgUrl" alt="" /></a>
+            }
+           
+                @if (excerptString.Substring(lastCharIndex,1) == ".") { 
+                    excerptString = excerptString.Remove(lastCharIndex);
+                    lastCharIndex = lastCharIndex - 1;
+                }
+                
+                @Html.Raw(excerpt)
+         <footer>
+                <ul class="actions">
+                    <li><a href="@Context.GetLink(post)" class="button large">Continue Reading</a></li>
+                </ul>
+                <ul class="stats">
+                   
+                    @if (Tags != null)
+                    {
+
+                        @foreach (IDocument tag in OutputPages.Get("tags.html").GetChildren())
+                        {
+                            if (Tags.Contains(tag.GetTitle()))
+                            {
+                                <li><a role="button" href="@Context.GetLink(tag)" class="btn btn-default btn-xs" > @tag.GetTitle()</a></li>
+                            }
+                   
+                        }
+                        
+                    }
+                        <li><a href="@Context.GetLink(post)#commento" class="icon solid fa-comment">0 Comments</a></li>
+                </ul>
+            </footer>   
+        </article>
+    }
+    }
+    <ul class="actions pagination">
+        @model IDocument
+           @{
+                var nextPageClass = "button large previous";
+                var previousPageClass = "button large next";
+                var newer = Model.GetDocument(Keys.Previous) ?? Model;
+                var older = Model.GetDocument(Keys.Next) ?? Model;
+                
+                if (older == Model)
+                    nextPageClass += " disabled";
+
+                if (newer == Model)
+                    previousPageClass += " disabled";
+            }
+     
+            <li><a href="@Context.GetLink(newer)" class="@previousPageClass">Newer Posts</a></li>
+            <li><a href="@Context.GetLink(older)" class="@nextPageClass">Older Posts</a></li>
+
+        </ul>
+        <p>Page @Model.GetString("Index") of @Model.GetString("TotalPages")</p>

@@ -1,3 +1,4 @@
+
 @using System.Security.Cryptography;
 @using System.Text;
 @{
@@ -5,7 +6,7 @@
 string GravatarHash;
 using (var md5 = MD5.Create())
 {
-var result = md5.ComputeHash(Encoding.ASCII.GetBytes(Context.String("GravatarEmail")));
+var result = md5.ComputeHash(Encoding.ASCII.GetBytes("GravatarEmail"));
 GravatarHash = BitConverter.ToString(result).Replace("-", "").ToLower();
 }
 
@@ -16,12 +17,12 @@ GravatarHash = BitConverter.ToString(result).Replace("-", "").ToLower();
 							<section id="intro">
 								<a href="#" class="logo"><img src='/images/profile2020.jpg' alt="Michael Burch profile." /></a>
 								<header>
-									<h2>@Context.String("Author")</h2>
+									<h2>@Document.GetString("Author")</h2>
 								</header>
 							</section>
                         <!-- About -->
 							<section class="blurb">
-								<p>@Context.String("Intro")</p>
+								<p>@Document.GetString("Intro")</p>
 								<!-- <ul class="actions">
 									<li><a href="#" class="button">Learn More</a></li>
 								</ul> -->
@@ -88,7 +89,7 @@ GravatarHash = BitConverter.ToString(result).Replace("-", "").ToLower();
 									<li><a href="#" class="icon solid fa-rss"><span class="label">RSS</span></a></li>
 									<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
 								</ul> -->
-								<p class="copyright">&copy; Copyright @DateTime.Now.ToString("yyyy"), @Context.String("Author"). Design: <a href="https://html5up.net" target="_blank" rel="noopener">HTML5Up</a></p>
+								<p class="copyright">&copy; Copyright @DateTime.Now.ToString("yyyy"), @Document.GetString("Author"). Design: <a href="https://html5up.net" target="_blank" rel="noopener">HTML5Up</a></p>
                                 <p></p>     
 							</section>
 

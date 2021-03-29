@@ -1,0 +1,58 @@
+
+@model IDocument
+@{
+string Title = Document.GetString("Title");
+string PageTitle = Document.GetString("PageTitle");
+// string lead = Model.String(BlogKeys.Lead);
+string imgUrl = Document.GetString("Image");
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        @Html.Partial("_head")
+</head>
+
+<body class="is-preload">
+        <div id="wrapper">
+                @Html.Partial("_header")
+                @Html.Partial("_menu")
+                <div id="main">
+                        	<article class="post page">
+								<header>
+									<div class="title">
+										<h2>@Title</h2>
+										
+									</div>
+									<div class="meta">
+										@if(Model.GetDateTime(Statiq.Web.WebKeys.Published) > DateTime.Parse("01/01/1970"))
+										{
+											<time class="published" datetime='@(Model.GetDateTime(Statiq.Web.WebKeys.Published).ToString("MMMM dd, yyyy"))'>@(Model.GetDateTime(Statiq.Web.WebKeys.Published).ToString("MMMM dd, yyyy"))</time>
+										}
+										else
+										{
+											//@if(!string.IsNullOrWhiteSpace(lead))
+                                        	//{
+                                            //	<h2>@lead</h2>
+                                        	//}
+										}
+										
+									</div>
+								</header>
+								<span class="image featured">
+									@if(!string.IsNullOrWhiteSpace(imgUrl))
+                                        {
+											<img src="@imgUrl" alt="" />
+										}
+									</span>
+								<p>@RenderBody()</p>
+							</article>
+                </div>
+
+		<script src=@Context.GetLink("assets/js/cookieconsent.min.js")></script>
+        </div>
+        @Html.Partial("_footer")
+        </body>
+        
+</html>

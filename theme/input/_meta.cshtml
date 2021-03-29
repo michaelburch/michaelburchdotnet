@@ -1,12 +1,13 @@
 @using System.Text.RegularExpressions;
+@model IDocument
 @{ 
-	string Title = Model.WithoutSettings.String(BlogKeys.Title);
-	string Description = "Michael Burch is a technologist, cloud enthusiast, programmer, runner, hiker, husband, father and more.";
-	string Excerpt =  Regex.Replace((string.IsNullOrWhiteSpace(Model.WithoutSettings.String(BlogKeys.Excerpt)) ? Description : Model.WithoutSettings.String(BlogKeys.Excerpt)), "<.*?>", String.Empty);
-	string PageTitle =  (string.IsNullOrWhiteSpace(Title) ? Context.String(BlogKeys.Intro) : Title);
-	string ImageUrl = (string.IsNullOrWhiteSpace(Model.WithoutSettings.String("Card")) ? Context.GetLink("images/ogcard.jpeg", true) : Context.GetLink(Model.WithoutSettings.String("Card"),true));
-	string Author = Model.String("Author");
-	var Tags = Model.Get<string[]>(BlogKeys.Tags);
+string Title = Document.GetString("Title");
+string PageTitle = Document.GetString("PageTitle");
+    string Description = "Michael Burch is a technologist, cloud enthusiast, programmer, runner, hiker, husband, father and more.";
+	string Excerpt =  Regex.Replace((string.IsNullOrWhiteSpace(Document.GetString("Excerpt"))) ? Description : Document.GetString("Excerpt"), "<.*?>", String.Empty);
+	string ImageUrl = (string.IsNullOrWhiteSpace(Document.GetString("Card")) ? Context.GetLink("images/ogcard.jpeg", true) : Context.GetLink(Document.GetString("Card"),true));
+	string Author = Document.GetString("Author");
+	var Tags = Document.GetList<string>("tags");
 	var KeywordList = new List<string>()
 	{
 		"Michael Burch",
@@ -26,13 +27,13 @@
 	};
 	if (Tags != null)
     {
-		foreach (string tag in Tags.OrderBy(x => x))
+        foreach (string tag in Tags.OrderBy(x => x))
         {
             KeywordList.Add(tag);
         }
     }
-	var Keywords = string.Join(",",KeywordList);
-}
+    var Keywords = string.Join(",",KeywordList);
+    }
 <meta charset="utf-8" />
 <meta http-equiv="Content-Language" content="en">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -41,13 +42,13 @@
 		<link rel="stylesheet" href="@Context.GetLink("assets/css/vs2015.css")" media='(prefers-color-scheme: dark)'>
 		<link rel="stylesheet" href="@Context.GetLink("assets/css/cookieconsent.min.css")" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
 		<meta name="description" content="@Description">
-@if (Context.String(BlogKeys.RssPath) != null) {
-<link type="application/rss+xml" rel="alternate" title="@Context.String(BlogKeys.Title)"
-    href="@Context.GetLink(Context.String(BlogKeys.RssPath))" />
+@if (Document.GetString(Statiq.Web.WebKeys.FeedRss) != null) {
+<link type="application/rss+xml" rel="alternate" title="@Document.GetString(Statiq.Web.WebKeys.Title)"
+    href="@Context.GetLink(Document.GetString(Statiq.Web.WebKeys.FeedRss))" />
 }
-@if (Context.String(BlogKeys.AtomPath) != null) {
-<link type="application/atom+xml" rel="alternate" title="@Context.String(BlogKeys.Title)"
-    href="@Context.GetLink(Context.String(BlogKeys.AtomPath))" />
+@if (Document.GetString(Statiq.Web.WebKeys.FeedAtom) != null) {
+<link type="application/atom+xml" rel="alternate" title="@Document.GetString(Statiq.Web.WebKeys.Title)"
+    href="@Context.GetLink(Document.GetString(Statiq.Web.WebKeys.FeedAtom))" />
 }
 <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="/images/apple-icon-60x60.png">
@@ -66,8 +67,8 @@
 <meta name="msapplication-TileImage" content="/images/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 
-<meta name="application-name" content="@Context.String(BlogKeys.Title)" />
-<meta name="msapplication-tooltip" content="@Context.String(BlogKeys.Title)" />
+<meta name="application-name" content="@Document.GetString(Statiq.Web.WebKeys.Title)" />
+<meta name="msapplication-tooltip" content="@Document.GetString(Statiq.Web.WebKeys.Title)" />
 <meta name="msapplication-starturl" content="@Context.GetLink("/")" />
 
 <meta property="og:title" content="@PageTitle" />
