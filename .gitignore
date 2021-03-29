@@ -7,3 +7,4 @@ packages.xml
 config.wyam.packages.xml
 .DS_store
 .Identifier
+.vscode
