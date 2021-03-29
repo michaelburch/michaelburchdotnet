@@ -1,5 +1,5 @@
-# Wyam build pipeline
-# Publishes content produced by Wyam to an Artifact named 'content'
+# Statiq build pipeline
+# Publishes content produced by Statiq to an Artifact named 'content'
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
@@ -18,12 +18,9 @@ pool:
 stages:
 - stage: Build
   jobs:
-  - job: wyam
+  - job: statiq
     steps:
-    - pwsh: dotnet tool install -g Wyam.Tool
-      displayName: 'install wyam global tool'
-
-    - pwsh: pwsh -C $env:USERPROFILE\.dotnet\tools\wyam build -o $(Build.ArtifactStagingDirectory)\content
+    - pwsh: dotnet run -- -o $(Build.ArtifactStagingDirectory)\content
       displayName: 'build site'
     - pwsh: ls -l .
       displayName: 'list cwd'
