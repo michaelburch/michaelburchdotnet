@@ -15,6 +15,7 @@ namespace michaelburchdotnet
         .Factory
         .CreateWeb(args)
         .AddShortcode<CaptionImage>()
+        .AddSetting("LinkHideExtensions", false)
         .ModifyPipeline("Assets", p => p.WithProcessModules
             (
                 // Exclude cookieconsent as it has it's own pipeline
