@@ -15,6 +15,7 @@ Layout: /_layout.cshtml
 {
 
 string Title = Document.GetString("Title");
+<h1 class="bg-dark text-light p-2" >@Title</h1>
 @foreach (IGrouping<int, IDocument> group in Document
 .GetChildren()
 .GroupBy(x => x.GetDateTime(WebKeys.Published).Month)
@@ -58,12 +59,52 @@ string Title = Document.GetString("Title");
 }
 else
 { 
-
-    @foreach (IDocument year in Document.GetChildren().OrderByDescending(x => x.GetChildren().Count()))
+    var i = 0;
+    var years = Document.GetChildren().OrderByDescending(x => x.GetTitle());
+    foreach (IDocument year in years)
     {
+        string prefix = String.Empty;
         string postCount = year.GetChildren().Count().ToString();
-    <h1 class="bg-dark text-light p-2">@year.GetTitle()</h1> 
-        <li style="display:inline"><a role="button" href="@Context.GetLink(year)" class="btn btn-default btn-xs"> @year.GetTitle() (@postCount)</a> </li>
+        if (i > 0)
+            prefix = "|";
+            <a role="button" href="@Context.GetLink(year)" class="btn btn-default btn-xs">
+    <h1 class="bg-dark text-light p-2" style="display:inline;" >@prefix @year.GetTitle()</h1></a>
+       i++;
     }
+    <p></p>
+     foreach (IDocument year in years)
+    {
+        foreach(IDocument post in year.GetChildren())
+        {
+            var lead = post.GetString("Lead");
+        
+        var imgUrl = post.GetString("Image");
+        var excerptString = post.GetString("Excerpt");
+        var lastCharIndex = excerptString.LastIndexOf('<') - 1 ;
+        var excerpt = excerptString.Insert(lastCharIndex + 1,"\u2026");
+        <article class="mini-post">
+            <header>
+                <div class="title">
+                    <h3><a class="header" href="@Context.GetLink(post)">@post.GetString("Title")</a></h3>
+                    @if(!string.IsNullOrWhiteSpace(lead))
+                    {
+                        <p>@lead</p>
+                    }
+                </div>
 
+                <div class="meta">
+                    <time class="published"
+                        datetime='@(post.GetDateTime(WebKeys.Published).ToString("MMMM dd, yyyy"))'>@(post.GetDateTime(WebKeys.Published).ToString("MMMM dd, yyyy"))</time>
+                </div>
+            </header>
+        @if(!string.IsNullOrWhiteSpace(imgUrl))
+            {
+                <a href="@Context.GetLink(post)" class="image featured"><img src="@imgUrl" alt="" /></a>
+            }
+           
+        
+        </article>
+        }
+        
+    }
 }
