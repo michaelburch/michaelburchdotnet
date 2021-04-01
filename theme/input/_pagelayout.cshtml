@@ -5,6 +5,7 @@ string Title = Document.GetString("Title");
 string PageTitle = Document.GetString("PageTitle");
 // string lead = Model.String(BlogKeys.Lead);
 string imgUrl = Document.GetString("Image");
+string imgCaption = Document.GetString("ImageCaption");
 }
 
 <!DOCTYPE html>
@@ -43,7 +44,13 @@ string imgUrl = Document.GetString("Image");
 								<span class="image featured">
 									@if(!string.IsNullOrWhiteSpace(imgUrl))
                                         {
-											<img src="@imgUrl" alt="" />
+											<figure>
+											<img class="featured" src="@imgUrl" alt="" />
+											@if(!string.IsNullOrWhiteSpace(imgCaption))
+											{
+												<figcaption>@imgCaption</figcaption>
+											}
+											</figure>
 										}
 									</span>
 								<p>@RenderBody()</p>
