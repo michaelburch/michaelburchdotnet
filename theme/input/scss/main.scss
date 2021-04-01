@@ -98,6 +98,15 @@
 			max-height: 350px;
 			display: block;
 			position: relative;
+			&.featured {
+				display: block;
+				margin: 0;
+				width: 100%;
+				max-height: none;
+				img {
+					width: 100%;
+				}
+			}
 		}
 	.post figure figcaption {
 		
