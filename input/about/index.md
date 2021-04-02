@@ -10,7 +10,7 @@ My name is Michael Burch. I am a Christian. I [write code](https://github.com/mi
 I started this blog to write about things that interest me - cloud computing, code, running, technology, gadgets, hiking, and open source. As such, 
 **all content and opinions here are my own and do not represent my employer's view in any way.**
 
-My participation in social media is deliberately limited, but I would enjoy hearing from you either through the comments on this blog or via an e-mail to <a href="mailto:me@michaelburch.net?subject=%20hello%20from%20michaelburch.net">me@michaelburch.net</a>
+My participation in social media is deliberately limited, but I would enjoy hearing from you either through the comments on this blog or via an e-mail to [me@michaelburch.net](mailto:me@michaelburch.net?subject=%20hello%20from%20michaelburch.net)
 
 I don't point out my faith because I am a model of perfection (just ask my ex-wife!), in fact I am only a sinner saved by grace. I draw attention to my faith here only to encourage other Christians in the technology field - you can have faith and succeed in this field.
 
