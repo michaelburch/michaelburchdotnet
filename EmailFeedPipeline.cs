@@ -75,9 +75,10 @@ namespace Statiq.Web.Pipelines
                         {
                             generateFeeds = generateFeeds.WithItemTitle(Config.FromDocument(doc => doc.GetString(WebKeys.FeedItemTitle)));
                         }
-                  
+
                             generateFeeds = generateFeeds.WithItemDescription(Config.FromDocument(doc => doc.GetString("Excerpt",WebKeys.FeedItemDescription)));
                         
+
                         if (feedDoc.ContainsKey(WebKeys.FeedItemAuthor))
                         {
                             generateFeeds = generateFeeds.WithItemAuthor(Config.FromDocument(doc => doc.GetString(WebKeys.FeedItemAuthor)));
