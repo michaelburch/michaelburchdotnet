@@ -94,5 +94,18 @@
 			breakpoints.on('>large', function() {
 				$intro.prependTo($sidebar);
 			});
+	// Tag Cloud
+	    // Side by side with posts on >small
+		var $tagDiv = $('#tagCloud');
+		var $tagPostsDiv = $('#tagPosts');
+		
+		breakpoints.on('>small', function() {
+			$tagDiv.addClass('col-4');
+			$tagPostsDiv.addClass('col-8');
+		});
+		breakpoints.on('<=small', function() {
+			$tagPostsDiv.removeClass('col-8');
+			$tagDiv.removeClass('col-4');
+		});
 
 })(jQuery);

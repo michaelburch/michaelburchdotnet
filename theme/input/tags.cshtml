@@ -13,19 +13,22 @@ Layout: /_layout.cshtml
 ---
 @if (Document.ContainsKey(Keys.GroupKey))
 {
-    <div class="container-sm-height">
-        <div class="row row-sm-height">
-            <div class="col-md-6 right-border col-sm-height">
+    <h1 class="bg-dark text-light p-2">Posts tagged '@Document.GetTitle()'</h1>
+    <div class="container">
+        
+        <div class="row" >
+            <div id="tagPosts" >
                 @Html.Partial("/_posts.cshtml", Document)
             </div>
-            <div class="col-md-4 mt-4 mt-md-0 col-sm-height">
+                <div id="tagCloud" >
                 @foreach (IDocument tag in OutputPages.Get("tags.html").GetChildren().OrderByDescending(x => x.GetChildren().Count()))
                 {
                     string badgeStyle = Document.GetString(Keys.GroupKey).Equals(tag.GetTitle(), StringComparison.OrdinalIgnoreCase) ? "badge-dark" : "badge-light";
                     string postCount = tag.GetChildren().Count().ToString();
                     <a href="@Context.GetLink(tag)" class="badge @badgeStyle"> @tag.GetTitle() (@postCount)</a>
                 }
-            </div>
+               </div>
+         
         </div>
     </div>
 }
