@@ -87,12 +87,19 @@
   }
 }
 @media (prefers-color-scheme: dark) {
-  body > div.cc-window.cc-banner.cc-type-info.cc-theme-edgeless.cc-bottom.cc-color-override--1762072787 {
-    color: #ddd;
-    background-color: #646468;
+  .cc-window, .cc-revoke {
+    color: #646464;
+    background-color: #eee
   }
-  a.cc-link {
-    color: #ffffff !important;
+  .cc-btn {
+    border-color: #646464;
+  }
+  .cc-message {
+    color: #646464;
+    a {
+      border-bottom: none;
+      color: #646464 !important;
+    }
   }
   }
   

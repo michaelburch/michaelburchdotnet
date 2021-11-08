@@ -75,8 +75,8 @@
 		&.disabled,
 		&:disabled {
 			@include vendor('pointer-events', 'none');
-			color: _palette(border) !important;
-
+			color: _palette(fg-bold);
+			opacity: 0.85;
 			&:before {
 				color: _palette(border) !important;
 			}

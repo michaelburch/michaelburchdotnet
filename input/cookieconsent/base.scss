@@ -1,10 +1,12 @@
+
 /* the popup window */
 .cc-window,
 .cc-revoke {
   position: fixed;
   overflow: hidden;
   box-sizing: border-box; /* exclude padding when dealing with width */
-
+  background-color: #646464;
+  color:#eee;
   font-family: Helvetica, Calibri, Arial, sans-serif;
   font-size: 16px; /* by setting the base font here, we can size the rest of the popup using CSS `em` */
   line-height: 1.5em;
@@ -42,6 +44,13 @@
 .cc-revoke:hover {
   text-decoration: underline;
 }
+.cc-message {
+  color: #eee;
+  a {
+    border-bottom: none;
+    color: #eee !important;
+  }
+}
 
 .cc-header {
   font-size: 18px;
@@ -54,13 +63,16 @@
 .cc-close,
 .cc-revoke {
   cursor: pointer;
+  border-color: #888;
 }
 
+
 .cc-link {
-  opacity: 0.8;
+  //opacity: 0.8;
   display: inline-block;
   padding: 0.2em;
   text-decoration: underline;
+
 }
 .cc-link:hover {
   opacity: 1;

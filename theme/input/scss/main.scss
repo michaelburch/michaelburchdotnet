@@ -124,8 +124,14 @@
 		h1,h2,h3,h4,h5,h6,strong {
 			color: _palette(fg-bold-dark);
 		}
-		input[type=submit],input[type=reset],input[type=button], button, .button {
+		input[type=submit],input[type=reset],input[type=button], button, .button, :disabled {
 			color: _palette(fg-bold-dark) !important; 
+		}
+		#header .main ul li > a {
+			color: _palette(fg-dark)
+		}
+		#footer .copyright {
+			color: _palette(fg-dark);
 		}
 		.post, #header, .mini-post {
 			background: _palette(bg-dark-alt);
