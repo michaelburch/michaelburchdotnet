@@ -7,6 +7,7 @@ ArchiveDestination: >
 ArchivePageSize: 10
 ArchiveOrderKey: Published
 ArchiveOrderDescending: true
+DestinationPath: tags/index.html
 Title: Tags
 ArchiveTitle: => GetString("GroupKey")
 Layout: /_layout.cshtml
@@ -21,7 +22,7 @@ Layout: /_layout.cshtml
                 @Html.Partial("/_posts.cshtml", Document)
             </div>
                 <div id="tagCloud" >
-                @foreach (IDocument tag in OutputPages.Get("tags.html").GetChildren().OrderByDescending(x => x.GetChildren().Count()))
+                @foreach (IDocument tag in OutputPages.Get("tags/index.html").GetChildren().OrderByDescending(x => x.GetChildren().Count()))
                 {
                     string badgeStyle = Document.GetString(Keys.GroupKey).Equals(tag.GetTitle(), StringComparison.OrdinalIgnoreCase) ? "badge-dark" : "badge-light";
                     string postCount = tag.GetChildren().Count().ToString();
