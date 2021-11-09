@@ -45,7 +45,7 @@ stages:
     - task: AzureFileCopy@4
       displayName: copy
       inputs:
-        sourcePath: $(Pipeline.Workspace)/content
+        sourcePath: $(Pipeline.Workspace)/content/*
         azureSubscription: michael-azure
         destination: azureBlob
         storage: $(StorageAccountName)
@@ -79,22 +79,7 @@ stages:
             Write-Host "Updated $blobName with content type text/xml" 
           }
           
-          # iterate all blobs with a different cache control setting
-          foreach($blob in ($blobs | ? {$_.Properties.contentSettings.cacheControl -notlike $contentCacheControl}))
-          {
-              # use name as identifier
-              $blobName = $blob.name;
-          
-              # get extension
-              $extension = [System.IO.Path]::GetExtension($blobName).ToLower();
-           
-              # update blob if extension is affected
-              if($extensions.Contains($extension))
-              {
-                  az storage blob update  --auth-mode login --account-name $env:StorageAccountName --container-name $env:StorageContainer --name $blobName --content-cache-control $contentCacheControl
-                  Write-Host "Updated $blobName with cache-control setting" 
-              }
-          }
+         
     - task: AzureCLI@2
       displayName: purge front door
       inputs:
