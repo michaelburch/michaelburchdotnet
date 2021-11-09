@@ -43,7 +43,27 @@ stages:
     - download: current
       artifact: content
     - task: AzureFileCopy@4
-      displayName: copy
+      displayName: copy static assets
+      inputs:
+        sourcePath: $(Pipeline.Workspace)/content/assets/*
+        azureSubscription: michael-azure
+        destination: azureBlob
+        storage: $(StorageAccountName)
+        containerName: $(StorageContainer)
+        cleanTargetBeforeCopy: true
+        AdditionalArgumentsForBlobCopy: '--recursive --cache-control "max-age=31536000"'
+    - task: AzureFileCopy@4
+      displayName: copy images
+      inputs:
+        sourcePath: $(Pipeline.Workspace)/content/images/*
+        azureSubscription: michael-azure
+        destination: azureBlob
+        storage: $(StorageAccountName)
+        containerName: $(StorageContainer)
+        cleanTargetBeforeCopy: true
+        AdditionalArgumentsForBlobCopy: '--recursive --cache-control "max-age=31536000"'
+    - task: AzureFileCopy@4
+      displayName: copy content
       inputs:
         sourcePath: $(Pipeline.Workspace)/content/*
         azureSubscription: michael-azure
@@ -51,7 +71,7 @@ stages:
         storage: $(StorageAccountName)
         containerName: $(StorageContainer)
         cleanTargetBeforeCopy: true
-        AdditionalArgumentsForBlobCopy: '--recursive --cache-control "max-age=31536000"'
+        AdditionalArgumentsForBlobCopy: '--exclude-path "images;assets" --recursive --cache-control "max-age=604800"'
     - task: AzureCLI@2
       displayName: set-cache-control
       inputs:
