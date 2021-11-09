@@ -42,7 +42,7 @@ stages:
     steps:
     - download: current
       artifact: content
-    - task: AzureFileCopy@3
+    - task: AzureFileCopy@4
       displayName: copy
       inputs:
         sourcePath: $(Pipeline.Workspace)/content
@@ -51,6 +51,7 @@ stages:
         storage: $(StorageAccountName)
         containerName: $(StorageContainer)
         cleanTargetBeforeCopy: true
+        AdditionalArgumentsForBlobCopy: '--cache-control "max-age=31536000"'
     - task: AzureCLI@2
       displayName: set-cache-control
       inputs:
