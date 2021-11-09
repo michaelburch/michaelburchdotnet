@@ -20,6 +20,10 @@ stages:
   jobs:
   - job: statiq
     steps:
+    - task: UseDotNet@2
+      inputs:
+        version: $(dotNetVersion)
+        includePreviewVersions: true
     - pwsh: dotnet run -- -o $(Build.ArtifactStagingDirectory)\content
       displayName: 'build site'
     - pwsh: ls -l .
