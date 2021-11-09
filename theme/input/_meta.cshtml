@@ -3,7 +3,7 @@
 @{ 
 string Title = Document.GetString("Title");
 string PageTitle = Document.GetString("PageTitle");
-    string Description = "Michael Burch is a technologist, cloud enthusiast, programmer, runner, hiker, husband, father and more.";
+    string Description = Document.GetString("Description");
 	string Excerpt =  Regex.Replace((string.IsNullOrWhiteSpace(Document.GetString("Excerpt"))) ? Description : Document.GetString("Excerpt"), "<.*?>", String.Empty);
 	string ImageUrl = (string.IsNullOrWhiteSpace(Document.GetString("Card")) ? Context.GetLink("images/ogcard.jpeg", true) : Context.GetLink(Document.GetString("Card"),true));
 	string Author = Document.GetString("Author");
