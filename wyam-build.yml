@@ -51,7 +51,7 @@ stages:
         storage: $(StorageAccountName)
         containerName: $(StorageContainer)
         cleanTargetBeforeCopy: true
-        AdditionalArgumentsForBlobCopy: '--cache-control "max-age=31536000"'
+        AdditionalArgumentsForBlobCopy: '--recursive --cache-control "max-age=31536000"'
     - task: AzureCLI@2
       displayName: set-cache-control
       inputs:
