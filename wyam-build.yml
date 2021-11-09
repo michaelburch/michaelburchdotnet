@@ -60,7 +60,7 @@ stages:
         destination: azureBlob
         storage: $(StorageAccountName)
         containerName: $(StorageContainer)
-        cleanTargetBeforeCopy: true
+        cleanTargetBeforeCopy: false
         AdditionalArgumentsForBlobCopy: '--recursive --cache-control "max-age=31536000"'
     - task: AzureFileCopy@4
       displayName: copy content
@@ -70,7 +70,7 @@ stages:
         destination: azureBlob
         storage: $(StorageAccountName)
         containerName: $(StorageContainer)
-        cleanTargetBeforeCopy: true
+        cleanTargetBeforeCopy: false
         AdditionalArgumentsForBlobCopy: '--exclude-path "images;assets" --recursive --cache-control "max-age=604800"'
     - task: AzureCLI@2
       displayName: set-cache-control
