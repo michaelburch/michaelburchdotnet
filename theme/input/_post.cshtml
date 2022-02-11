@@ -1,8 +1,5 @@
 @model IDocument
-
 @{
-    //string excerpt = Model.GetString(Statiq.Html.HtmlKeys.Excerpt);
- 
     var lead = Model.GetString("Lead");
     var Tags = Model.Get<string[]>("Tags");
     var imgUrl = Model.GetString("Image");
@@ -12,22 +9,21 @@
 }
 <article class="mini-post">
 <header>
-                <div class="title">
-                    <h3><a class="header" href="@Context.GetLink(Model)">@Model.GetString("Title")</a></h3>
-                    @if(!string.IsNullOrWhiteSpace(lead))
-                    {
-                        <p>@lead</p>
-                    }
-                </div>
+    <div class="title">
+        <h3><a class="header" href="@Context.GetLink(Model)">@Model.GetString("Title")</a></h3>
+        @if(!string.IsNullOrWhiteSpace(lead))
+        {
+            <p>@lead</p>
+        }
+    </div>
 
-                <div class="meta">
-                    <time class="published"
-                        datetime='@(Model.GetDateTime(WebKeys.Published).ToString("MMMM dd, yyyy"))'>@(Model.GetDateTime(WebKeys.Published).ToString("MMMM dd, yyyy"))</time>
-                </div>
-            </header>
-        @if(!string.IsNullOrWhiteSpace(imgUrl))
-            {
-                <a href="@Context.GetLink(Model)" class="image featured"><img src="@imgUrl" alt="" /></a>
-            }
-           
+    <div class="meta">
+        <time class="published"
+            datetime='@(Model.GetDateTime(WebKeys.Published).ToString("MMMM dd, yyyy"))'>@(Model.GetDateTime(WebKeys.Published).ToString("MMMM dd, yyyy"))</time>
+    </div>
+</header>
+@if(!string.IsNullOrWhiteSpace(imgUrl))
+{
+        <a href="@Context.GetLink(Model)" class="image featured"><img src="@imgUrl" alt="" /></a>
+}           
 </article>

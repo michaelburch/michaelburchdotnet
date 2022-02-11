@@ -13,21 +13,21 @@
 {
     <ul class="actions pagination">
 
-           @{
-                var nextPageClass = "button large previous";
-                var previousPageClass = "button large next";
-                newer = Model.GetDocument(Keys.Previous) ?? Model;
-                older = Model.GetDocument(Keys.Next) ?? Model;
-                
-                if (older == Model)
-                    nextPageClass += " disabled";
+    @{
+            var nextPageClass = "button large previous";
+            var previousPageClass = "button large next";
+            newer = Model.GetDocument(Keys.Previous) ?? Model;
+            older = Model.GetDocument(Keys.Next) ?? Model;
 
-                if (newer == Model)
-                    previousPageClass += " disabled";
-            }
-     
-            <li><a href="@Context.GetLink(newer)" class="@previousPageClass">Newer Posts</a></li>
-            <li><a href="@Context.GetLink(older)" class="@nextPageClass">Older Posts</a></li>
+            if (older == Model)
+                nextPageClass += " disabled";
 
-        </ul>
+            if (newer == Model)
+                previousPageClass += " disabled";
+        }
+
+        <li><a href="@Context.GetLink(newer)" class="@previousPageClass">Newer Posts</a></li>
+        <li><a href="@Context.GetLink(older)" class="@nextPageClass">Older Posts</a></li>
+
+    </ul>
 }

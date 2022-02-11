@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
-
 <head>
   @Html.Partial("_head")
-  @Html.Partial("_menu")        
-
 </head>
-
+@Html.Partial("_menu") 
 <body class="is-preload">
-        <div id="wrapper">
-                @Html.Partial("_header")
-                
-                <div id="main">
+  <div id="wrapper">
+@Html.Partial("_header")
+  <div id="main">
                         @RenderBody()
                 </div>
 
