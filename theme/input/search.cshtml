@@ -1,0 +1,75 @@
+HideFromSearchIndex: true
+Excluded: => !Context.GetBool("GenerateCustomSearchIndex")
+ShowInNavbar: false
+Layout: _layout.cshtml
+Title: Search
+
+---
+
+<h1 id="results-title" class="bg-dark text-light p-2"></h1>
+<div id="search-results"></div>
+
+@section Scripts
+{
+<script>
+    function runSearch() {
+        var query = ""
+        const urlParams = new URLSearchParams(window.location.search);
+            const queryParam = urlParams.get('query');
+            if (queryParam) {
+                
+                query = queryParam
+                document.getElementById("results-title").innerText = "Search Results for '" + query + "'"
+            }
+            else
+            {
+                window.location = "/";
+            }
+        var results = document.getElementById("search-results");
+        if (results) {
+            while (results.firstChild)
+            results.removeChild(results.firstChild);
+        }
+        
+
+        if (query.length < 2) {
+            return;
+        }
+        search.search(query, function (results) {
+            var listHtml = "";
+            if (results.length == 0) {
+                listHtml = "<ul><li>No results found</li></ul>";
+            }
+            else {
+                for (var i = 0; i < results.length; ++i) {
+                    var res = results[i];
+                    listHtml += `<article class="post">
+            <header>
+                <div class="title">
+                    <h3><a class="header" href="${res.link}">${res.title}</a></h3>
+                </div>
+
+                <div class="meta">
+                    <time class="published" datetime="${res.published}">${new Date(res.published).toLocaleDateString("en-US", {month: "long", day: "numeric", year:"numeric"})}</time>
+                </div>
+            </header>
+            ${new DOMParser().parseFromString(res.excerpt, "text/html").documentElement.textContent}
+           </article>`;
+                }
+            }
+
+            document.getElementById("search-results").innerHTML += listHtml
+
+        });
+    }
+
+    if (document.readyState != 'loading') {
+        var query = document.getElementById("search").innerHTML;
+        runSearch();
+    } else {
+        document.addEventListener('DOMContentLoaded', runSearch());
+    }
+
+
+</script>
+}
