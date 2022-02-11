@@ -2,7 +2,9 @@
 <html lang="en" prefix="og: http://ogp.me/ns#">
 
 <head>
-        @Html.Partial("_head")
+  @Html.Partial("_head")
+  @Html.Partial("_menu")        
+
 </head>
 
 <body class="is-preload">
@@ -16,6 +18,6 @@
                 @Html.Partial("_sidebar")
         </div>
         @Html.Partial("_footer")
-        
+        @RenderSection("Scripts", false)
         </body>
 </html>

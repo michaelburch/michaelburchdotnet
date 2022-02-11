@@ -17,5 +17,8 @@ IsPost: => Outputs.FilterSources(Context.GetString("PostSources")).ContainsById(
 Layout: /_postlayout.cshtml
 Host: www.michaelburch.net
 LinksUseHttps: true
+GenerateCustomSearchIndex: true
+AdditionalSearchResultFields: => return new string[] {"Published","Excerpt"};
+SearchScriptPath: assets/js/search.js
 #LinkLowercase: false
 #OptimizeContentFileNames: false
