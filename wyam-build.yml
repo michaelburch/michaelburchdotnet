@@ -49,7 +49,8 @@ stages:
         azureSubscription: michael-azure
         destination: azureBlob
         storage: $(StorageAccountName)
-        containerName: $(StorageContainer)/assets
+        containerName: $(StorageContainer)
+        blobPrefix: /assets
         cleanTargetBeforeCopy: true
         AdditionalArgumentsForBlobCopy: '--recursive --cache-control "max-age=31536000"'
     - task: AzureFileCopy@4
@@ -59,7 +60,8 @@ stages:
         azureSubscription: michael-azure
         destination: azureBlob
         storage: $(StorageAccountName)
-        containerName: $(StorageContainer)/images
+        containerName: $(StorageContainer)
+        blobPrefix: /images
         cleanTargetBeforeCopy: false
         AdditionalArgumentsForBlobCopy: '--recursive --cache-control "max-age=31536000"'
     - task: AzureFileCopy@4
