@@ -8,12 +8,11 @@
   <div id="wrapper">
 @Html.Partial("_header")
   <div id="main">
-                        @RenderBody()
-                </div>
-
-                @Html.Partial("_sidebar")
-        </div>
-        @Html.Partial("_footer")
-        @RenderSection("Scripts", false)
-        </body>
+@RenderBody()
+  </div>
+@Html.Partial("_sidebar")
+  </div>
+@Html.Partial("_footer")
+@RenderSection("Scripts", false)
+</body>
 </html>
