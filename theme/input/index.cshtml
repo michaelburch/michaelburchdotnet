@@ -10,7 +10,6 @@ ArchiveTitle: => GetString("Title")
 Layout: _layout.cshtml
 ---
 
-@Html.Partial("_menu")
 @foreach (IGrouping<int, IDocument> group in Document
 .GetChildren()
 .GroupBy(x => x.GetDateTime(WebKeys.Published).Year)
@@ -22,7 +21,7 @@ Layout: _layout.cshtml
         var imgUrl = post.GetString("Image");
         var excerptString = post.GetString("Excerpt");
         var lastCharIndex = excerptString.LastIndexOf('<') - 1 ;
-        var excerpt = excerptString.Insert(lastCharIndex + 1,"\u2026");
+        var excerpt = excerptString.Insert(lastCharIndex + 1,"\u2026").Replace("&amp;quot;","\"");
         <article class="post">
             <header>
                 <div class="title">
@@ -48,7 +47,7 @@ Layout: _layout.cshtml
                     lastCharIndex = lastCharIndex - 1;
                 }
                 
-                @Html.Raw(excerpt)
+                    @Html.Raw(excerpt)
          <footer>
                 <ul class="actions">
                     <li><a href="@Context.GetLink(post)" class="button large">Continue Reading</a></li>
