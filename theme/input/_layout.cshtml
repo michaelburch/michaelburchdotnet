@@ -1,23 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
-
 <head>
   @Html.Partial("_head")
-  @Html.Partial("_menu")        
-
 </head>
-
+@Html.Partial("_menu") 
 <body class="is-preload">
-        <div id="wrapper">
-                @Html.Partial("_header")
-                
-                <div id="main">
-                        @RenderBody()
-                </div>
-
-                @Html.Partial("_sidebar")
-        </div>
-        @Html.Partial("_footer")
-        @RenderSection("Scripts", false)
-        </body>
+  <div id="wrapper">
+@Html.Partial("_header")
+  <div id="main">
+@RenderBody()
+  </div>
+@Html.Partial("_sidebar")
+  </div>
+@Html.Partial("_footer")
+@RenderSection("Scripts", false)
+</body>
 </html>

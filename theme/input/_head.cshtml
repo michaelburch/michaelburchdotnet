@@ -3,25 +3,23 @@ string Title = Document.GetString("Title");
 string PageTitle = Document.GetString("PageTitle");
 }
 @Html.Partial("_meta")
-<title>@PageTitle</title>
-<link rel="preconnect" href="https://commento.io">
-<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147257002-1"></script>
-<script>
+  <title>@PageTitle</title>
+  <link rel="preconnect" href="https://commento.io">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147257002-1"></script>
+  <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'UA-147257002-1');
-</script>
-  @if (Context.GetBool("GenerateCustomSearchIndex") && (Document.GetString("Title") == "Search"))
-  {
-    <!-- Lunr search -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script> -->
-    <script src=@Context.GetLink("assets/js/lunr.min.js")></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/pako@2.0.3/dist/pako_inflate.min.js"></script> -->
-    <script src=@Context.GetLink("assets/js/pako_inflate.min.js")></script>
-    <script src="@(Context.GetLink(Context.GetPath(WebKeys.SearchScriptPath)))"></script>
-  }
+  </script>
+@if (Context.GetBool("GenerateCustomSearchIndex") && (Document.GetString("Title") == "Search"))
+{
+  <!-- Lunr search -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script> -->
+  <script src=@Context.GetLink("assets/js/lunr.min.js")></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/pako@2.0.3/dist/pako_inflate.min.js"></script> -->
+  <script src=@Context.GetLink("assets/js/pako_inflate.min.js")></script>
+  <script src="@(Context.GetLink(Context.GetPath(WebKeys.SearchScriptPath)))"></script>
+}
