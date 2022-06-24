@@ -14,9 +14,9 @@ My 6 year old daughter has been using her imagination to help make homeschool hi
 ## The Design
 
 <div class="container-right container-row">
-<?# CaptionImage Src="/images/helmet-design.jpg" Style="container-left"?>Design<?#/CaptionImage ?>
+<?# CaptionImage Src="/images/helmet-design.jpg" AltText="a child's drawing of a time travel helmet" Style="container-left"?>Design<?#/CaptionImage ?>
 
-<?# CaptionImage Src="/images/helmet-complete.jpg" Style="container-right"?>Finished Product<?#/CaptionImage ?>
+<?# CaptionImage Src="/images/helmet-complete.jpg"  AltText="the completed helmet" Style="container-right"?>Finished Product<?#/CaptionImage ?>
 </div>  
 My daughter loves to draw, so when I asked her what a time travel helmet would look like she was prepared. She came up with a design, drew it out and explained all of the components. Engineering doesn't always create what the design team has in mind but in this case I think we got pretty close.
 
@@ -73,9 +73,9 @@ The battery holder we used has both the JST type connector for connecting to the
 We opened the MakeCode site in a browser and started a new project for the Circuit Playground Express. MakeCode shows a picture of the device we are coding for - but it's not just a picture, it's a device simulator! We can simulate pushing buttons and shaking the device as we write code and instantly see how it will work on the device.
 
 <div class="container container-row">
-<?# CaptionImage Src="/images/makecode-mavis.jpg" Style="container-left" ?>First time coder!<?#/CaptionImage ?>
+<?# CaptionImage Src="/images/makecode-mavis.jpg"  AltText="a child writing code for the first time" Style="container-left" ?>First time coder!<?#/CaptionImage ?>
 
-<?# CaptionImage Src="/images/makecode-blocks.png" Style="container-left" ?>MakeCode Interface<?#/CaptionImage ?>
+<?# CaptionImage Src="/images/makecode-blocks.png"  AltText="screenshot of the Microsoft MakeCode interface" Style="container-left" ?>MakeCode Interface<?#/CaptionImage ?>
 </div>
 
 We added code blocks to do the following:
@@ -113,6 +113,6 @@ traveling = 0
 Once the code was completed, we attached the Circuit Playground and battery holder to the helmet, switched it on and it was ready to go. I'm really impressed with the Circuit Playground Express. It has a wealth of features, is totally approachable for beginners, and can also be programmed with Circuit Python and Javascript for more advanced use. My daughter will surely come up with some new feature requests for her time travel helmet soon - and I'm looking forward to it! In the mean time, her homeschool history lessons should be much more entertaining.  
 
 <div class="container ">
-<?# CaptionImage Src="/images/mavis-helmet.jpg" Style="container-left"?>It's time traveler time!<?#/CaptionImage ?>
+<?# CaptionImage Src="/images/mavis-helmet.jpg" AltText="a happy child wearing the time travel helmet described above" Style="container-left"?>It's time traveler time!<?#/CaptionImage ?>
 </div>
 
