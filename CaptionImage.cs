@@ -16,14 +16,17 @@ namespace michaelburchdotnet
         
         private const string Src = nameof(Src);
         private const string Style = nameof(Style);
+        private const string AltText = nameof(AltText);
 
         public override ShortcodeResult Execute(KeyValuePair<string, string>[] args, string content, IDocument document, IExecutionContext context)
         {
             IMetadataDictionary arguments = args.ToDictionary(
                 Src,
-                Style);
+                Style,
+                AltText);
             
             var style = arguments.GetString(Style) ?? "container";
+            var altText = arguments.GetString(AltText) ?? "content";
 
             XElement container = new XElement(
                 "div",
@@ -35,7 +38,8 @@ namespace michaelburchdotnet
             // Image
             XElement image = arguments.XElement("img", Src, x => new[]
             {
-                new XAttribute("src", context.GetLink(x))
+                new XAttribute("src", context.GetLink(x)),
+                new XAttribute("alt", altText)
             });
  
             if (image is object)
