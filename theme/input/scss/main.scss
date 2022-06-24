@@ -76,7 +76,7 @@
 		align-items: center;
 		justify-content: center;
 		padding-bottom: 1rem;
-		padding-left: 2rem;
+		//padding-left: 2rem;
 		//float: right;
 	}
 	.container-left {
@@ -84,7 +84,7 @@
 		align-items: center;
 		justify-content: center;
 		padding-bottom: 1rem;
-		padding-right: 2rem;
+		//padding-right: 2rem;
 		//float: left;
 	}
 	.post figure {
@@ -119,9 +119,11 @@
 	@media screen and (min-width:1007) {
 		.container-left {
 			float: left;
+			padding-right: 2rem;
 		}
 		.container-right {
 			float: right;
+			padding-left: 2rem;
 		}
 		
 	}
