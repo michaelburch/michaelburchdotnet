@@ -122,6 +122,16 @@
 				}
 			}
 		}
+		@include breakpoint('>=large') {
+			.container-left {
+				float: left;
+				padding-right: 2rem;
+			}
+			.container-right {
+				float: right;
+				padding-left: 2rem;
+			}
+		}
 
 		@include breakpoint('<=medium') {
 			border-left: 0;
