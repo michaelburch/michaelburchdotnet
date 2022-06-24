@@ -32,7 +32,10 @@ namespace michaelburchdotnet
                     // ... and images. Images are not nested under assets to match original structure
                     if (parentFolder == "images")
                         return new NormalizedPath($"./{parentFolder}/{doc.Destination.FileName}");
+                    if (parentFolder == "input")
+                        return new NormalizedPath($"./{doc.Destination.FileName}");
                     return new NormalizedPath($"./assets/{parentFolder}/{doc.Destination.FileName}");
+   
 
                 }
                 )),
