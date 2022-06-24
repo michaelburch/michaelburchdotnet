@@ -13,16 +13,11 @@ My 6 year old daughter has been using her imagination to help make homeschool hi
 
 ## The Design
 
-<table style="float:right; padding-left: 2rem;">
-<tr>
-<td v-align="middle" align="center">
-<?# CaptionImage Src="/images/helmet-design.jpg" Style="container-right"?>Design<?#/CaptionImage ?>
-</td>
-<td v-align="middle" align="center">
+<div class="container-right container-row">
+<?# CaptionImage Src="/images/helmet-design.jpg" Style="container-left"?>Design<?#/CaptionImage ?>
+
 <?# CaptionImage Src="/images/helmet-complete.jpg" Style="container-right"?>Finished Product<?#/CaptionImage ?>
-</td>
-</tr>
-</table>  
+</div>  
 My daughter loves to draw, so when I asked her what a time travel helmet would look like she was prepared. She came up with a design, drew it out and explained all of the components. Engineering doesn't always create what the design team has in mind but in this case I think we got pretty close.
 
 We used an old Amazon box and some tape to assemble the helmet, with a length of cardboard run through the middle that serves as the top of the helmet and a shelf for the battery holder. A time travel helmet wouldn't be complete without some noisy, flashy, technical looking time circuits. 
@@ -35,38 +30,39 @@ target="_blank"} comes in.
 Since Flux Capacitor was taken, my daughter named our time travel electronics "the robot computer". I've had a Circuit Playground Express in my laptop bag since I attended Microsoft Ignite back in November (it was handed out for free). The amount of functionality packed into this small device is really amazing, check out the link above for all the details.  
 
 Here is the small subset of features used in our time travel helmet:
-<table>
-<tr>
-<td><?# CaptionImage Src="/images/cpx.jpg" Style="container-left"?>Circuit Playground Express<?#/CaptionImage ?>
+<div class="container container-row">
+<?# CaptionImage Src="/images/cpx.jpg" Style="container-left"?>Circuit Playground Express<?#/CaptionImage ?>
 
-<ul class="spaced">
-<li> 10 x mini NeoPixels, (for colorful indicator lights)
+  *  10 x mini NeoPixels, (for colorful indicator lights)
 
-<li>  1 x Motion sensor (LIS3DH triple-axis accelerometer with tap detection, free-fall detection, we used it to stop the time travel process with a shake of the head)
+  *  1 x Motion sensor (LIS3DH triple-axis accelerometer with tap detection, free-fall detection, we used it to stop the time travel process with a shake of the head)
 
-<li>  1 x Mini speaker with class D amplifier (to make the time travel sound, of course)
+  *  1 x Mini speaker with class D amplifier (to make the time travel sound, of course)
 
-<li>  7 pads can act as capacitive touch inputs (we're using pad A3 to turn the time circuits on)
+  *  7 pads can act as capacitive touch inputs (we're using pad A3 to turn the time circuits on)
 
-<li>  2 MB of SPI Flash storage (we copied code to the device and stored it here)
+  *  2 MB of SPI Flash storage (we copied code to the device and stored it here)
 
-<li>  MicroUSB port for programming and debugging (used this to transfer code)  
+  *  MicroUSB port for programming and debugging (used this to transfer code)  
 
-</ul>
-</td></tr>
-</table>
+</div>
+<p></p>
 
 ## Supplies
+<div class="container container-row">
 <?# CaptionImage Src="/images/cpx-battery.jpg" Style="container-right"?>Battery holder<?#/CaptionImage ?>
 Aside from the cardboard box and some tape, here are the supplies used in the project:
+<p></p>
 
   * [Circuit Playground Express](https://smile.amazon.com/Adafruit-Circuit-Playground-Express/dp/B0764NQ1WW/?ref=smi_se_dshb_sn_smi&ein=22-3886094&ref_=smi_chpf_redirect&ref_=smi_ext_ch_22-3886094_cl){rel="noopener" target="_blank"}
+  
   * [3xAAA Battery Holder](https://smile.amazon.com/Low-Voltage-Power-Solutions-Decorations/dp/B07M7Q4GXN/?ref=smi_se_dshb_sn_smi&ein=22-3886094&ref_=smi_chpf_redirect&ref_=smi_ext_ch_22-3886094_cl){rel="noopener" target="_blank"} 
+  
   * [Rechargeable AAA Batteries](https://smile.amazon.com/Energizer-Rechargeable-Batteries-Pre-Charged-Recharge/dp/B000BESLQK/?ref=smi_se_dshb_sn_smi&ein=22-3886094&ref_=smi_chpf_redirect&ref_=smi_ext_ch_22-3886094_cl){rel="noopener" target="_blank"}
 
 The battery holder we used has both the JST type connector for connecting to the Circuit Playground and an on/off switch which is very useful if you accidentally play an annoying sound on an infinite loop. The Circuit Playground itself is attached to the helmet with some spare CAT6 (my kiddo was happy to have a choice of colors for the wire!)  
-
-
+</div>
+<p></p>
 
 > These aren't affiliate links, and I don't make anything off of them. They ARE Amazon Smile links and if you use them Amazon donates a small amount to charities like [She is Safe](https://sheissafe.org/){rel="noopener" target="_blank"}, an organization that prevents, rescues and restores women and girls from abuse and exploitation.
 
@@ -76,16 +72,11 @@ The battery holder we used has both the JST type connector for connecting to the
 
 We opened the MakeCode site in a browser and started a new project for the Circuit Playground Express. MakeCode shows a picture of the device we are coding for - but it's not just a picture, it's a device simulator! We can simulate pushing buttons and shaking the device as we write code and instantly see how it will work on the device.
 
-<table >
-<tr>
-<td v-align="middle" align="center">
-<?# CaptionImage Src="/images/makecode-mavis.jpg" ?>First time coder!<?#/CaptionImage ?>
-</td>
-<td v-align="middle" align="center">
-<?# CaptionImage Src="/images/makecode-blocks.png" ?>MakeCode Interface<?#/CaptionImage ?>
-</td>
-</tr>
-</table>  
+<div class="container container-row">
+<?# CaptionImage Src="/images/makecode-mavis.jpg" Style="container-left" ?>First time coder!<?#/CaptionImage ?>
+
+<?# CaptionImage Src="/images/makecode-blocks.png" Style="container-left" ?>MakeCode Interface<?#/CaptionImage ?>
+</div>
 
 We added code blocks to do the following:
 
@@ -121,7 +112,7 @@ traveling = 0
 
 Once the code was completed, we attached the Circuit Playground and battery holder to the helmet, switched it on and it was ready to go. I'm really impressed with the Circuit Playground Express. It has a wealth of features, is totally approachable for beginners, and can also be programmed with Circuit Python and Javascript for more advanced use. My daughter will surely come up with some new feature requests for her time travel helmet soon - and I'm looking forward to it! In the mean time, her homeschool history lessons should be much more entertaining.  
 
-
-<?# CaptionImage Src="/images/mavis-helmet.jpg" ?>It's time traveler time!<?#/CaptionImage ?>
-
+<div class="container ">
+<?# CaptionImage Src="/images/mavis-helmet.jpg" Style="container-left"?>It's time traveler time!<?#/CaptionImage ?>
+</div>
 
