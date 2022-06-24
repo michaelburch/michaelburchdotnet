@@ -77,7 +77,7 @@
 		justify-content: center;
 		padding-bottom: 1rem;
 		padding-left: 2rem;
-		float: right;
+		//float: right;
 	}
 	.container-left {
 		display: flex;
@@ -85,7 +85,7 @@
 		justify-content: center;
 		padding-bottom: 1rem;
 		padding-right: 2rem;
-		float: left;
+		//float: left;
 	}
 	.post figure {
 		margin: 0;
@@ -115,6 +115,15 @@
 		width: 100%;
 		text-align: center;
 		color: _palette(fg-dark);
+	}
+	@media screen and (min-width:1007) {
+		.container-left {
+			float: left;
+		}
+		.container-right {
+			float: right;
+		}
+		
 	}
 	@media (prefers-color-scheme: dark) {
 		body, #menu {
