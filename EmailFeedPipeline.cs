@@ -30,6 +30,7 @@ namespace Statiq.Web.Pipelines
                         // Get outputs from the pipeline(s)
                         modules.Add(
                             new ReplaceDocuments(feedDoc.GetList(WebKeys.FeedPipelines, new[] { nameof(Content) }).ToArray()),
+                            new ProcessShortcodes(),
                             new MergeMetadata(Config.FromValue(feedDoc.Yield())).KeepExisting());
 
                         // Filter by document source
@@ -55,6 +56,7 @@ namespace Statiq.Web.Pipelines
                         // Generate the feed(s)
                         GenerateFeeds generateFeeds = new GenerateFeeds()
                             .WithRssPath("feed/index.xml")
+                            .WithAtomPath("feed/feed.atom")
                             .WithFeedId(feedDoc.GetString(WebKeys.FeedId))
                             .WithFeedTitle(feedDoc.GetString(WebKeys.FeedTitle))
                             .WithFeedDescription(feedDoc.GetString(WebKeys.FeedDescription))
