@@ -20,5 +20,7 @@ LinksUseHttps: true
 GenerateCustomSearchIndex: true
 AdditionalSearchResultFields: => return new string[] {"Published","Excerpt"};
 SearchScriptPath: assets/js/search.js
+FeedImageLink: "https://www.michaelburch.net/favicon-32x32.png"
+#Image: https://www.michaelburch.net/images/logo.svg
 #LinkLowercase: false
 #OptimizeContentFileNames: false
