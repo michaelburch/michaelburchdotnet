@@ -55,8 +55,8 @@ namespace Statiq.Web.Pipelines
 
                         // Generate the feed(s)
                         GenerateFeeds generateFeeds = new GenerateFeeds()
-                            .WithRssPath("feed/index.xml")
-                            .WithAtomPath("feed/feed.atom")
+                            .WithRssPath("feed/index.rss")
+                            .WithAtomPath("feed/index.xml")
                             .WithFeedId(feedDoc.GetString(WebKeys.FeedId))
                             .WithFeedTitle(feedDoc.GetString(WebKeys.FeedTitle))
                             .WithFeedDescription(feedDoc.GetString(WebKeys.FeedDescription))
