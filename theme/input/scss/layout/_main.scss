@@ -11,3 +11,8 @@
 		-ms-flex: 1;
 		width: 100%;
 	}
+	.index { 
+		@include breakpoint('>=xlarge') {
+			padding-left: 26rem;
+		}
+	}
