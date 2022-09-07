@@ -6,14 +6,9 @@ string PageTitle = Document.GetString("PageTitle");
   <title>@PageTitle</title>
   <link rel="preconnect" href="https://commento.io">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147257002-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'UA-147257002-1');
-  </script>
+  <!-- Pixel Code for https://app.tinyanalytics.io/ -->
+  <script defer src="https://app.tinyanalytics.io/pixel/372hZCQ7steBAejd"></script>
+  <!-- END Pixel Code -->
 @if (Context.GetBool("GenerateCustomSearchIndex") && (Document.GetString("Title") == "Search"))
 {
   <!-- Lunr search -->
