@@ -1,6 +1,6 @@
 This is a clean blogging theme adapted from https://github.com/StartBootstrap/startbootstrap-clean-blog.
 
-# Installation
+# Installation 
 
 Statiq themes go in a `theme` folder alongside your `input` folder. If your site is inside a git repository, you can add the theme as a git submodule:
 
