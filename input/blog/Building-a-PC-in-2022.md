@@ -8,10 +8,12 @@ Tags:
 Card: /images/framework-card.jpg
 ---
 
-I built the first PC I ever used from some spare parts my dad had laying around. That was in 1989, I was 9 years old and instantly became a PC enthusiast. I had just built a system with a 286 CPU in an AT form factor tower case with a 20 Megabyte (not a typo) HDD and was already looking forward to upgrading to a 386. I built every PC I owned from then on, using the old parts to make a PC for a friend or family member. Then in 2011 I bought a laptop and gave away my last desktop build. There simply weren't any options for building a desktop class machine in a laptop form factor. Until now. [Framework](https://frame.work){rel="noopener" 
-target="_blank"} makes a DIY Laptop kit with modern power and capabilities in an incredible 13 inch thin and light form factor.  
+I built the first PC I ever used from some spare parts my dad had laying around. That was in 1989, I was 9 years old and instantly became a PC enthusiast. I had just built a system with a 286 CPU in an AT form factor tower case with a 20 Megabyte (not a typo) HDD and was already looking forward to upgrading to a 386. I built every PC I owned from then on, using the old parts to make a PC for a friend or family member. Then in 2011 I bought a laptop and gave away my last desktop build. There simply weren't any options for building a desktop class machine in a laptop form factor. Until now. 
 
 ## Consumer Electronics is broken
+
+[Framework](https://frame.work){rel="noopener" 
+target="_blank"} makes a DIY Laptop kit with modern power and capabilities in an incredible 13 inch thin and light form factor.  
 
 According to Framework, the consumer electronics industry is broken. The typical business model in the space promotes cranking out new devices every year that can be disposed of when the next model comes out. There's certainly a glut of "disposable" hardware out there, and that's the problem that Framework is trying to address by sustainably producing laptops that can easily be repaired and upgraded by the end user.  It's an ambitious goal, and as a natural skeptic myself I doubted they would get anywhere. 
 
