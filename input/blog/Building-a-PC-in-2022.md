@@ -38,21 +38,24 @@ It's been years since I built a PC for myself, so thankfully I had an 8 year old
 
 <?# CaptionImage Src="/images/fwbox2.jpg"  AltText="a photo of the second layer of the Framework Laptop shipping box" Style="container-right"?>Components<?#/CaptionImage ?>
 </div>  
-
+<p></p>
 I purchased the DIY Edition of the Framework Laptop, so all of my components arrived neatly organized in one two-layered box. I ordered the NVMe drive, memory, and power adapter from Framework although all of these are optional and can be purchased elsewhere if you like. 
-
+<p></p>
 <div class="container container-row">
 <?# CaptionImage Src="/images/fwunboxed.jpg" Style="container-right"?>Framework Components<?#/CaptionImage ?>
 
 This is also a great opportunity to reuse hardware you might have laying around as NVMe drives are becoming more common in desktops and the laptop can be charged with almost any USB-C charger.
 
+I layed out all of the components next to the laptop, along with the included screwdriver before getting started.
 </div>
 <p></p>
 
 <div class="container container-row">
 <?# CaptionImage Src="/images/fwopen.jpg" Style="container-left"?>Keyboard removed<?#/CaptionImage ?>
 
-Assembly was simple. The laptop has 5 captive screws on the bottom which can be loosened with the included screwdriver. With that done, all we had to do was flip it over and lift the keyboard off to expose the internals. The keyboard is attached with a cable that pulls up easily to disconnect. All components are clearly labeled and the QR codes helpfully open a browser to the instructions if needed.
+Assembly was simple. The laptop has 5 captive screws on the bottom which can be loosened with the included screwdriver. With that done, all we had to do was flip it over and lift the keyboard off to expose the internals. 
+
+The keyboard is attached with a cable that pulls up easily to disconnect. All components are clearly labeled and the QR codes helpfully open a browser to the instructions if needed.
 
 </div>
 <p></p>
@@ -62,6 +65,7 @@ Assembly was simple. The laptop has 5 captive screws on the bottom which can be 
 
 We took a brief instructional tour of all the components and then set to work adding the memory and NVMe drive. The included screwdriver is also used to secure the drive, making this a very simple single tool process. With all the internal components installed we reattached the keyboard cable and set the keyboard back in place. It snaps into place magnetically which is a nice touch.
 
+There's also something different about the way the wrist rest area feels on this compared to other laptops. I prefer the feel of the Framework to my work PC (a Surface Book) for sure.
 </div>
 <p></p>
 
