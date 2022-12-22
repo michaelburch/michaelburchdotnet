@@ -1,37 +1,47 @@
 .icon-info-circle:before {
-    content: "\f05a";
+    content: "\e902";
   }
-  .icon-info:before {
-    content: "\f129";
+  .icon-twitter:before {
+    content: "\e903";
   }
-  .icon-github:before {
-    content: "\e900";
+  .icon-linkedin:before {
+    content: "\e904";
+  }
+  .icon-feed:before {
+    content: "\e905";
+  }
+  .icon-rss:before {
+    content: "\e905";
+  }
+  .icon-search:before {
+    content: "\e906";
+  }
+  .icon-bars:before {
+    content: "\e907";
+  }
+  .icon-navicon:before {
+    content: "\e907";
+  }
+  .icon-reorder:before {
+    content: "\e907";
   }
   .icon-envelope:before {
     content: "\e901";
   }
-  .icon-bars:before {
-    content: "\e902";
+  .icon-mastodon:before {
+    content: "\e908";
   }
-  .icon-search:before {
-    content: "\e903";
+  .icon-github:before {
+    content: "\e900";
   }
-  .icon-rss:before {
-    content: "\e904";
-  }
-  .icon-linkedin:before {
-    content: "\e905";
-  }
-  .icon-twitter:before {
-    content: "\e906";
-  }
+  
 @font-face {
     font-family: 'icomoon';
-    src:  url('../webfonts/icomoon.eot?xce8or');
-    src:  url('../webfonts/icomoon.eot?xce8or#iefix') format('embedded-opentype'),
-      url('../webfonts/icomoon.ttf?xce8or') format('truetype'),
-      url('../webfonts/icomoon.woff?xce8or') format('woff'),
-      url('../webfonts/icomoon.svg?xce8or#icomoon') format('svg');
+    src:  url('../webfonts/icomoon.eot?ksm2yp');
+    src:  url('../webfonts/icomoon.eot?ksm2yp#iefix') format('embedded-opentype'),
+      url('../webfonts/icomoon.ttf?ksm2yp') format('truetype'),
+      url('../webfonts/icomoon.woff?ksm2yp') format('woff'),
+      url('../webfonts/icomoon.svg?ksm2yp#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -52,31 +62,3 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  
-  .icon-info-circle:before {
-    content: "\f05a";
-  }
-  .icon-info:before {
-    content: "\f129";
-  }
-  .icon-github:before {
-    content: "\e900";
-  }
-  .icon-envelope:before {
-    content: "\e901";
-  }
-  .icon-bars:before {
-    content: "\e902";
-  }
-  .icon-search:before {
-    content: "\e903";
-  }
-  .icon-rss:before {
-    content: "\e904";
-  }
-  .icon-linkedin:before {
-    content: "\e905";
-  }
-  .icon-twitter:before {
-    content: "\e906";
-  }
