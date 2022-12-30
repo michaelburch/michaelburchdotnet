@@ -85,14 +85,20 @@
 
 	// Intro.
 		var $intro = $('#intro');
-
+        var $about = $('#about');
+		var $aboutBorder = $about.css("border-top");
 		// Move to main on <=large, back to sidebar on >large.
 			breakpoints.on('<=large', function() {
 				$intro.prependTo($main);
+				$about.appendTo($intro);
+				$("ul.icons").css("columns","1");
+				$about.css("border-top","none");
 			});
 
 			breakpoints.on('>large', function() {
 				$intro.prependTo($sidebar);
+			    $("ul.icons").css("columns","3");
+                $about.css("borderTop", $aboutBorder); 
 			});
 	// Tag Cloud
 	    // Side by side with posts on >small
