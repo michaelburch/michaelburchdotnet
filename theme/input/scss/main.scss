@@ -65,6 +65,9 @@
 			background-color: _palette(accent) !important;
 		}
 	}
+	.commento-root .input[type=text], .commento-input {
+		width: calc(100% - 110px) !important;
+	}
    .container-left, .container-right {
 		display: flex;
 		align-items: center;
@@ -168,5 +171,11 @@
 		}
 		.commento-root .commento-card .commento-option-button {
 			background-color: _palette(fg-dark) !important;
+		}
+		.commento-root .commento-email-button {
+			color: _palette(fg) !important;
+			&:hover {
+				color: _palette(accent) !important;
+			}
 		}
 	  }
