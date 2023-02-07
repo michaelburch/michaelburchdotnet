@@ -50,29 +50,19 @@ var Tags = new string[]{""};
 								</p>	
 						</section> 
 					<footer>
-					<ul class="stats">
-		            @if (Tags != null)
-                    {
 
-                        @foreach (IDocument tag in OutputPages.Get("tags.html").GetChildren())
-                        {
-                            if (Tags.Contains(tag.GetTitle()))
-                            {
-                                <li><a role="button" href="@Context.GetLink(tag)" class="btn btn-default btn-xs" > @tag.GetTitle()</a></li>
-                            }
-                   
-                        }
-                        
-                    }
-						<li><a href="@Context.GetLink(Model)#commento"
+		         
+						<a href="@Context.GetLink(Model)#commento"
 							onClick="if($('#commento').is(':empty') ) {window.commento.main();}"
-							class="icon solid fa-comment">0 Comments</a></li>
-					</ul>
+							class="icon solid fa-comment button large">Comment on this post</a>
+					
 					<script  src=@Context.GetLink("assets/js/highlight.pack.js")></script>
 					</footer>
 						
 					<div id="commento"></div>
 					<script defer src="https://cdn.commento.io/js/commento.js" data-auto-init="false"></script>
+					<script defer>window.commentsText = function(count) { return "Comment on this post [" + count + "]"}</script>
+					<script defer src="https://cdn.commento.io/js/count.js" data-custom-text="window.commentsText" async></script>
 			</div>
 			<script defer>
 				function highlightCode() {
@@ -84,9 +74,5 @@ var Tags = new string[]{""};
 				highlightCode();
 			</script>
 			@Html.Partial("_footer")
-			@section Scripts
-			{	
-    			<script defer src="https://cdn.commento.io/js/count.js" async></script>
-			}
 	</body>
 	</html>
