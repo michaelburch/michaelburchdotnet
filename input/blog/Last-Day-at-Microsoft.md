@@ -1,0 +1,25 @@
+Title: Last Day at Microsoft
+Published: 9/22/2023
+Tags:
+  - Microsoft
+  - Work
+  - Consulting
+Card: /images/last-day-ms-card.jpg
+---
+Today was my last day at Microsoft.  Working here was a great opportunity for me, and I've met and worked with some really wonderful folks. After trying for more than a year to pivot from consulting to another role within the company, I decided now was the time to leave.   
+
+Microsoft is, in many ways, a great company to work for. They offer a lot in terms of employee development, and generally have highly skilled people who work with integrity. Benefits are very good and I was in a remote position that offered real flexibility for me and my family. As workplaces go, this one was pretty great.  I started as a contractor at a time when Microsoft Consulting (aka ISD, Industry Solutions Delivery) needed Kubernetes expertise. I've been in consulting roles a few times during my career, most recently having led the Azure consulting practice at IBM so I was no stranger to working on short term customer engagements.  I was, however, ready to get out of consulting altogether and focus on doing one job for one company.  
+
+## Lack of Internal Opportunities 
+
+Most of my career I have been building and scaling distributed systems along with developing software that runs on them. I thrive on solving puzzles with technology and I find that consulting roles offer less of this type of work and, maybe necessarily, a stronger focus on developing good patterns and practices for consulting engagements. I didn't want to be a better consultant, I wanted to sharpen my technical skills and build exciting and complex systems. I hoped that taking the job as a full-time employee at Microsoft would give me a foot in the door and the chance at another role doing just that. Unfortunately, despite all the encouragement and assurances of help to move into another role I couldn't even get an interview for any other internal position. This was discouraging, and affirmed for me that what I wanted to do (systems and software development) and what Microsoft wanted me to do (consulting) were entirely different. This was reason enough, but there was more.
+
+## Direction of the company
+
+I do not share the enthusiasm for generative A.I. that pervades every product and service today.  For what it's worth, I wasn't excited or interested in NFTs either. I'm no better at predicting the success or failure of a given technology than anyone else so maybe it really will be as "significant as the PC" as some have suggested - time will tell. Don't get me wrong, I use ChatGPT, GitHub Copilot and Midjourney regularly and they are helpful tools and I am fascinated by models that are being trained on religious texts. I do not like the "spray and pray" method of shoving this technology into every product and waiting to see where it succeeds. It's careless and desperate and will not be good for consumers. Haste makes waste as the saying goes. This has already led to [at least one incident](https://fortune.com/2023/09/19/microsoft-ai-researchers-accidental-data-leak/){rel="noopener" target="_blank"} and I'm sure there are more to come. 
+
+## Compensation
+
+Compensation at Microsoft is good. I was well paid and the benefits package was generous. I wasn't sitting around comparing my salary to others, or to other available roles and wishing things were different. I didn't start looking for a new role because I needed or wanted more money. Somewhere along the way, the link between my individual performance, the success of the business, and my compensation was broken. This last year was an [undeniable success for Microsoft](https://www.microsoft.com/en-us/Investor/earnings/FY-2023-Q4/press-release-webcast){rel="noopener" target="_blank"} as a company, and for my specific division specifically, and my personal job metrics (or "Connect" in MS terms) were higher than last year and yet the variable component of my pay was down significantly. It really doesn't matter how well compensated you are at work, a double-digit percentage drop in compensation has a massive impact (both financial and psychological) on an employee. 
+
+I am really grateful for the opportunity at Microsoft. I've been a fan of their products and services for a long time. I've fought hard to implement some of their best products for other companies that I've worked for. I've owned many of their (mostly abandoned) consumer products including the Microsoft Band and Windows Phone. I still believe the Azure cloud is the best option for companies to build and scale applications without operating their own datacenters. Through my work there I have met some amazingly talented folks and seen first-hand how some of the largest companies are using the cloud.  I'm also happy to be moving on and excited to focus on what comes next.
