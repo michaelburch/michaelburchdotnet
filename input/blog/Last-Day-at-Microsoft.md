@@ -4,7 +4,7 @@ Tags:
   - Microsoft
   - Work
   - Consulting
-Lead: 
+Card: /images/last-day-ms-card.jpg
 ---
 Today was my last day at Microsoft.  Working here was a great opportunity for me, and I've met and worked with some really wonderful folks. After trying for more than a year to pivot from consulting to another role within the company, I decided now was the time to leave.   
 
