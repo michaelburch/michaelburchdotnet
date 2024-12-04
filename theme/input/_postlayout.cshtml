@@ -4,7 +4,8 @@ var Title = Document.GetString("Title");
 string imgUrl = Document.GetString("Image");
 var lead = Document.GetString("Lead");
 var Tags = new string[]{""};
-var commentId = Document.GetString("CommentId");
+var threadId = Document.GetString("ThreadId");
+var blueskyUser = Document.GetString("BlueskyUser");
 }
 	<!DOCTYPE html>
 	<html lang="en">
@@ -51,17 +52,18 @@ var commentId = Document.GetString("CommentId");
 								</p>	
 						</section> 
 					<footer>
-						@if(!string.IsNullOrWhiteSpace(commentId))
+						@if(!string.IsNullOrWhiteSpace(threadId))
 						{
-							<a href="https://bsky.app/profile/michaelburch.net/post/@commentId"
+							<a href="https://bsky.app/profile/@blueskyUser/post/@threadId"
 							class="icon solid fa-comment button large">Comment on this post</a>
 							<br/>
-							<script defer src="/assets/js/comments.js"></script>
+							<script defer src="/assets/js/purify.min.js"></script>
+							<script defer src="/assets/js/comments.js" data-username="@blueskyUser" data-threadId="@threadId"></script>
 						}
 					<script  src=@Context.GetLink("assets/js/highlight.pack.js")></script>
 					</footer>
 					<br/>
-					@if(!string.IsNullOrWhiteSpace(commentId))
+					@if(!string.IsNullOrWhiteSpace(threadId))
 					{
 						<h2>Comments</h2>
 					}
