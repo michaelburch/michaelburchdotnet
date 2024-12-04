@@ -149,33 +149,54 @@
 		.post > header .meta .published {
 			color: _palette(fg-dark);
 		}
-		.commento-root * {
+		.comment-root * {
 			color: _palette(fg-dark) !important;
 		}
-		.commento-root textarea {
-			background: _palette(bg-dark-alt) !important;
-			color: _palette(fg-dark) !important;
-			border: 1px solid _palette(border) !important;
-		}
-		.commento-root .commento-login-box-container .commento-login-box {
-			background: _palette(bg-dark) !important;
-		}
-		.commento-root .commento-login-box-container .commento-login-box .commento-login-box-close:after, .commento-root .commento-login-box-container .commento-login-box .commento-login-box-close:before {
-			background-color: _palette(fg-dark) !important;
-		}
-		.commento-root .commento-root textarea {
-			color:_palette(fg-dark) !important;
-		}
-		.commento-root .input[type=text], .commento-input {
-			color: _palette(fg-bold) !important;
-		}
-		.commento-root .commento-card .commento-option-button {
-			background-color: _palette(fg-dark) !important;
-		}
-		.commento-root .commento-email-button {
-			color: _palette(fg) !important;
-			&:hover {
-				color: _palette(accent) !important;
+		
+		.comment-container {
+			display: flex;
+			align-items: flex-start;
+			margin-bottom: 15px;
+			padding: 15px;
+			background-color: _palette(border-bg);
+
+			box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+			transition: all 0.3s ease;
 			}
+			.child-comments {
+				margin-left: 30px;
+				border-left: solid 4px _palette(accent);
+				margin-top: 10px;
+				}
+			
+		.comment-avatar {
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			margin-right: 10px;
 		}
+		.comment-details {
+			max-width: calc(100% - 60px);
+			}
+			
+			.comment-header {
+			font-weight: bold;
+			margin-bottom: 5px;
+			}
+			
+			.comment-header span {
+			font-size: 0.9em;
+			color: gray;
+			}
+			
+			.comment-text {
+			margin-bottom: 10px;
+			}
+			.username-link {
+				border-bottom: none;
+			}
+			.comment-timestamp {
+				font-size: 0.8em;
+				opacity: .8;
+				}
 	  }
