@@ -4,6 +4,8 @@ var Title = Document.GetString("Title");
 string imgUrl = Document.GetString("Image");
 var lead = Document.GetString("Lead");
 var Tags = new string[]{""};
+var threadId = Document.GetString("ThreadId");
+var blueskyUser = Document.GetString("BlueskyUser");
 }
 	<!DOCTYPE html>
 	<html lang="en">
@@ -50,22 +52,22 @@ var Tags = new string[]{""};
 								</p>	
 						</section> 
 					<footer>
-						<a href="@Context.GetLink(Model)#commento-login-box-container"
-							onClick="if($('#commento').is(':empty') ) {window.commento.main();}"
+						@if(!string.IsNullOrWhiteSpace(threadId))
+						{
+							<a href="https://bsky.app/profile/@blueskyUser/post/@threadId"
 							class="icon solid fa-comment button large">Comment on this post</a>
-						<br/>
-						<ul class="stats"><li>
-						<a href="@Context.GetLink(Model)#commento"
-							onClick="if($('#commento').is(':empty') ) {window.commento.main();}"
-							class="icon solid fa-comment">0 Comments</a></li></ul>
-					
+							<br/>
+							<script defer src="/assets/js/purify.min.js"></script>
+							<script defer src="/assets/js/comments.js" data-username="@blueskyUser" data-threadId="@threadId"></script>
+						}
 					<script  src=@Context.GetLink("assets/js/highlight.pack.js")></script>
 					</footer>
-						
-					<div id="commento"></div>
-					<script defer src="https://cdn.commento.io/js/commento.js" data-auto-init="false"></script>
-					<!-- <script defer>window.commentsText = function(count) { return "Comment on this post [" + count + "]"}</script> -->
-					<script defer src="https://cdn.commento.io/js/count.js" async></script> 
+					<br/>
+					@if(!string.IsNullOrWhiteSpace(threadId))
+					{
+						<h2>Comments</h2>
+					}
+					<div id="comments"></div>
 			</div>
 			<script defer>
 				function highlightCode() {

@@ -26,9 +26,6 @@
 			window.setTimeout(function() {
 				$body.removeClass('is-preload');
 			}, 100);
-			if (window.location.href.indexOf('#commento') > 0) {
-				window.commento.main();
-			}
 		});
 
 	// Menu.

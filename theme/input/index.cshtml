@@ -67,7 +67,6 @@ Layout: _layout.cshtml
                         }
                         
                     }
-                        <li><a href="@Context.GetLink(post)#commento" class="icon solid fa-comment">0 Comments</a></li>
                 </ul>
             </footer>   
         </article>
@@ -94,4 +93,4 @@ Layout: _layout.cshtml
         </ul>
         <p>Page @Model.GetString("Index") of @Model.GetString("TotalPages")</p>
 @section Scripts
-{<script defer src="https://cdn.commento.io/js/count.js" async></script>}
+{}

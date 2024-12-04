@@ -16,6 +16,7 @@ namespace michaelburchdotnet
         .CreateWeb(args)
         .AddShortcode<CaptionImage>()
         .AddSetting("LinkHideExtensions", false)
+        .AddSetting("BlueskyUser","michaelburch.net")
         .ModifyPipeline("Assets", p => p.WithProcessModules
             (
                 // Exclude cookieconsent as it has it's own pipeline
