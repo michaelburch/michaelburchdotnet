@@ -42,7 +42,7 @@ stages:
     steps:
     - download: current
       artifact: content
-    - task: AzureFileCopy@4
+    - task: AzureFileCopy@6
       displayName: copy static assets
       inputs:
         sourcePath: $(Pipeline.Workspace)/content/assets/*
@@ -53,7 +53,7 @@ stages:
         blobPrefix: assets
         cleanTargetBeforeCopy: true
         AdditionalArgumentsForBlobCopy: '--recursive --cache-control "max-age=31536000"'
-    - task: AzureFileCopy@4
+    - task: AzureFileCopy@6
       displayName: copy images
       inputs:
         sourcePath: $(Pipeline.Workspace)/content/images/*
@@ -64,7 +64,7 @@ stages:
         blobPrefix: images
         cleanTargetBeforeCopy: false
         AdditionalArgumentsForBlobCopy: '--recursive --cache-control "max-age=31536000"'
-    - task: AzureFileCopy@4
+    - task: AzureFileCopy@6
       displayName: copy content
       inputs:
         sourcePath: $(Pipeline.Workspace)/content/*
