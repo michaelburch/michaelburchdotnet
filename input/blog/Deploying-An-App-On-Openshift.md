@@ -189,7 +189,7 @@ Clicking on the arrow next to the web app in the topology view will open the app
 
 ## Too easy!
 
-Despite having a less than awesome experience [setting up my OpenShift development environment](/blog/Getting-Started-with-Openshift.html){rel="noopener" target="_blank"}, I think this is where the product really shines. I was able to go from nothing to a fully deployed three tier application in under 10 minutes, which is even more impressive considering that one tier is Microsoft SQL Server. 
+Despite having a less than awesome experience [setting up my OpenShift development environment](/blog/getting-started-with-openshift.html){rel="noopener" target="_blank"}, I think this is where the product really shines. I was able to go from nothing to a fully deployed three tier application in under 10 minutes, which is even more impressive considering that one tier is Microsoft SQL Server. 
 
 I'm always suspicious when I hear that something complex (like Kubernetes) can be made simpler by adding another complex thing to it (OpenShift). In this case I think it's true. I originally set out to answer the question "Why bother with OpenShift?" and with this little test I think the answer is "because it shortens the time between writing code and having it up and running". I didn't __want__ to like OpenShift, but I really enjoyed this and hope I'll get a chance to use it on a real project soon. 
 
