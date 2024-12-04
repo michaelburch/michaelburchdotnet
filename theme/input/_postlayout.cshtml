@@ -12,6 +12,8 @@ var blueskyUser = Document.GetString("BlueskyUser");
 
 	<head>
 		@Html.Partial("_head")
+		<link rel="stylesheet" href="@Context.GetLink("assets/css/xcode.css")" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  		<link rel="stylesheet" href="@Context.GetLink("assets/css/vs2015.css")" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" media='(prefers-color-scheme: dark)' />
 	</head>
 
 	<body class="is-preload">
@@ -60,7 +62,7 @@ var blueskyUser = Document.GetString("BlueskyUser");
 							<script defer src="/assets/js/purify.min.js"></script>
 							<script defer src="/assets/js/comments.js" data-username="@blueskyUser" data-threadId="@threadId"></script>
 						}
-					<script  src=@Context.GetLink("assets/js/highlight.pack.js")></script>
+					
 					</footer>
 					<br/>
 					@if(!string.IsNullOrWhiteSpace(threadId))
@@ -69,7 +71,9 @@ var blueskyUser = Document.GetString("BlueskyUser");
 					}
 					<div id="comments"></div>
 			</div>
-			<script defer>
+			@Html.Partial("_footer")
+			<script src=@Context.GetLink("assets/js/highlight.pack.js")></script>
+			<script async defer>
 				function highlightCode() {
 					var pres = document.querySelectorAll("pre>code");
 					for (var i = 0; i < pres.length; i++) {
@@ -78,6 +82,5 @@ var blueskyUser = Document.GetString("BlueskyUser");
 				}
 				highlightCode();
 			</script>
-			@Html.Partial("_footer")
 	</body>
 	</html>
