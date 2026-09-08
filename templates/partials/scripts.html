@@ -10,10 +10,19 @@
       tooltipStyle: mq.matches ? "dark" : "light",
       customStyle: {
         heading: {
+          // Reftagger colour-validates heading.backgroundColor and
+          // body.moreLink.color whenever customStyle is set, warning on the
+          // console if they are absent, so both are given explicitly.
+          backgroundColor: "#ffffff",
+          color: "#646464",
           fontFamily: "Verdana, Geneva, sans-serif"
         },
         body: {
-          fontFamily: "Verdana, Geneva, sans-serif"
+          color: "#646464",
+          fontFamily: "Verdana, Geneva, sans-serif",
+          moreLink: {
+            color: "#3f75a2"
+          }
         }
       }
     }

@@ -37,11 +37,8 @@
   
 @font-face {
     font-family: 'icomoon';
-    src:  url('../webfonts/icomoon.eot?ksm2yp');
-    src:  url('../webfonts/icomoon.eot?ksm2yp#iefix') format('embedded-opentype'),
-      url('../webfonts/icomoon.ttf?ksm2yp') format('truetype'),
-      url('../webfonts/icomoon.woff?ksm2yp') format('woff'),
-      url('../webfonts/icomoon.svg?ksm2yp#icomoon') format('svg');
+    src:  url('../webfonts/icomoon.woff2?ksm2yp') format('woff2'),
+      url('../webfonts/icomoon.woff?ksm2yp') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: block;
