@@ -1,0 +1,44 @@
+# The only thing between the cluster and whatever fronts the site. Keeping the
+# routing here rather than in a tunnel or CDN config means swapping the edge is
+# a DNS change plus deleting cloudflared.yaml, with nothing to re-create.
+#
+# Cloudflare Tunnel currently dials out and forwards to this controller, so no
+# inbound ports are open. To drop Cloudflare, point DNS at the haproxy
+# LoadBalancer (192.168.20.37) and uncomment the TLS block below so cert-manager
+# issues a certificate instead of the edge terminating it.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-blog
+  namespace: michaelburch
+  annotations:
+    haproxy.org/load-balance: "leastconn"
+    # cert-manager.io/issuer: "michaelburch-net"
+spec:
+  ingressClassName: haproxy
+  # tls:
+  #   - secretName: michaelburch-net-tls
+  #     hosts:
+  #       - 'michaelburch.net'
+  #       - 'www.michaelburch.net'
+  rules:
+    - host: 'www.michaelburch.net'
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: blog
+                port:
+                  number: 80
+    - host: 'michaelburch.net'
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: blog
+                port:
+                  number: 80

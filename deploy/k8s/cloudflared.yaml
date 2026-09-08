@@ -1,3 +1,10 @@
+# The only Cloudflare-specific artifact in the repo. Deleting this file and
+# repointing DNS is the whole exit path; blog.yaml and ingress.yaml stay as they
+# are, because the tunnel forwards to the haproxy ingress rather than to the
+# blog Service directly. Configure the public hostname in the Zero Trust
+# dashboard to point at:
+#   http://haproxy-ingress-kubernetes-ingress.haproxy.svc.cluster.local:80
+#
 # The tunnel dials out to Cloudflare, so the cluster needs no inbound ports and
 # the origin IP is never published. Create the secret out-of-band:
 #   kubectl -n michaelburch create secret generic cloudflared-token \
