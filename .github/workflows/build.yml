@@ -20,7 +20,7 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Install Zola
         run: |
@@ -48,7 +48,7 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       # The cluster runs 6 arm64 workers alongside 3 amd64 servers, so a
       # single-arch image would be unschedulable on most nodes.
