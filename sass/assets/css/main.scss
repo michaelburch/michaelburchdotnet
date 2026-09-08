@@ -154,6 +154,12 @@
 	max-width: 68em;
 }
 
+// ul.actions offsets its first item with a negative margin, which the auto
+// margins above cancel; drop the padding instead so buttons start on the edge.
+#main > ul.actions > li:first-child {
+	padding-left: 0;
+}
+
 // Contains a figure's float so it cannot overlap neighbouring blocks or let
 // later paragraphs rise above it. Transparent - the figure keeps its own band.
 .figure-group {
