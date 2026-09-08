@@ -145,6 +145,12 @@
 	width: 100%;
 }
 
+// Without a cap the column runs the full inset width on very wide screens.
+// Cards stay flush to the left of their column so the slack falls on the right.
+#main > .post {
+	max-width: 60em;
+}
+
 // Contains a figure's float so it cannot overlap neighbouring blocks or let
 // later paragraphs rise above it. Transparent - the figure keeps its own band.
 .figure-group {

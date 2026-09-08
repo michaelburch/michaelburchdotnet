@@ -24,6 +24,17 @@
 			padding: _size(section-spacing);
 		}
 
+		// Wide displays only: line the sidebar up with the header nav (13.5em is
+		// the wordmark plus its divider) and mirror that inset on the right.
+		// Below 1600px the inset would eat too much of the content column.
+		@media screen and (min-width: 1600px) {
+			margin-left: 0;
+			margin-right: 0;
+			width: 100%;
+			padding-left: 13.5em;
+			padding-right: 13.5em;
+		}
+
 		@include breakpoint('<=medium') {
 			display: block;
 		}
