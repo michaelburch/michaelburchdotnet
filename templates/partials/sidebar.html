@@ -1,0 +1,25 @@
+<section id="sidebar">
+  <!-- Intro -->
+  <section id="intro">
+    <a href="{{ get_url(path='/') }}" class="logo"><img src="{{ get_url(path=config.extra.author_image) }}" alt="{{ config.author }} profile." /></a>
+    <header>
+      <h2>{{ config.author }}</h2>
+    </header>
+  </section>
+  <!-- About -->
+  <section id="about" class="blurb">
+    <p>{{ config.extra.intro }}</p>
+    <ul class="icons">
+      {%- for item in config.extra.social %}
+      <li><a href="{{ item.url }}" class="{{ item.icon }}"{% if item.external %} target="_blank" rel="noopener"{% endif %}>
+          {{ item.name }}<span class="label">{{ item.name }}</span></a></li>
+      {%- endfor %}
+    </ul>
+  </section>
+  <!-- Footer -->
+  <section id="footer">
+    <p class="copyright">&copy; Copyright {{ now() | date(format="%Y") }}, {{ config.author }}. Design: <a
+        href="{{ config.extra.design_credit_url }}" target="_blank" rel="noopener">{{ config.extra.design_credit_name }}</a></p>
+    <p></p>
+  </section>
+</section>

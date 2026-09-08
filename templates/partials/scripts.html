@@ -1,0 +1,24 @@
+<script defer src="{{ get_url(path='assets/js/breakpoints.min.js') }}"></script>
+<script defer src="{{ get_url(path='assets/js/jquery.min.js') }}"></script>
+<script defer src="{{ get_url(path='assets/js/browser.min.js') }}"></script>
+<script defer src="{{ get_url(path='assets/js/util.js') }}"></script>
+<script defer src="{{ get_url(path='assets/js/main.js') }}"></script>
+<script defer src="{{ get_url(path='assets/js/reftagger.min.js') }}"></script>
+<script defer>
+  var mq = window.matchMedia("(prefers-color-scheme: light)");
+  window.refTagger = {
+    settings: {
+      bibleVersion: "HCSB",
+      socialSharing: ["faithlife", "twitter", "facebook"],
+      tooltipStyle: mq.matches ? "dark" : "light",
+      customStyle: {
+        heading: {
+          fontFamily: "Verdana, Geneva, sans-serif"
+        },
+        body: {
+          fontFamily: "Verdana, Geneva, sans-serif"
+        }
+      }
+    }
+  };
+</script>

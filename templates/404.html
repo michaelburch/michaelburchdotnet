@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div id="wrapper">
+  {% include "partials/header.html" %}
+  {% include "partials/menu.html" %}
+  <div id="main">
+    <article class="post page">
+      <header>
+        <div class="title">
+          <h2>Error</h2>
+          <p>404</p>
+        </div>
+      </header>
+      <h1 style="text-align:center">That page could not be found</h1>
+      <ul class="actions" style="justify-content:center">
+        <li><a href="{{ get_url(path='/') }}" class="button large">Back to the blog</a></li>
+      </ul>
+    </article>
+  </div>
+</div>
+{% endblock body %}

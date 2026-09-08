@@ -1,0 +1,27 @@
+<article class="post">
+  <header>
+    <div class="title">
+      <h2><a class="header" href="{{ post.permalink }}">{{ post.title }}</a></h2>
+      {%- if post.extra.lead %}
+      <p>{{ post.extra.lead }}</p>
+      {%- endif %}
+    </div>
+    <div class="meta">
+      <time class="published" datetime="{{ post.date | date(format='%Y-%m-%d') }}">{{ post.date | date(format="%B %d, %Y") }}</time>
+    </div>
+  </header>
+  {%- if post.extra.image %}
+  <a href="{{ post.permalink }}" class="image featured"><img src="{{ get_url(path=post.extra.image) }}" alt="" /></a>
+  {%- endif %}
+  {{ post.summary | trim | regex_replace(pattern="</p>$", rep="&hellip;</p>") | safe }}
+  <footer>
+    <ul class="actions">
+      <li><a href="{{ post.permalink }}" class="button large">Continue Reading</a></li>
+    </ul>
+    <ul class="stats">
+      {%- for tag in post.taxonomies.tags | default(value=[]) %}
+      <li><a href="{{ get_taxonomy_url(kind='tags', term=tag) }}">{{ tag }}</a></li>
+      {%- endfor %}
+    </ul>
+  </footer>
+</article>

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div id="wrapper">
+  {% include "partials/header.html" %}
+  {% include "partials/menu.html" %}
+  <div id="main" class="index">
+    {%- for post in paginator.pages %}
+    {%- include "partials/post_card.html" %}
+    {%- endfor %}
+
+    <ul class="actions pagination">
+      <li><a href="{{ paginator.previous | default(value='#') }}" class="button large next{% if not paginator.previous %} disabled{% endif %}">Newer Posts</a></li>
+      <li><a href="{{ paginator.next | default(value='#') }}" class="button large previous{% if not paginator.next %} disabled{% endif %}">Older Posts</a></li>
+    </ul>
+    <p>Page {{ paginator.current_index }} of {{ paginator.number_pagers }}</p>
+  </div>
+  {% include "partials/sidebar.html" %}
+</div>
+{% endblock body %}
