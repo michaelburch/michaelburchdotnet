@@ -27,6 +27,7 @@
 	// Based on css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice
 		html {
 			box-sizing: border-box;
+			color-scheme: light dark;
 		}
 
 		*, *:before, *:after {
