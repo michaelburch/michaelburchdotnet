@@ -40,7 +40,7 @@ spec:
               app.kubernetes.io/name: cloudflared
       containers:
         - name: cloudflared
-          image: cloudflare/cloudflared:2025.2.1
+          image: cloudflare/cloudflared:2026.8.3
           args:
             - tunnel
             - --no-autoupdate
