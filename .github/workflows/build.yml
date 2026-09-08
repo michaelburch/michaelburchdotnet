@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
   pull_request:
+  schedule:
+    # External links rot on their own schedule, not ours.
+    - cron: "0 7 * * 1"
   workflow_dispatch:
 
 concurrency:
@@ -28,13 +31,18 @@ jobs:
 
       - run: zola build
 
-      # Hits real external URLs, so it can fail on someone else's outage rather
-      # than a broken link here.
-      - name: Check links
+      # Internal links only: a PR should not fail because someone else's site
+      # started returning 403 to non-browser user agents.
+      - name: Check internal links
+        run: zola check --skip-external-links
+
+      - name: Check external links
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: zola check
 
   image:
     needs: check
+    if: github.event_name != 'schedule'
     runs-on: ubuntu-latest
     permissions:
       contents: read
