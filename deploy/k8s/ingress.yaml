@@ -13,6 +13,14 @@ metadata:
   namespace: michaelburch
   annotations:
     haproxy.org/load-balance: "leastconn"
+    # Overrides the controller-wide default, which is too strict for the
+    # analytics beacon, the Bluesky comment fetch and Reftagger's logging pixel.
+    haproxy.org/response-set-header: |
+      X-Frame-Options "SAMEORIGIN"
+      X-Content-Type-Options "nosniff"
+      Referrer-Policy "strict-origin-when-cross-origin"
+      Permissions-Policy "geolocation=(), microphone=(), camera=()"
+      Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://app.tinyanalytics.io https://dash.tinyanalytics.io; script-src-elem 'self' 'unsafe-inline' https://app.tinyanalytics.io https://dash.tinyanalytics.io; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://api.reftagger.com https://cdn.bsky.app; font-src 'self' data:; connect-src 'self' https://dash.tinyanalytics.io https://public.api.bsky.app; frame-ancestors 'self'; base-uri 'self'; form-action 'self';"
     # cert-manager.io/issuer: "michaelburch-net"
 spec:
   ingressClassName: haproxy
