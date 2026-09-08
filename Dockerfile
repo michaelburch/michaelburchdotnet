@@ -6,7 +6,7 @@ WORKDIR /project
 COPY . .
 RUN ["/zola", "build"]
 
-FROM nginxinc/nginx-unprivileged:1.27-alpine AS runtime
+FROM nginxinc/nginx-unprivileged:1.31-alpine AS runtime
 COPY --from=build /project/public /usr/share/nginx/html
 # Statiq served the RSS feed at /feed/index.rss; Zola cannot name a template .rss.
 COPY --from=build /project/public/feed/rss.xml /usr/share/nginx/html/feed/index.rss
