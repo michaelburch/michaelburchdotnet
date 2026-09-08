@@ -10,8 +10,11 @@
 		margin-right: _size(section-spacing);
 		min-width: 22em;
 		width: 22em;
-        left: 2em;
-        position: fixed;
+		// Sticky rather than fixed so it stays with the centred wrapper on very
+		// wide screens instead of pinning to the viewport edge.
+		position: sticky;
+		top: _size(section-spacing);
+		align-self: flex-start;
 		> * {
 			
 			margin: _size(section-spacing) 0 0 0;
@@ -29,6 +32,7 @@
 			margin: _size(section-spacing) 0 0 0;
 			min-width: 0;
 			padding: _size(section-spacing) 0 0 0;
+			position: static;
 			width: 100%;
 			overflow-x: hidden;
 		}

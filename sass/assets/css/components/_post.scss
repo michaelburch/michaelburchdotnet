@@ -12,7 +12,7 @@
 		border: solid 1px _palette(border);
 		margin: 0 0 _size(section-spacing) 0;
 		position: relative;
-	
+
 		img {
 			max-width: 100%;
 		}
@@ -27,11 +27,13 @@
 			.title {
 				@include vendor('flex-grow', '1');
 				-ms-flex: 1;
+				// Allows a long title to wrap rather than widening the flex header.
+				min-width: 0;
 				padding: (_size(section-spacing) * 1.25) _size(section-spacing) (_size(section-spacing) * 1.1) _size(section-spacing);
 
 				h2 {
 					font-weight: _font(weight-heading-extrabold);
-					font-size: 1.5em;
+					font-size: 1.75em;
 				}
 
 				> :last-child {
@@ -42,9 +44,11 @@
 			.meta {
 				@include padding(_size(section-spacing) * 1.25, _size(section-spacing));
 				border-left: solid 1px _palette(border);
-				min-width: 17em;
+				// Hugs the date instead of reserving 17em, which crowded the title
+				// once the reading column was capped.
+				@include vendor('flex-shrink', '0');
+				min-width: 0;
 				text-align: right;
-				width: 17em;
 
 				> * {
 					margin: 0 0 (_size(element-margin) * 0.5) 0;
@@ -235,7 +239,7 @@
 
 				.title {
 					h2 {
-						font-size: 1.1em;
+						font-size: 1.5em;
 					}
 				}
 			}

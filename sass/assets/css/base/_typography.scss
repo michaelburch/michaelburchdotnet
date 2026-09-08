@@ -16,22 +16,6 @@
 		@include breakpoint('<=xlarge') {
 			font-size: 12pt;
 		}
-
-		@include breakpoint('<=large') {
-			font-size: 12pt;
-		}
-
-		@include breakpoint('<=medium') {
-			font-size: 12pt;
-		}
-
-		@include breakpoint('<=small') {
-			font-size: 12pt;
-		}
-
-		@include breakpoint('<=xsmall') {
-			font-size: 12pt;
-		}
 	}
 
 	a {
@@ -88,19 +72,19 @@
 	}
 
 	h2 {
-		font-size: 1.1em;
+		font-size: 1.4em;
 	}
 
 	h3 {
-		font-size: 0.9em;
+		font-size: 1.15em;
 	}
 
 	h4 {
-		font-size: 0.7em;
+		font-size: 1em;
 	}
 
 	h5 {
-		font-size: 0.7em;
+		font-size: 0.85em;
 	}
 
 	h6 {

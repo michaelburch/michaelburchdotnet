@@ -6,10 +6,14 @@
   {% include "partials/menu.html" %}
   <div id="main" class="index">
     <h1 class="bg-dark text-light p-2">{{ section.title }}</h1>
-    {%- set years = section.pages | group_by(attribute="year") %}
-    {%- for year, posts in years %}
-    <h1 id="{{ year }}" class="bg-dark text-light p-2">{{ year }}</h1>
-    {%- for post in posts %}
+    {#- Walk the date-sorted pages and emit a heading when the year changes.
+        group_by returns a map, whose iteration order is not guaranteed. -#}
+    {%- set_global current_year = 0 %}
+    {%- for post in section.pages %}
+    {%- if post.year != current_year %}
+    {%- set_global current_year = post.year %}
+    <h1 id="{{ post.year }}" class="bg-dark text-light p-2">{{ post.year }}</h1>
+    {%- endif %}
     <article class="mini-post">
       <header>
         <div class="title">
@@ -26,7 +30,6 @@
       <a href="{{ post.permalink }}" class="image featured"><img src="{{ get_url(path=post.extra.image) }}" alt="" /></a>
       {%- endif %}
     </article>
-    {%- endfor %}
     {%- endfor %}
   </div>
   {% include "partials/sidebar.html" %}
