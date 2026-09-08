@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div id="wrapper">
+  {% include "partials/header.html" %}
+  <div id="main" class="index">
+    {% include "partials/intro.html" %}
+    <div class="post">
+      <h1>Tags</h1>
+      <div id="tagCloud">
+        {%- for term in terms %}
+        <a role="button" href="{{ term.permalink }}"> {{ term.name }} ({{ term.pages | length }})</a>
+        {%- endfor %}
+      </div>
+    </div>
+  </div>
+  {% include "partials/site_footer.html" %}
+</div>
+{% endblock body %}

@@ -1,11 +1,5 @@
-output/
-cache/
-bin/
-obj/
-config.wyam.dll
-config.wyam.hash
-packages.xml
-config.wyam.packages.xml
+public/
+.tools/
 .DS_store
 .Identifier
 .vscode

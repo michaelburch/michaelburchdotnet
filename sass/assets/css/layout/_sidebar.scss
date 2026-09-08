@@ -1,0 +1,20 @@
+///
+/// Future Imperfect by HTML5 UP
+/// html5up.net | @ajlkn
+/// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+///
+
+/* Sidebar */
+
+	// Holds only the site footer now that the intro renders in the content column.
+	#sidebar {
+		border-top: solid 1px _palette(border);
+		margin: _size(section-spacing) 0 0 0;
+		padding: _size(section-spacing) 0 0 0;
+		width: 100%;
+
+		> * {
+			margin: 0;
+			padding: 0;
+		}
+	}

@@ -1,0 +1,18 @@
+{% component caption_image(src: string, alt: string = "", style: string = "container") %}
+<div class="{{ style }}"><figure><img src="{{ get_url(path=src) }}" alt="{{ alt }}" loading="lazy" />{% if body %}<figcaption>{{ body | trim }}</figcaption>{% endif %}</figure></div>
+{% endcomponent caption_image %}
+
+{# Newlines are collapsed so the output stays a single HTML block; a blank line
+   would end the block early and leak the remaining figures into a paragraph. #}
+{% component caption_row() %}
+<div class="container-row">{{ body | trim | regex_replace(pattern="\\s*\\n\\s*", rep="") }}</div>
+{% endcomponent caption_row %}
+
+{# Groups a figure with the prose that wraps beside it. flow-root contains the
+   float so it cannot interfere with neighbouring blocks. The body is rendered
+   to HTML here rather than by the page, so blank lines can't split the block. #}
+{% component caption_group() %}
+<div class="figure-group">{{ body | trim | markdown | regex_replace(pattern="\\n+", rep="") | safe }}</div>
+{% endcomponent caption_group %}
+
+

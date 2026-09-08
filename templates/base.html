@@ -1,0 +1,82 @@
+{%- if page is defined -%}
+  {%- set_global node = page -%}
+{%- elif section is defined -%}
+  {%- set_global node = section -%}
+{%- endif -%}
+
+{%- if term is defined -%}
+  {%- set_global meta_title = term.name -%}
+{%- elif node is defined -%}
+  {%- set_global meta_title = node?.title or "" -%}
+{%- else -%}
+  {%- set_global meta_title = "" -%}
+{%- endif -%}
+
+{%- if meta_title -%}
+  {%- set_global page_title = config.title ~ " - " ~ meta_title -%}
+{%- else -%}
+  {%- set_global page_title = config.title -%}
+{%- endif -%}
+
+{%- if node is defined -%}
+  {%- set_global excerpt = node?.summary or node?.description or config.description -%}
+  {%- set_global card = node?.extra?.card or config.extra.default_card -%}
+{%- else -%}
+  {%- set_global excerpt = config.description -%}
+  {%- set_global card = config.extra.default_card -%}
+{%- endif -%}
+{%- set_global excerpt = excerpt | striptags | trim -%}
+
+{%- set_global keywords = config.extra.keywords | join(sep=",") -%}
+{%- if node is defined and node?.taxonomies?.tags -%}
+  {%- set_global keywords = keywords ~ "," ~ (node.taxonomies.tags | join(sep=",")) -%}
+{%- endif -%}
+<!DOCTYPE html>
+<html lang="{{ config.default_language }}" prefix="og: http://ogp.me/ns#">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Language" content="en" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {#- Tells the browser, and extensions like Dark Reader, that the site ships
+     its own dark theme via prefers-color-scheme. #}
+  <meta name="color-scheme" content="light dark" />
+  <link rel="stylesheet" href="{{ get_url(path='assets/css/main.css', cachebust=true) }}" />
+  <link rel="stylesheet" href="{{ get_url(path='giallo-light.css', cachebust=true) }}" media="(prefers-color-scheme: light)" />
+  <link rel="stylesheet" href="{{ get_url(path='giallo-dark.css', cachebust=true) }}" media="(prefers-color-scheme: dark)" />
+  <meta name="description" content="{{ config.description }}" />
+  <link type="application/rss+xml" rel="alternate" title="{{ config.title }}" href="{{ get_url(path='feed/index.rss') }}" />
+  <link type="application/atom+xml" rel="alternate" title="{{ config.title }}" href="{{ get_url(path='feed/index.xml') }}" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="msapplication-TileImage" content="/mstile-150x150.png">
+  <meta name="theme-color" content="#444444">
+  <meta name="application-name" content="{{ meta_title | default(value=config.title) }}" />
+  <meta name="msapplication-tooltip" content="{{ meta_title | default(value=config.title) }}" />
+  <meta name="msapplication-starturl" content="{{ get_url(path='/') }}" />
+  <meta property="og:title" content="{{ page_title }}" />
+  <meta property="og:image" content="{{ get_url(path=card) }}" />
+  <meta property="og:type" content="{% if page is defined %}article{% else %}website{% endif %}" />
+  <meta property="og:url" content="{{ current_url | default(value=config.base_url) }}" />
+  <meta property="og:description" content="{{ excerpt | truncate(length=300) }}" />
+  <meta name="author" content="{{ config.author }}" />
+  <meta name="keywords" content="{{ keywords }}" />
+  <title>{{ page_title }}</title>
+  <!-- Pixel Code for https://app.tinyanalytics.io/ -->
+  <script defer src="https://app.tinyanalytics.io/pixel/372hZCQ7steBAejd"></script>
+  <!-- END Pixel Code -->
+  {%- block head %}{% endblock head %}
+</head>
+
+<body class="is-preload">
+  {% block body %}{% endblock body %}
+  {# Outside the wrapper so the dimming class on <body> does not fade it too. #}
+  {% include "partials/menu.html" %}
+  {% include "partials/scripts.html" %}
+  {%- block scripts %}{% endblock scripts %}
+</body>
+
+</html>

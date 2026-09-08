@@ -1,0 +1,3 @@
+{% for item in config.extra.nav %}
+      <li><a href="{{ get_url(path=item.url) }}">{{ item.name }}</a></li>
+{%- endfor %}

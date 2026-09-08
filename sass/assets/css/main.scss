@@ -1,0 +1,302 @@
+@import 'libs/vars';
+@import 'libs/functions';
+@import 'libs/mixins';
+@import 'libs/vendor';
+@import 'libs/breakpoints';
+@import 'libs/html-grid';
+@import 'base/fonts';
+/* raleway-regular - latin */
+@font-face {
+	font-family: 'Raleway';
+	font-display: swap;
+	src: url('../webfonts/raleway-v34-latin-regular.woff2') format('woff2');
+  }
+/* source-sans-pro-regular - latin */
+@font-face {
+	font-display: swap; 
+	font-family: 'Source Sans Pro';
+	src: url('../webfonts/source-sans-pro-v15-latin-regular.woff2') format('woff2'); 
+}
+
+/*
+	Future Imperfect by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+*/
+
+// Breakpoints.
+
+@include breakpoints((xlarge: (1200px, 1680px),
+		large: (1008px, 1199px),
+		medium: (641px, 1007px),
+		small: (481px, 640px),
+		xsmall: (null, 480px)));
+
+// Base.
+
+@import 'base/reset';
+@import 'base/page';
+@import 'base/typography';
+
+// Component.
+
+@import 'components/row';
+@import 'components/author';
+@import 'components/blurb';
+@import 'components/button';
+@import 'components/form';
+@import 'components/icon';
+@import 'components/image';
+@import 'components/list';
+@import 'components/actions';
+@import 'components/icons';
+@import 'components/posts';
+@import 'components/mini-post';
+@import 'components/post';
+@import 'components/section';
+@import 'components/table';
+
+// Layout.
+
+@import 'layout/header';
+@import 'layout/wrapper';
+@import 'layout/main';
+@import 'layout/sidebar';
+@import 'layout/intro';
+@import 'layout/post-footer';
+@import 'layout/footer';
+@import 'layout/menu';
+
+.comment-root {
+	background-color: _palette(bg-dark) !important;
+
+	&:hover {
+		background-color: _palette(accent) !important;
+	}
+}
+
+.comment-container {
+	display: flex;
+	align-items: flex-start;
+	margin-bottom: 15px;
+	padding: 15px;
+	background-color: _palette(border-bg);
+
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease;
+}
+
+.child-comments {
+	margin-left: 30px;
+	border-left: solid 4px _palette(accent);
+	margin-top: 10px;
+}
+
+.comment-avatar {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+
+.comment-details {
+	max-width: calc(100% - 60px);
+}
+
+.comment-header {
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.comment-header span {
+	font-size: 0.9em;
+	color: gray;
+}
+
+.comment-text {
+	margin-bottom: 10px;
+}
+
+.username-link {
+	border-bottom: none;
+}
+
+.comment-timestamp {
+	font-size: 0.8em;
+	opacity: .8;
+}
+
+// Shaded band around caption images. Wraps the figure only - body text always
+// flows on the page background.
+.container,
+.container-left,
+.container-right {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem;
+	margin: 0 0 _size(element-margin) 0;
+	border-top: solid 1px _palette(border);
+	border-bottom: solid 1px _palette(border);
+	background-color: _palette(border-bg);
+}
+
+.container {
+	width: 100%;
+}
+
+// Without a cap the column runs the full wrapper width on very wide screens.
+// Centred so every view lines up at the same x, sidebar or not.
+#main > .post,
+#main > #intro {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 68em;
+}
+
+// Contains a figure's float so it cannot overlap neighbouring blocks or let
+// later paragraphs rise above it. Transparent - the figure keeps its own band.
+.figure-group {
+	display: flow-root;
+	margin: 0 0 _size(element-margin) 0;
+}
+
+.figure-group > p:last-child {
+	margin-bottom: 0;
+}
+
+// Backstop: a stray float can never spill past the article or collide with the
+// bio and tag sections at the end of a post.
+.post {
+	display: flow-root;
+}
+
+#post-footer,
+.post > footer {
+	clear: both;
+}
+
+// Side-by-side figures share a single band, so the children give up their own
+// band and float and become flex items.
+.container-row {
+	display: flex;
+	align-items: stretch;
+	justify-content: center;
+	gap: 2rem;
+	padding: 1rem;
+	margin: 0 0 _size(element-margin) 0;
+	border-top: solid 1px _palette(border);
+	border-bottom: solid 1px _palette(border);
+	background-color: _palette(border-bg);
+	clear: both;
+}
+
+.post .container-row > .container,
+.post .container-row > .container-left,
+.post .container-row > .container-right {
+	float: none;
+	clear: none;
+	max-width: none;
+	min-width: 0;
+	flex: 1 1 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background-color: transparent;
+}
+
+.post figure {
+	margin: 0;
+	position: relative;
+	background-color: rgb(27, 27, 27);
+}
+
+.post figure img {
+	max-width: 100%;
+	max-height: 22rem;
+	display: block;
+	position: relative;
+
+	&.featured {
+		display: block;
+		margin: 0;
+		width: 100%;
+		max-height: none;
+
+		img {
+			width: 100%;
+		}
+	}
+}
+
+.post figure figcaption {
+
+	top: 25%;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	color: _palette(fg-dark);
+}
+
+@media screen and (min-width:1007) {
+	.container-left {
+		float: left;
+		padding-right: 2rem;
+	}
+
+	.container-right {
+		float: right;
+		padding-left: 2rem;
+	}
+
+}
+
+@media (prefers-color-scheme: dark) {
+
+	body,
+	#menu {
+		color: _palette(fg-dark);
+		background-color: _palette(bg-dark);
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	strong {
+		color: _palette(fg-bold-dark);
+	}
+
+	input[type=submit],
+	input[type=reset],
+	input[type=button],
+	button,
+	.button,
+	:disabled {
+		color: _palette(fg-bold-dark) !important;
+	}
+
+	#header .main ul li>a {
+		color: _palette(fg-dark)
+	}
+
+	#footer .copyright {
+		color: _palette(fg-dark);
+	}
+
+	.post,
+	#header,
+	.mini-post {
+		background: _palette(bg-dark-alt);
+	}
+
+	.post>header .meta .published {
+		color: _palette(fg-dark);
+	}
+
+	.comment-root * {
+		color: _palette(fg-dark) !important;
+	}
+}

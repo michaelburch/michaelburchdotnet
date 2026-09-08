@@ -1,0 +1,289 @@
+///
+/// Future Imperfect by HTML5 UP
+/// html5up.net | @ajlkn
+/// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+///
+
+/* Post */
+
+	.post {
+		@include padding(_size(section-spacing), _size(section-spacing));
+		background: _palette(bg);
+		border: solid 1px _palette(border);
+		margin: 0 0 _size(section-spacing) 0;
+		position: relative;
+
+		img {
+			max-width: 100%;
+		}
+		> header {
+			@include vendor('display', 'flex');
+			border-bottom: solid 1px _palette(border);
+			left: (_size(section-spacing) * -1);
+			margin: (_size(section-spacing) * -1) 0 _size(section-spacing) 0;
+			position: relative;
+			width: calc(100% + #{_size(section-spacing) * 2});
+
+			.title {
+				@include vendor('flex-grow', '1');
+				-ms-flex: 1;
+				// Allows a long title to wrap rather than widening the flex header.
+				min-width: 0;
+				padding: (_size(section-spacing) * 1.25) _size(section-spacing) (_size(section-spacing) * 1.1) _size(section-spacing);
+
+				h2 {
+					font-weight: _font(weight-heading-extrabold);
+					font-size: 1.75em;
+				}
+
+				> :last-child {
+					margin-bottom: 0;
+				}
+			}
+
+			.meta {
+				@include padding(_size(section-spacing) * 1.25, _size(section-spacing));
+				border-left: solid 1px _palette(border);
+				// Hugs the date instead of reserving 17em, which crowded the title
+				// once the reading column was capped.
+				@include vendor('flex-shrink', '0');
+				min-width: 0;
+				text-align: right;
+
+				> * {
+					margin: 0 0 (_size(element-margin) * 0.5) 0;
+				}
+
+				> :last-child {
+					margin-bottom: 0;
+				}
+
+				.published {
+					color: _palette(fg-bold);
+					display: block;
+					font-family: _font(family-heading);
+					font-size: 0.7em;
+					font-weight: _font(weight-heading-bold);
+					letter-spacing: _font(kerning-heading);
+					margin-top: 0.5em;
+					text-transform: uppercase;
+					white-space: nowrap;
+				}
+			}
+		}
+
+		> a.image.featured {
+			overflow: hidden;
+
+			img {
+				@include vendor('transition', 'transform #{_duration(transition)} ease-out');
+			}
+
+			&:hover {
+				img {
+					@include vendor('transform', 'scale(1.05)');
+				}
+			}
+		}
+
+		> footer {
+			@include vendor('display', 'flex');
+			@include vendor('align-items', 'center');
+			// nowrap so the tag list shrinks and wraps internally beside the button
+			// instead of being bumped to a line of its own as one block.
+			@include vendor('flex-wrap', 'nowrap');
+			// Spacing lives here rather than on .actions so a wrapped tag row keeps it.
+			padding-bottom: _size(element-margin);
+
+			.actions {
+				@include vendor('flex-shrink', '0');
+				margin-bottom: 0;
+			}
+
+			.stats {
+				cursor: default;
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				// Takes the space the button leaves and wraps within it, rather than
+				// being pushed onto a line of its own as a single block.
+				@include vendor('flex-grow', '1');
+				min-width: 0;
+				@include vendor('display', 'flex');
+				@include vendor('flex-wrap', 'wrap');
+				@include vendor('align-items', 'center');
+				@include vendor('justify-content', 'flex-end');
+				row-gap: 0.75em;
+				li {
+					border-left: solid 1px _palette(border);
+					display: inline-block;
+					font-family: _font(family-heading);
+					font-size: 0.6em;
+					font-weight: _font(weight-heading);
+					letter-spacing: _font(kerning-heading);
+					line-height: 1;
+					margin: 0 0 0 2em;
+					padding: 0 0 0 2em;
+					text-transform: uppercase;
+
+					&:first-child {
+						border-left: 0;
+					}
+
+					.icon {
+						border-bottom: 0;
+
+						&:before {
+							color: _palette(border);
+							margin-right: 0.75em;
+						}
+					}
+				}
+
+				// Tighter gutters so more tags fit per row once space is short.
+				@include breakpoint('<=medium') {
+					li {
+						margin: 0 0 0 1.25em;
+						padding: 0 0 0 1.25em;
+					}
+				}
+			}
+		}
+		@include breakpoint('>=large') {
+			// Figures are contained by .figure-group, so they need no clearing here.
+			.container-left {
+				float: left;
+				max-width: calc(50% - 2rem);
+				margin-right: 2rem;
+			}
+			.container-right {
+				float: right;
+				max-width: calc(50% - 2rem);
+				margin-left: 2rem;
+			}
+		}
+
+		@include breakpoint('<=medium') {
+			border-left: 0;
+			border-right: 0;
+			left: _size(section-spacing) * -1;
+			width: calc(100% + (#{_size(section-spacing)} * 2));
+
+			> header {
+				@include vendor('flex-direction', 'column');
+				@include padding(_size(section-spacing) * 1.25, _size(section-spacing), (0, 0, -0.5em, 0));
+				border-left: 0;
+
+				.title {
+					-ms-flex: 0 1 auto;
+					margin: 0 0 _size(element-margin) 0;
+					padding: 0;
+					text-align: center;
+				}
+
+				.meta {
+					@include vendor('align-items', 'center');
+					@include vendor('display', 'flex');
+					@include vendor('justify-content', 'center');
+					border-left: 0;
+					margin: 0 0 _size(element-margin) 0;
+					padding-top: 0;
+					padding: 0;
+					text-align: left;
+					width: 100%;
+
+					> * {
+						border-left: solid 1px _palette(border);
+						margin-left: 2em;
+						padding-left: 2em;
+					}
+
+					> :first-child {
+						border-left: 0;
+						margin-left: 0;
+						padding-left: 0;
+					}
+
+					.published {
+						margin-bottom: 0;
+						margin-top: 0;
+					}
+
+					.author {
+						@include vendor('flex-direction', 'row-reverse');
+						margin-bottom: 0;
+
+						.name {
+							margin: 0 0 0 1.5em;
+						}
+
+						img {
+							width: 3.5em;
+						}
+					}
+				}
+			}
+		}
+
+		@include breakpoint('<=small') {
+			@include padding(_size(section-spacing-small), _size(section-spacing-small));
+			left: _size(section-spacing-small) * -1;
+			margin: 0 0 _size(element-margin) 0;
+			width: calc(100% + (#{_size(section-spacing-small)} * 2));
+
+			> header {
+				@include padding(_size(section-spacing-small) * 2, _size(section-spacing-small), (0, 0, -0.5em, 0));
+				left: (_size(section-spacing-small) * -1);
+				margin: (_size(section-spacing-small) * -1) 0 _size(section-spacing-small) 0;
+				width: calc(100% + #{_size(section-spacing-small) * 2});
+
+				.title {
+					h2 {
+						font-size: 1.5em;
+					}
+				}
+			}
+		}
+
+		@include breakpoint('<=xsmall') {
+			> header {
+				.meta {
+					@include vendor('align-items', 'center');
+					@include vendor('flex-direction', 'column');
+
+					> * {
+						border-left: 0;
+						margin: (_size(element-margin) * 0.5) 0 0 0;
+						padding-left: 0;
+					}
+
+					.author {
+						.name {
+							display: none;
+						}
+					}
+				}
+			}
+
+			> .image.featured {
+				margin-left: _size(section-spacing-small) * -1;
+				margin-top: calc(#{_size(section-spacing-small) * -1} - 1px);
+				width: calc(100% + #{_size(section-spacing-small) * 2});
+			}
+
+			> footer {
+				@include vendor('align-items', 'stretch');
+				@include vendor('flex-direction', 'column-reverse');
+
+				.stats {
+					@include vendor('flex-grow', '0');
+					@include vendor('justify-content', 'center');
+
+					li {
+						margin: 0 0 0 1.25em;
+						padding: 0 0 0 1.25em;
+					}
+				}
+			}
+		}
+	}

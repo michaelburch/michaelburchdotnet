@@ -1,0 +1,8 @@
+.git
+.github
+.devcontainer
+.tools
+public
+deploy/k8s
+Dockerfile
+.dockerignore

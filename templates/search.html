@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div id="wrapper">
+  {% include "partials/header.html" %}
+  <div id="main" class="index">
+    {% include "partials/intro.html" %}
+    <h1 id="results-title"></h1>
+    <div id="search-results"></div>
+  </div>
+  {% include "partials/site_footer.html" %}
+</div>
+{% endblock body %}
+
+{% block scripts %}
+<script defer src="{{ get_url(path='elasticlunr.min.js') }}"></script>
+<script defer src="{{ get_url(path='assets/js/search.js') }}"
+  data-index-url="{{ get_url(path='search_index.en.json') }}"></script>
+{% endblock scripts %}
