@@ -1,5 +1,5 @@
 (function () {
-  var SNIPPET_LENGTH = 240;
+  var SNIPPET_LENGTH = 420;
 
   var scriptEl = document.querySelector("script[data-index-url]");
   var indexUrl = scriptEl
@@ -44,13 +44,21 @@
     var header = document.createElement("header");
     var titleWrap = document.createElement("div");
     titleWrap.className = "title";
-    var h3 = document.createElement("h3");
+    var h2 = document.createElement("h2");
     var link = document.createElement("a");
     link.className = "header";
-    link.href = doc.id;
+    // doc.id is absolute against config.base_url, so it would leave the current host.
+    var href = doc.path || "/";
+    link.href = href;
     link.textContent = doc.title;
-    h3.appendChild(link);
-    titleWrap.appendChild(h3);
+    h2.appendChild(link);
+    titleWrap.appendChild(h2);
+
+    if (doc.description) {
+      var lead = document.createElement("p");
+      lead.textContent = doc.description;
+      titleWrap.appendChild(lead);
+    }
     header.appendChild(titleWrap);
 
     var formatted = formatDate(doc.date);
@@ -69,6 +77,19 @@
     var p = document.createElement("p");
     p.textContent = snippet(doc.body, query);
     article.appendChild(p);
+
+    var footer = document.createElement("footer");
+    var actions = document.createElement("ul");
+    actions.className = "actions";
+    var item = document.createElement("li");
+    var more = document.createElement("a");
+    more.className = "button large";
+    more.href = href;
+    more.textContent = "Continue Reading";
+    item.appendChild(more);
+    actions.appendChild(item);
+    footer.appendChild(actions);
+    article.appendChild(footer);
 
     return article;
   }
