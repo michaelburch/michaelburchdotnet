@@ -1,3 +1,6 @@
+# Not pinned to $BUILDPLATFORM: that needs BuildKit and would break plain
+# `docker build` locally. Zola runs emulated for the non-native arch instead,
+# which costs seconds on a site this size.
 FROM ghcr.io/getzola/zola:v0.23.4 AS build
 WORKDIR /project
 COPY . .

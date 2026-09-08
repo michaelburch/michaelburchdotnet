@@ -28,7 +28,8 @@ spec:
       containers:
         - name: nginx
           image: ghcr.io/michaelburch/blog:latest
-          imagePullPolicy: IfNotPresent
+          # The tag is reused on every build, so the node must re-resolve it.
+          imagePullPolicy: Always
           ports:
             - name: http
               containerPort: 8080
