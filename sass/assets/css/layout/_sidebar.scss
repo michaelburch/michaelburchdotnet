@@ -7,10 +7,9 @@
 /* Sidebar */
 
 	// Holds only the site footer now that the intro renders in the content column.
+	// #footer draws its own rule, so this element contributes spacing only.
 	#sidebar {
-		border-top: solid 1px _palette(border);
 		margin: _size(section-spacing) 0 0 0;
-		padding: _size(section-spacing) 0 0 0;
 		width: 100%;
 
 		> * {
