@@ -4,10 +4,11 @@
 <div id="wrapper">
   {% include "partials/header.html" %}
   <div id="main" class="index">
-    <h1 id="results-title" class="bg-dark text-light p-2"></h1>
+    {% include "partials/intro.html" %}
+    <h1 id="results-title"></h1>
     <div id="search-results"></div>
   </div>
-  {% include "partials/sidebar.html" %}
+  {% include "partials/site_footer.html" %}
 </div>
 {% endblock body %}
 

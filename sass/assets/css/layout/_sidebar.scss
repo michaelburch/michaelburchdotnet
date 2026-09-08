@@ -6,34 +6,15 @@
 
 /* Sidebar */
 
+	// Holds only the site footer now that the intro renders in the content column.
 	#sidebar {
-		margin-right: _size(section-spacing);
-		min-width: 22em;
-		width: 22em;
-		// Sticky rather than fixed so it stays with the centred wrapper on very
-		// wide screens instead of pinning to the viewport edge.
-		position: sticky;
-		top: _size(section-spacing);
-		align-self: flex-start;
+		border-top: solid 1px _palette(border);
+		margin: _size(section-spacing) 0 0 0;
+		padding: _size(section-spacing) 0 0 0;
+		width: 100%;
+
 		> * {
-			
-			margin: _size(section-spacing) 0 0 0;
-			padding: _size(section-spacing) 0 0 0;
-		}
-
-		> :first-child {
-			border-top: 0;
-			margin-top: 0;
-			padding-top: 0;
-		}
-
-		@include breakpoint('<=medium') {
-			border-top: solid 1px _palette(border);
-			margin: _size(section-spacing) 0 0 0;
-			min-width: 0;
-			padding: _size(section-spacing) 0 0 0;
-			position: static;
-			width: 100%;
-			overflow-x: hidden;
+			margin: 0;
+			padding: 0;
 		}
 	}

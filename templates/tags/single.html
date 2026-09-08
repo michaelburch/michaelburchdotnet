@@ -4,29 +4,28 @@
 <div id="wrapper">
   {% include "partials/header.html" %}
   <div id="main" class="index">
-    <h1 class="bg-dark text-light p-2">Posts tagged '{{ term.name }}'</h1>
-    <div class="container">
-      <div class="row">
-        <div id="tagPosts">
-          {%- for post in paginator.pages %}
-          {%- include "partials/post_card.html" %}
-          {%- endfor %}
-          {%- if paginator.number_pagers > 1 %}
-          <ul class="actions pagination">
-            <li><a href="{{ paginator.previous | default(value='#') }}" class="button large next{% if not paginator.previous %} disabled{% endif %}">Newer Posts</a></li>
-            <li><a href="{{ paginator.next | default(value='#') }}" class="button large previous{% if not paginator.next %} disabled{% endif %}">Older Posts</a></li>
-          </ul>
-          {%- endif %}
-        </div>
-        <div id="tagCloud">
-          {%- set tags = get_taxonomy(kind="tags") %}
-          {%- for t in tags.items %}
-          <a href="{{ t.permalink }}" class="badge {% if t.name == term.name %}badge-dark{% else %}badge-light{% endif %}"> {{ t.name }} ({{ t.pages | length }})</a>
-          {%- endfor %}
-        </div>
+    {% include "partials/intro.html" %}
+    <div class="post">
+      <h1>Posts tagged '{{ term.name }}'</h1>
+      <div id="tagCloud">
+        {%- set tags = get_taxonomy(kind="tags") %}
+        {%- for t in tags.items %}
+        <a href="{{ t.permalink }}"{% if t.name == term.name %} aria-current="true"{% endif %}> {{ t.name }} ({{ t.pages | length }})</a>
+        {%- endfor %}
       </div>
     </div>
+    <div id="tagPosts">
+      {%- for post in paginator.pages %}
+      {%- include "partials/post_card.html" %}
+      {%- endfor %}
+      {%- if paginator.number_pagers > 1 %}
+      <ul class="actions pagination">
+        <li><a href="{{ paginator.previous | default(value='#') }}" class="button large next{% if not paginator.previous %} disabled{% endif %}">Newer Posts</a></li>
+        <li><a href="{{ paginator.next | default(value='#') }}" class="button large previous{% if not paginator.next %} disabled{% endif %}">Older Posts</a></li>
+      </ul>
+      {%- endif %}
+    </div>
   </div>
-  {% include "partials/sidebar.html" %}
+  {% include "partials/site_footer.html" %}
 </div>
 {% endblock body %}

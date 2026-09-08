@@ -4,6 +4,7 @@
 <div id="wrapper">
   {% include "partials/header.html" %}
   <div id="main" class="index">
+    {% include "partials/intro.html" %}
     {%- for post in paginator.pages %}
     {%- include "partials/post_card.html" %}
     {%- endfor %}
@@ -14,6 +15,6 @@
     </ul>
     <p>Page {{ paginator.current_index }} of {{ paginator.number_pagers }}</p>
   </div>
-  {% include "partials/sidebar.html" %}
+  {% include "partials/site_footer.html" %}
 </div>
 {% endblock body %}

@@ -4,14 +4,15 @@
 <div id="wrapper">
   {% include "partials/header.html" %}
   <div id="main" class="index">
-    <h1 class="bg-dark text-light p-2">{{ section.title }}</h1>
+    {% include "partials/intro.html" %}
+    <h1>{{ section.title }}</h1>
     {#- Walk the date-sorted pages and emit a heading when the year changes.
         group_by returns a map, whose iteration order is not guaranteed. -#}
     {%- set_global current_year = 0 %}
     {%- for post in section.pages %}
     {%- if post.year != current_year %}
     {%- set_global current_year = post.year %}
-    <h1 id="{{ post.year }}" class="bg-dark text-light p-2">{{ post.year }}</h1>
+    <h1 id="{{ post.year }}">{{ post.year }}</h1>
     {%- endif %}
     <article class="mini-post">
       <header>
@@ -31,6 +32,6 @@
     </article>
     {%- endfor %}
   </div>
-  {% include "partials/sidebar.html" %}
+  {% include "partials/site_footer.html" %}
 </div>
 {% endblock body %}
