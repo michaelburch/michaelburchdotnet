@@ -41,6 +41,7 @@ skip_prefixes = [
     "https://smile.amazon.com",
     "https://michaelburch.us19.list-manage.com",
     "https://www.strava.com",
+    "https://frame.work",
 ]
 skip_anchor_prefixes = ["https://github.com/"]
 
