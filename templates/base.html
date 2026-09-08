@@ -70,6 +70,8 @@
 
 <body class="is-preload">
   {% block body %}{% endblock body %}
+  {# Outside the wrapper so the dimming class on <body> does not fade it too. #}
+  {% include "partials/menu.html" %}
   {% include "partials/scripts.html" %}
   {%- block scripts %}{% endblock scripts %}
 </body>

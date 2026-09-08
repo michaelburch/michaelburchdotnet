@@ -3,7 +3,6 @@
 {% block body %}
 <div id="wrapper">
   {% include "partials/header.html" %}
-  {% include "partials/menu.html" %}
   <div id="main" class="index">
     {%- for post in paginator.pages %}
     {%- include "partials/post_card.html" %}

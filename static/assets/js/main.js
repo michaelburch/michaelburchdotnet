@@ -1,115 +1,66 @@
-/*
-	Future Imperfect by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
+// Site behaviour. Derived from Future Imperfect by HTML5 UP, rewritten without
+// jQuery. Depends only on breakpoints.js, which is already framework-free.
+(function () {
+  "use strict";
 
-(function($) {
+  breakpoints({
+    xlarge: ["1200px", "1680px"],
+    large: ["1008px", "1199px"],
+    medium: ["641px", "1007px"],
+    small: ["481px", "640px"],
+    xsmall: [null, "480px"],
+  });
 
-	var	$window = $(window),
-		$body = $('body'),
-		$menu = $('#menu'),
-		$sidebar = $('#sidebar'),
-		$main = $('#main');
+  window.addEventListener("load", function () {
+    setTimeout(function () {
+      document.body.classList.remove("is-preload");
+    }, 100);
+  });
 
-	// Breakpoints.
-		breakpoints({
-			xlarge:   [ '1200px',  '1680px' ],
-			large:    [ '1008px',   '1199px' ],
-			medium:   [ '641px',   '1007px'  ],
-			small:    [ '481px',   '640px'  ],
-			xsmall:   [ null,      '480px'  ]
-		});
+  const main = document.getElementById("main");
+  const sidebar = document.getElementById("sidebar");
+  const intro = document.getElementById("intro");
+  const about = document.getElementById("about");
 
-	// Play initial animations on page load.
-		$window.on('load', function() {
-			window.setTimeout(function() {
-				$body.removeClass('is-preload');
-			}, 100);
-		});
+  // The intro block lives in the sidebar on wide screens and moves into the
+  // content column when the sidebar stacks. Must match the breakpoint used by
+  // #wrapper and #sidebar in the SCSS.
+  if (intro && about && main && sidebar) {
+    const aboutBorderTop = getComputedStyle(about).borderTopWidth;
 
-	// Menu.
-		$menu
-			.appendTo($body)
-			.panel({
-				delay: 500,
-				hideOnClick: true,
-				hideOnSwipe: true,
-				resetScroll: true,
-				resetForms: true,
-				side: 'right',
-				target: $body,
-				visibleClass: 'is-menu-visible'
-			});
+    const setIconColumns = (columns) => {
+      document.querySelectorAll("ul.icons").forEach((list) => {
+        list.style.columns = columns;
+      });
+    };
 
-	// Search (header).
-		var $search = $('#search'),
-			$search_input = $search.find('input');
+    breakpoints.on("<=medium", function () {
+      main.prepend(intro);
+      intro.append(about);
+      setIconColumns("1");
+      about.style.borderTop = "none";
+    });
 
-		$body
-			.on('click', '[href="#search"]', function(event) {
+    breakpoints.on(">medium", function () {
+      sidebar.prepend(intro);
+      setIconColumns("3");
+      about.style.borderTop = aboutBorderTop;
+    });
+  }
 
-				event.preventDefault();
+  // Tag cloud sits beside the post list when there is room for two columns.
+  const tagCloud = document.getElementById("tagCloud");
+  const tagPosts = document.getElementById("tagPosts");
 
-				// Not visible?
-					if (!$search.hasClass('visible')) {
+  if (tagCloud && tagPosts) {
+    breakpoints.on(">small", function () {
+      tagCloud.classList.add("col-4");
+      tagPosts.classList.add("col-8");
+    });
 
-						// Reset form.
-							$search[0].reset();
-
-						// Show.
-							$search.addClass('visible');
-
-						// Focus input.
-							$search_input.focus();
-
-					}
-
-			});
-
-		$search_input
-			.on('keydown', function(event) {
-
-				if (event.keyCode == 27)
-					$search_input.blur();
-
-			})
-			.on('blur', function() {
-				window.setTimeout(function() {
-					$search.removeClass('visible');
-				}, 100);
-			});
-
-	// Intro.
-		var $intro = $('#intro');
-        var $about = $('#about');
-		var $aboutBorder = $about.css("border-top");
-		// Move to main on <=medium, back to sidebar on >medium.
-		// Must match the wrapper/sidebar breakpoint in the SCSS.
-			breakpoints.on('<=medium', function() {
-				$intro.prependTo($main);
-				$about.appendTo($intro);
-				$("ul.icons").css("columns","1");
-				$about.css("border-top","none");
-			});
-
-			breakpoints.on('>medium', function() {
-				$intro.prependTo($sidebar);
-			    $("ul.icons").css("columns","3");
-                $about.css("borderTop", $aboutBorder); 
-			});
-	// Tag Cloud
-	    // Side by side with posts on >small
-		var $tagDiv = $('#tagCloud');
-		var $tagPostsDiv = $('#tagPosts');
-		
-		breakpoints.on('>small', function() {
-			$tagDiv.addClass('col-4');
-			$tagPostsDiv.addClass('col-8');
-		});
-		breakpoints.on('<=small', function() {
-			$tagPostsDiv.removeClass('col-8');
-			$tagDiv.removeClass('col-4');
-		});
-
-})(jQuery);
+    breakpoints.on("<=small", function () {
+      tagCloud.classList.remove("col-4");
+      tagPosts.classList.remove("col-8");
+    });
+  }
+})();
