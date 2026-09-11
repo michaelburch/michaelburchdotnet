@@ -21,13 +21,16 @@ article {
 
 	&.page {
 		a {
-			color: _palette(accent);
+			// The accent sits close to the body grey in luminance, so links barely
+			// separate from the prose around them. Darkening splits them apart and
+			// leaves the accent free to act as the hover colour.
+			color: darken(_palette(accent), 10%);
 		}
 	}
 	&.post {
 
 		a:not(.icon):not(.btn):not(.header) {
-			color: _palette(accent);
+			color: darken(_palette(accent), 10%);
 		}
 	}
 }
