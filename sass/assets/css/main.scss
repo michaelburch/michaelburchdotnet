@@ -307,7 +307,6 @@
 	article.post a:not(.icon):not(.btn):not(.header),
 	section.page a,
 	article.page a {
-		border-bottom-color: rgba(255, 255, 255, 0.4);
 		// Accent itself only reaches 2.9:1 here; +12% lightness clears AA while
 		// still reading as the same blue.
 		color: lighten(_palette(accent), 12%);

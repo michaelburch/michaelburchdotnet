@@ -23,13 +23,16 @@ article {
 		a {
 			// The accent sits close to the body grey in luminance, so links barely
 			// separate from the prose around them. Darkening splits them apart and
-			// leaves the accent free to act as the hover colour.
+			// leaves the accent free to act as the hover colour. The theme's dotted
+			// hairline is too faint to mark them on its own.
+			border-bottom: solid 1px currentColor;
 			color: darken(_palette(accent), 10%);
 		}
 	}
 	&.post {
 
 		a:not(.icon):not(.btn):not(.header) {
+			border-bottom: solid 1px currentColor;
 			color: darken(_palette(accent), 10%);
 		}
 	}
