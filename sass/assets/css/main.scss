@@ -590,8 +590,13 @@ html[data-theme='dark'] #header #theme-toggle {
 
 	.copyright {
 		flex: 1 1 100%;
+		// Inherits the heading face, uppercase and 0.25em tracking, which makes it
+		// read louder than anything else down here.
+		font-family: _font(family);
 		font-size: 0.9em;
+		letter-spacing: 0;
 		margin: 0.75em 0 0 0;
+		text-transform: none;
 	}
 }
 
