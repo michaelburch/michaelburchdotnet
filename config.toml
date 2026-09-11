@@ -58,8 +58,6 @@ author_bio = "Michael Burch is a technology professional focused on digital sove
 bluesky_user = "michaelburch.net"
 default_card = "/images/ogcard.jpeg"
 posts_per_page = 4
-design_credit_url = "https://html5up.net"
-design_credit_name = "HTML5Up"
 
 keywords = [
     "Michael Burch", "Michael", "Burch", "Azure", "Cloud", "Rust", "dotnet", ".NET",
