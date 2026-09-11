@@ -257,7 +257,9 @@
 
 }
 
-@media (prefers-color-scheme: dark) {
+// Applied either by preference or by the toggle, so it has to be a mixin rather
+// than a bare media query.
+@mixin dark-theme {
 
 	body,
 	#menu {
@@ -309,15 +311,50 @@
 	.comment-root * {
 		color: _palette(fg-dark) !important;
 	}
+
+	.post-list .post-meta,
+	#footer .footer-tagline,
+	#footer .footer-sep {
+		color: _palette(fg-dark);
+		opacity: 0.7;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	html:not([data-theme='light']) {
+		@include dark-theme;
+	}
+}
+
+html[data-theme='dark'] {
+	@include dark-theme;
 }
 
 /* Simplified reading layout */
 
 // The wordmark sits next to a small avatar rather than a large intro block.
 #header {
-	justify-content: center;
+	// Shares the reading column's width so the wordmark and nav line up with the
+	// content edges rather than centring on the viewport.
+	.inner {
+		align-items: center;
+		display: flex;
+		height: inherit;
+		margin: 0 auto;
+		// Padding is added to the cap so the content box still measures 46rem and
+		// lines up with the column, while narrow screens keep their gutter.
+		max-width: calc(46rem + #{_size(section-spacing) * 2});
+		padding: 0 _size(section-spacing);
+		width: 100%;
+
+		@include breakpoint('<=small') {
+			max-width: calc(46rem + #{_size(section-spacing-small) * 2});
+			padding: 0 _size(section-spacing-small);
+		}
+	}
 
 	h1 {
+		margin-right: auto;
 		padding-left: 0;
 
 		a {
@@ -337,12 +374,66 @@
 		flex: 0 0 auto;
 	}
 
-	// Pulled out of the flow so the wordmark centres on the page, not on the
-	// space left over beside the menu button.
-	.main {
+	.tools {
+		align-items: center;
+		display: flex;
+		flex: 0 0 auto;
+		margin-left: 1.25em;
+
+		button {
+			align-items: center;
+			background: none;
+			border: 0;
+			box-shadow: none;
+			color: inherit;
+			cursor: pointer;
+			display: inline-flex;
+			height: 2.25em;
+			justify-content: center;
+			line-height: 1;
+			padding: 0;
+			width: 2.25em;
+		}
+
+		svg {
+			display: block;
+		}
+	}
+
+	#search-bar {
+		background-color: inherit;
+		border-bottom: solid 1px _palette(border);
+		left: 0;
 		position: absolute;
-		right: 0;
-		top: 0;
+		top: 100%;
+		width: 100%;
+
+		.inner {
+			height: auto;
+			padding-bottom: 0.75em;
+			padding-top: 0.75em;
+		}
+
+		input {
+			margin: 0;
+			width: 100%;
+		}
+	}
+}
+
+// The button offers the theme you are not currently using. Scoped under #header
+// so it outranks the blanket `svg { display: block }` on the tool buttons.
+#header #theme-toggle .icon-sun {
+	display: none;
+}
+
+html[data-theme='dark'] #header #theme-toggle {
+	.icon-moon {
+		display: none;
+	}
+
+	.icon-sun {
+		display: block;
 	}
 }
 
@@ -452,10 +543,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-	.post-list .post-meta,
-	#footer .footer-tagline,
-	#footer .footer-sep {
-		color: _palette(fg-dark);
+	.post-list .post-meta {
 		opacity: 0.7;
 	}
 }

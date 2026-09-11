@@ -42,8 +42,8 @@
      its own dark theme via prefers-color-scheme. #}
   <meta name="color-scheme" content="light dark" />
   <link rel="stylesheet" href="{{ get_url(path='assets/css/main.css', cachebust=true) }}" />
-  <link rel="stylesheet" href="{{ get_url(path='giallo-light.css', cachebust=true) }}" media="(prefers-color-scheme: light)" />
-  <link rel="stylesheet" href="{{ get_url(path='giallo-dark.css', cachebust=true) }}" media="(prefers-color-scheme: dark)" />
+  <link id="hl-light" rel="stylesheet" href="{{ get_url(path='giallo-light.css', cachebust=true) }}" media="(prefers-color-scheme: light)" />
+  <link id="hl-dark" rel="stylesheet" href="{{ get_url(path='giallo-dark.css', cachebust=true) }}" media="(prefers-color-scheme: dark)" />
   <meta name="description" content="{{ config.description }}" />
   <link type="application/rss+xml" rel="alternate" title="{{ config.title }}" href="{{ get_url(path='feed/index.rss') }}" />
   <link type="application/atom+xml" rel="alternate" title="{{ config.title }}" href="{{ get_url(path='feed/index.xml') }}" />
@@ -69,12 +69,29 @@
   <script defer src="https://app.tinyanalytics.io/pixel/372hZCQ7steBAejd"></script>
   <!-- END Pixel Code -->
   {%- block head %}{% endblock head %}
+  {# Runs before paint so a stored preference does not flash the other theme. #}
+  <script>
+    (function () {
+      function apply(dark) {
+        var root = document.documentElement;
+        root.dataset.theme = dark ? "dark" : "light";
+        root.style.colorScheme = dark ? "dark" : "light";
+        var light = document.getElementById("hl-light");
+        var night = document.getElementById("hl-dark");
+        if (light) light.media = dark ? "not all" : "all";
+        if (night) night.media = dark ? "all" : "not all";
+      }
+      var stored = null;
+      try { stored = localStorage.getItem("theme"); } catch (e) {}
+      apply(stored ? stored === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches);
+      window.__setTheme = apply;
+    })();
+  </script>
 </head>
 
 <body class="is-preload">
   {% block body %}{% endblock body %}
   {# Outside the wrapper so the dimming class on <body> does not fade it too. #}
-  {% include "partials/menu.html" %}
   {% include "partials/scripts.html" %}
   {%- block scripts %}{% endblock scripts %}
 </body>
