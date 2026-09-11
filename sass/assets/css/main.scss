@@ -360,7 +360,11 @@ html[data-theme='dark'] {
 	}
 
 	h1 {
-		margin-right: auto;
+		// The theme gives headings a bottom margin and stretches this to the bar
+		// height, which pushes it off-centre next to the nav.
+		height: auto;
+		line-height: 1;
+		margin: 0 auto 0 0;
 		padding-left: 0;
 
 		a {
@@ -379,8 +383,18 @@ html[data-theme='dark'] {
 	.links {
 		border-left: 0;
 		flex: 0 0 auto;
+		height: auto;
+		line-height: 1;
 		margin-left: 0;
 		padding-left: 0;
+
+		// Inline items sit on a baseline, which lands a couple of pixels below the
+		// centre next to the icon buttons.
+		ul,
+		li {
+			align-items: center;
+			display: flex;
+		}
 	}
 
 	.tools {
@@ -419,9 +433,10 @@ html[data-theme='dark'] {
 	}
 
 	#search-bar {
-		background-color: inherit;
-		border-bottom: solid 1px _palette(border);
 		left: 0;
+		// Only the input is visible, so the rest of the strip must not swallow
+		// clicks meant for the content behind it.
+		pointer-events: none;
 		position: absolute;
 		top: 100%;
 		width: 100%;
@@ -436,6 +451,7 @@ html[data-theme='dark'] {
 		input {
 			margin: 0;
 			max-width: 14em;
+			pointer-events: auto;
 			width: 100%;
 		}
 	}
