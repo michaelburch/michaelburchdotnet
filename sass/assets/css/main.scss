@@ -294,6 +294,12 @@
 		color: _palette(fg-dark);
 	}
 
+	// The icon font colours these for a light background.
+	#footer .icons a,
+	#footer .icons a:before {
+		color: _palette(fg-dark);
+	}
+
 	.post,
 	#header,
 	.mini-post {
