@@ -308,7 +308,12 @@
 	section.page a,
 	article.page a {
 		border-bottom-color: rgba(255, 255, 255, 0.4);
-		color: lighten(_palette(accent), 30%);
+		color: _palette(accent);
+
+		// The theme's hover colour is flagged !important.
+		&:hover {
+			color: lighten(_palette(accent), 30%) !important;
+		}
 	}
 
 	// Form colours assume a light field; the placeholder lands on the same value
