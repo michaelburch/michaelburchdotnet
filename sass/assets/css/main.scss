@@ -151,7 +151,7 @@
 #main > * {
 	margin-left: auto;
 	margin-right: auto;
-	max-width: 68em;
+	max-width: 46rem;
 }
 
 // ul.actions offsets its first item with a negative margin, which the auto
@@ -298,11 +298,164 @@
 		background: _palette(bg-dark-alt);
 	}
 
+	.post {
+		background: none;
+	}
+
 	.post>header .meta .published {
 		color: _palette(fg-dark);
 	}
 
 	.comment-root * {
 		color: _palette(fg-dark) !important;
+	}
+}
+
+/* Simplified reading layout */
+
+// The wordmark sits next to a small avatar rather than a large intro block.
+#header {
+	justify-content: center;
+
+	h1 {
+		padding-left: 0;
+
+		a {
+			align-items: center;
+			display: inline-flex;
+
+			.avatar {
+				border-radius: 50%;
+				height: 32px;
+				margin-right: 0.9em;
+				width: 32px;
+			}
+		}
+	}
+
+	.links {
+		flex: 0 0 auto;
+	}
+
+	// Pulled out of the flow so the wordmark centres on the page, not on the
+	// space left over beside the menu button.
+	.main {
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+}
+
+// Headings inherit uppercase and 0.25em kerning from the theme, which is too
+// loud for running text at this width.
+#main {
+	h1, h2, h3, h4, h5, h6 {
+		letter-spacing: 0;
+		text-transform: none;
+	}
+
+	h1 {
+		font-size: 1.5em;
+		font-weight: _font(weight-heading-bold);
+	}
+}
+
+// Listings are a plain list: date, title, excerpt. No card, button or chrome.
+.post-list {
+	list-style: none;
+	margin: 0;
+	padding-left: 0;
+
+	> li {
+		margin: 0 0 2.25em 0;
+		padding-left: 0;
+	}
+
+	.post-meta {
+		color: _palette(fg);
+		display: block;
+		font-size: 0.8em;
+		margin-bottom: 0.15em;
+	}
+
+	h2 {
+		font-size: 1.2em;
+		font-weight: _font(weight-heading);
+		line-height: 1.4;
+		margin: 0 0 0.4em 0;
+	}
+
+	p {
+		margin-bottom: 0;
+	}
+}
+
+// Articles read as plain text rather than bordered cards.
+.post {
+	background: none;
+	border: 0;
+	padding: 0;
+
+	> header {
+		border-bottom: 0;
+		display: block;
+		left: auto;
+		margin: 0 0 1.5em 0;
+		width: auto;
+
+		.title {
+			padding: 0;
+
+			h2 {
+				font-size: 1.6em;
+				font-weight: _font(weight-heading-bold);
+			}
+		}
+
+		.meta {
+			border-left: 0;
+			color: _palette(fg);
+			font-size: 0.8em;
+			letter-spacing: 0;
+			padding: 0;
+			text-align: left;
+			text-transform: none;
+
+			.published {
+				letter-spacing: 0;
+				text-transform: none;
+			}
+		}
+	}
+}
+
+#footer {
+	font-size: 0.85em;
+
+	.footer-left {
+		margin-bottom: 0.5em;
+	}
+
+	.footer-tagline,
+	.footer-sep {
+		color: _palette(fg);
+	}
+
+	.icons {
+		margin: 0 0 0.5em 0;
+	}
+
+	.copyright {
+		font-size: 0.9em;
+		margin: 0;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	.post-list .post-meta,
+	#footer .footer-tagline,
+	#footer .footer-sep {
+		color: _palette(fg-dark);
+		opacity: 0.7;
 	}
 }

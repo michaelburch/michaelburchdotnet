@@ -6,14 +6,14 @@
   <div id="main">
     <article class="post">
       <header>
+        <div class="meta">
+          <time class="published" datetime="{{ page.date | date(format='%Y-%m-%d') }}">{{ page.date | date(format="%b %-d, %Y") }}</time>
+        </div>
         <div class="title">
           <h2>{{ page.title }}</h2>
           {%- if page.extra.lead %}
           <p>{{ page.extra.lead }}</p>
           {%- endif %}
-        </div>
-        <div class="meta">
-          <time class="published" datetime="{{ page.date | date(format='%Y-%m-%d') }}">{{ page.date | date(format="%B %d, %Y") }}</time>
         </div>
       </header>
       <span class="image featured">
