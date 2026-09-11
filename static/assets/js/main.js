@@ -23,6 +23,14 @@
       setOpen(searchBar.hidden);
     });
 
+    document.addEventListener("click", function (event) {
+      if (searchBar.hidden) return;
+      // The toggle's own click bubbles here, so ignore it or it would reopen and
+      // close in the same gesture.
+      if (searchBar.contains(event.target) || searchToggle.contains(event.target)) return;
+      setOpen(false);
+    });
+
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape" && !searchBar.hidden) {
         setOpen(false);
