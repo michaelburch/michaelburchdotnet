@@ -300,6 +300,33 @@
 		color: _palette(fg-dark);
 	}
 
+	// Form colours assume a light field; the placeholder lands on the same value
+	// as the dark background. The theme sets it per vendor prefix with
+	// !important, so each has to be answered in kind.
+	#search-bar input {
+		color: _palette(fg-dark);
+
+		&::placeholder {
+			color: _palette(fg-dark) !important;
+			opacity: 0.6;
+		}
+
+		&::-webkit-input-placeholder {
+			color: _palette(fg-dark) !important;
+			opacity: 0.6;
+		}
+
+		&::-moz-placeholder {
+			color: _palette(fg-dark) !important;
+			opacity: 0.6;
+		}
+
+		&:-ms-input-placeholder {
+			color: _palette(fg-dark) !important;
+			opacity: 0.6;
+		}
+	}
+
 	.post,
 	#header,
 	.mini-post {
