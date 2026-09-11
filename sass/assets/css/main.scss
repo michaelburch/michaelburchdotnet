@@ -300,6 +300,17 @@
 		color: _palette(fg-dark);
 	}
 
+	// The accent is a mid blue on a mid grey, which leaves body links at roughly
+	// 1.2:1. Lightened it clears 3:1; the page colour caps the best possible at
+	// 5.9:1, so the dotted underline still carries part of the signal.
+	section.post a:not(.icon):not(.btn):not(.header),
+	article.post a:not(.icon):not(.btn):not(.header),
+	section.page a,
+	article.page a {
+		border-bottom-color: rgba(255, 255, 255, 0.4);
+		color: lighten(_palette(accent), 30%);
+	}
+
 	// Form colours assume a light field; the placeholder lands on the same value
 	// as the dark background. The theme sets it per vendor prefix with
 	// !important, so each has to be answered in kind.
