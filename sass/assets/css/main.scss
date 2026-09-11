@@ -612,6 +612,13 @@ html[data-theme='dark'] #header #theme-toggle {
 			}
 		}
 	}
+
+	// Tags render at 0.6em/400, which is too faint to read as links whatever
+	// colour they are.
+	> footer .stats li {
+		font-size: 0.75em;
+		font-weight: _font(weight-heading-bold);
+	}
 }
 
 // Matches the header: same column, label on the left and links on the right.
