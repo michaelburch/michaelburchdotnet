@@ -103,10 +103,19 @@
           resultsEl.appendChild(empty);
           return;
         }
-        results.forEach(function (result) {
-          var doc = index.documentStore.getDoc(result.ref);
-          if (doc) resultsEl.appendChild(buildResult(doc, query));
-        });
+        // elasticlunr returns by relevance; the listings are chronological, so
+        // results should read the same way.
+        results
+          .map(function (result) {
+            return index.documentStore.getDoc(result.ref);
+          })
+          .filter(Boolean)
+          .sort(function (a, b) {
+            return new Date(b.date || 0) - new Date(a.date || 0);
+          })
+          .forEach(function (doc) {
+            resultsEl.appendChild(buildResult(doc, query));
+          });
       })
       .catch(function () {
         resultsEl.textContent = "";

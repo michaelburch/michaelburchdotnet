@@ -367,6 +367,9 @@ html[data-theme='dark'] {
 
 // The wordmark sits next to a small avatar rather than a large intro block.
 #header {
+	// The theme's light header sits on an almost identical body colour, so the
+	// default hairline reads as no edge at all.
+	border-bottom-color: _palette(border-alt);
 	// Shares the reading column's width so the wordmark and nav line up with the
 	// content edges rather than centring on the viewport.
 	.inner {
@@ -476,10 +479,19 @@ html[data-theme='dark'] {
 		}
 
 		input {
+			// The theme styles inputs by type and does not cover search, so this
+			// would otherwise fall back to the browser's own control and focus ring.
+			border: solid 1px _palette(border-alt);
 			margin: 0;
 			max-width: 14em;
 			pointer-events: auto;
 			width: 100%;
+
+			&:focus {
+				border-color: _palette(accent);
+				outline: 2px solid _palette(accent);
+				outline-offset: 1px;
+			}
 		}
 	}
 }
