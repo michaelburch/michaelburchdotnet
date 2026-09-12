@@ -4,43 +4,39 @@ date = 2019-08-28
 path = "privacy"
 +++
 
-This Privacy Policy applies to https://michaelburch.net (hereinafter, "us", "we", "our", "Michael Burch's Blog" or "https://michaelburch.net"). We respect your privacy and are committed to protecting personally identifiable information you may provide us through the Website. We have adopted this privacy policy ("Privacy Policy") to explain what information may be collected on our Website, how we use this information, and under what circumstances we may disclose the information to third parties. This Privacy Policy applies only to information we collect through the Website and does not apply to our collection of information from other sources.
-This Privacy Policy, together with the Terms and conditions posted on our Website, set forth the general rules and policies governing your use of our Website. Depending on your activities when visiting our Website, you may be required to agree to additional terms and conditions.
+This policy covers https://www.michaelburch.net. It is a static blog with no accounts, no sign-ups and no contact forms, so there is very little to collect. This page describes what little there is.
 
-Website Visitors
-===
-Like most website operators, Michael Burch's Blog collects non-personally-identifying information of the sort that web browsers and servers typically make available, such as the browser type, language preference, referring site, and the date and time of each visitor request. Our purpose in collecting non-personally identifying information is to better understand how visitors use this website. From time to time, we may release non-personally-identifying information in the aggregate, e.g., by publishing a report on trends in the usage of its website.
-Michael Burch's Blog also collects potentially personally-identifying information like Internet Protocol (IP) addresses for logged in users and for users leaving comments on https://michaelburch.net blog posts. We only discloses logged in user and commenter IP addresses under the same circumstances that it uses and discloses personally-identifying information as described below.
+## Cookies
 
+This site sets no cookies. There is no consent banner because there is nothing to consent to.
 
-Security
-===
-The security of your Personal Information is important to us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Information, we cannot guarantee its absolute security.
+## What is stored in your browser
 
-Links To External Sites
-===
-Our Service may contain links to external sites that are not operated by us. If you click on a third party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy and terms and conditions of every site you visit.
-We have no control over, and assume no responsibility for the content, privacy policies or practices of any third party sites, products or services.
+Two values are kept in your browser's local storage. Neither is sent to this site's server, and you can clear both at any time through your browser's site-data settings.
 
-Https://michaelburch.net uses Google AdWords for remarketing
-===
-Https://michaelburch.net uses the remarketing services to advertise on third party websites (including Google) to previous visitors to our site. It could mean that we advertise to previous visitors who haven't completed a task on our site, for example using the contact form to make an enquiry. This could be in the form of an advertisement on the Google search results page, or a site in the Google Display Network. Third-party vendors, including Google, use cookies to serve ads based on someone's past visits. Of course, any data collected will be used in accordance with our own privacy policy and Google's privacy policy.
-You can set preferences for how Google advertises to you using the Google Ad Preferences page, and if you want to you can opt out of interest-based advertising entirely by cookie settings or permanently using a browser plugin.
+- `theme` — records whether you switched the site to the light theme, so the choice survives between visits. Written only when you use the theme toggle.
+- `tinyanalytics-visitor-id` — written by the analytics script described below so that repeat visits are not counted as new ones.
 
+## Analytics
 
-Aggregated Statistics
-===
-Michael Burch's Blog may collect statistics about the behavior of visitors to its website. Michael Burch may display this information publicly or provide it to others. However, we do not disclose your personally-identifying information.
+Page views are measured with [TinyAnalytics](https://tinyanalytics.io), which is the only third-party code on the site. It records the sort of information every web request carries anyway: the page you requested, the referring site, and your browser and device type. It does not use cookies and does not follow you to other websites. Their handling of that data is governed by [their privacy policy](https://tinyanalytics.io/privacy-policy).
 
+## Server logs
 
-Cookies
-===
-To enrich and perfect your online experience, we use "Cookies", similar technologies and services provided by others to display personalized content, appropriate advertising and store your preferences on your computer.
-A cookie is a string of information that a website stores on a visitor's computer, and that the visitor's browser provides to the website each time the visitor returns. Michael Burch's Blog uses cookies to help identify and track visitors, their usage of https://michaelburch.net, and their website access preferences. Visitors who do not wish to have cookies placed on their computers should set their browsers to refuse cookies before using Michael Burch's Blog, with the drawback that certain features of Mmay not function properly without the aid of cookies.
-By continuing to navigate our website without changing your cookie settings, you hereby acknowledge and agree to our use of cookies.
+The web server records standard access logs — IP address, timestamp, requested path, referrer and user agent — which are used to diagnose faults and abuse. Traffic reaches the server through Cloudflare, which sees the same request data as part of delivering and protecting the site.
 
+## Comments
 
+Comments are hosted on [Bluesky](https://bsky.app), not here. Each post that has a discussion thread fetches it from Bluesky's public API and displays it read-only. Nothing you write is stored on this site, and posting a comment happens on Bluesky under Bluesky's own terms and privacy policy.
 
-Privacy Policy Changes
-===
-Although most changes are likely to be minor, we may change our Privacy Policy from time to time, and in our sole discretion. We encourages visitors to frequently check this page for any changes to its Privacy Policy. Your continued use of this site after any change in this Privacy Policy will constitute your acceptance of such change.
+## Email
+
+If you write to me@michaelburch.net I will have your message and your email address. I use them to reply and for nothing else.
+
+## Links to other sites
+
+Posts link out to other websites. Once you follow a link, that site's own privacy practices apply, and I have no control over them.
+
+## Changes
+
+I may revise this policy as the site changes. The revision history is public in the [site's repository](https://github.com/michaelburch/michaelburchdotnet).
