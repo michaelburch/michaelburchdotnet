@@ -23,7 +23,7 @@ Page views are measured with [TinyAnalytics](https://tinyanalytics.io), which is
 
 ## Server logs
 
-The web server records standard access logs — IP address, timestamp, requested path, referrer and user agent — which are used to diagnose faults and abuse. Traffic reaches the server through Cloudflare, which sees the same request data as part of delivering and protecting the site.
+The web server keeps no access log, so there is no per-request record of your IP address or the pages you read. Errors are still reported so that faults can be diagnosed. Traffic reaches the server through Cloudflare, which does see request data as part of delivering and protecting the site, under [Cloudflare's privacy policy](https://www.cloudflare.com/privacypolicy/).
 
 ## Comments
 
