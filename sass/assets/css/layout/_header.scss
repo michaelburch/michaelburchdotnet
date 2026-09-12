@@ -84,52 +84,6 @@
 			}
 		}
 
-		.main {
-			height: inherit;
-			line-height: inherit;
-			text-align: right;
-
-			ul {
-				height: inherit;
-				line-height: inherit;
-
-				li {
-					border-left: solid 1px _palette(border);
-					height: inherit;
-					line-height: inherit;
-					white-space: nowrap;
-
-					> * {
-						display: block;
-						float: left;
-					}
-
-					> a {
-						@include icon(false, solid);
-						border-bottom: 0;
-						color: _palette(fg-light);
-						line-height: 3;
-						overflow: hidden;
-						position: relative;
-						text-indent: 4em;
-						width: 4em;
-
-						&:before {
-							display: block;
-							height: inherit;
-							left: 0;
-							line-height: inherit;
-							position: absolute;
-							text-align: center;
-							text-indent: 0;
-							top: 0;
-							width: inherit;
-						}
-					}
-				}
-			}
-		}
-
 		form {
 			margin: 0;
 
@@ -142,43 +96,12 @@
 			}
 		}
 
-		#search {
-			@include vendor('transition', 'all 0.5s ease');
-			max-width: 0;
-			opacity: 0;
-			overflow: hidden;
-			padding: 0;
-			white-space: nowrap;
-
-			input {
-				width: 12em;
-			}
-
-			&.visible {
-				max-width: 12.5em;
-				opacity: 1;
-				padding: 0 0.5em 0 0;
-			}
-		}
-
-		@include breakpoint('<=medium') {
-			.links {
-				display: none;
-			}
-		}
-
 		@include breakpoint('<=small') {
 			height: 2.75em;
 			line-height: 2.75em;
 
 			h1 {
 				padding: 0 0 0 1em;
-			}
-
-			.main {
-				.search {
-					display: none;
-				}
 			}
 		}
 	}

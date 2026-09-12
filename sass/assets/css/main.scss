@@ -3,7 +3,6 @@
 @import 'libs/mixins';
 @import 'libs/vendor';
 @import 'libs/breakpoints';
-@import 'libs/html-grid';
 @import 'base/fonts';
 /* raleway-regular - latin */
 @font-face {
@@ -40,9 +39,6 @@
 
 // Component.
 
-@import 'components/row';
-@import 'components/author';
-@import 'components/blurb';
 @import 'components/button';
 @import 'components/form';
 @import 'components/icon';
@@ -50,8 +46,6 @@
 @import 'components/list';
 @import 'components/actions';
 @import 'components/icons';
-@import 'components/posts';
-@import 'components/mini-post';
 @import 'components/post';
 @import 'components/section';
 @import 'components/table';
@@ -62,10 +56,8 @@
 @import 'layout/wrapper';
 @import 'layout/main';
 @import 'layout/sidebar';
-@import 'layout/intro';
 @import 'layout/post-footer';
 @import 'layout/footer';
-@import 'layout/menu';
 
 .comment-root {
 	background-color: _palette(bg-dark) !important;
@@ -269,8 +261,7 @@
 // than a bare media query.
 @mixin dark-theme {
 
-	body,
-	#menu {
+	body {
 		color: _palette(fg-dark);
 		background-color: _palette(bg-dark);
 	}
@@ -352,14 +343,8 @@
 		}
 	}
 
-	.post,
-	#header,
-	.mini-post {
+	#header {
 		background: _palette(bg-dark-alt);
-	}
-
-	.post {
-		background: none;
 	}
 
 	.post>header .meta .published {
@@ -518,6 +503,33 @@ html[data-theme='dark'] {
 				outline: 2px solid _palette(accent);
 				outline-offset: 1px;
 			}
+		}
+	}
+
+	// The title, nav and buttons together need about 550px, so below that the
+	// nav drops onto its own row rather than running off the edge.
+	@include breakpoint('<=small') {
+		height: auto;
+
+		.inner {
+			flex-wrap: wrap;
+			padding-bottom: 0.6em;
+			padding-top: 0.6em;
+		}
+
+		h1 {
+			order: 1;
+		}
+
+		.tools {
+			margin-left: auto;
+			order: 2;
+		}
+
+		.links {
+			flex: 1 0 100%;
+			margin-top: 0.6em;
+			order: 3;
 		}
 	}
 }

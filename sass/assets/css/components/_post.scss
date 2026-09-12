@@ -208,19 +208,6 @@
 						margin-bottom: 0;
 						margin-top: 0;
 					}
-
-					.author {
-						@include vendor('flex-direction', 'row-reverse');
-						margin-bottom: 0;
-
-						.name {
-							margin: 0 0 0 1.5em;
-						}
-
-						img {
-							width: 3.5em;
-						}
-					}
 				}
 			}
 		}
@@ -255,12 +242,6 @@
 						border-left: 0;
 						margin: (_size(element-margin) * 0.5) 0 0 0;
 						padding-left: 0;
-					}
-
-					.author {
-						.name {
-							display: none;
-						}
 					}
 				}
 			}

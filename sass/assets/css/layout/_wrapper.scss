@@ -7,7 +7,6 @@
 /* Wrapper */
 
 	#wrapper {
-		@include vendor('transition', 'opacity #{_duration(menu)} ease');
 		margin: 0 auto;
 		max-width: 100%;
 		// Fills the viewport so short pages do not expose the bare canvas below.
@@ -15,10 +14,6 @@
 		opacity: 1;
 		padding: (_size(section-spacing) * 1.5);
 		width: 90em;
-
-		body.is-menu-visible & {
-			opacity: 0.15;
-		}
 
 		@include breakpoint('<=xlarge') {
 			padding: _size(section-spacing);
