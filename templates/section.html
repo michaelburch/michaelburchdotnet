@@ -4,33 +4,23 @@
 <div id="wrapper">
   {% include "partials/header.html" %}
   <div id="main" class="index">
-    {% include "partials/intro.html" %}
     <h1>{{ section.title }}</h1>
     {#- Walk the date-sorted pages and emit a heading when the year changes.
         group_by returns a map, whose iteration order is not guaranteed. -#}
     {%- set_global current_year = 0 %}
     {%- for post in section.pages %}
     {%- if post.year != current_year %}
+    {%- if current_year != 0 %}</ul>{% endif %}
     {%- set_global current_year = post.year %}
-    <h1 id="{{ post.year }}">{{ post.year }}</h1>
+    <h2 id="{{ post.year }}">{{ post.year }}</h2>
+    <ul class="post-list compact">
     {%- endif %}
-    <article class="mini-post">
-      <header>
-        <div class="title">
-          <h3><a class="header" href="{{ post.permalink }}">{{ post.title }}</a></h3>
-          {%- if post.extra.lead %}
-          <p>{{ post.extra.lead }}</p>
-          {%- endif %}
-        </div>
-        <div class="meta">
-          <time class="published" datetime="{{ post.date | date(format='%Y-%m-%d') }}">{{ post.date | date(format="%B %d, %Y") }}</time>
-        </div>
-      </header>
-      {%- if post.extra.image %}
-      <a href="{{ post.permalink }}" class="image featured"><img src="{{ get_url(path=post.extra.image) }}" alt="" /></a>
-      {%- endif %}
-    </article>
+      <li>
+        <span class="post-meta"><time datetime="{{ post.date | date(format='%Y-%m-%d') }}">{{ post.date | date(format="%b %-d, %Y") }}</time></span>
+        <h3><a class="post-link" href="{{ post.permalink }}">{{ post.title }}</a></h3>
+      </li>
     {%- endfor %}
+    {%- if current_year != 0 %}</ul>{% endif %}
   </div>
   {% include "partials/site_footer.html" %}
 </div>

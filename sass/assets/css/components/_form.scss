@@ -8,28 +8,6 @@
 
 	form {
 		margin: 0 0 _size(element-margin) 0;
-
-		&.search {
-			@include icon(false, solid);
-			position: relative;
-
-			&:before {
-				color: _palette(fg-light);
-				content: '\e906';
-				display: block;
-				height: _size(element-height);
-				left: 0;
-				line-height: _size(element-height);
-				position: absolute;
-				text-align: center;
-				top: 0;
-				width: 2.5em;
-			}
-
-			> input:first-child {
-				padding-left: 2.5em;
-			}
-		}
 	}
 
 	label {

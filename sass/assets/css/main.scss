@@ -3,7 +3,6 @@
 @import 'libs/mixins';
 @import 'libs/vendor';
 @import 'libs/breakpoints';
-@import 'libs/html-grid';
 @import 'base/fonts';
 /* raleway-regular - latin */
 @font-face {
@@ -40,9 +39,6 @@
 
 // Component.
 
-@import 'components/row';
-@import 'components/author';
-@import 'components/blurb';
 @import 'components/button';
 @import 'components/form';
 @import 'components/icon';
@@ -50,8 +46,6 @@
 @import 'components/list';
 @import 'components/actions';
 @import 'components/icons';
-@import 'components/posts';
-@import 'components/mini-post';
 @import 'components/post';
 @import 'components/section';
 @import 'components/table';
@@ -62,10 +56,8 @@
 @import 'layout/wrapper';
 @import 'layout/main';
 @import 'layout/sidebar';
-@import 'layout/intro';
 @import 'layout/post-footer';
 @import 'layout/footer';
-@import 'layout/menu';
 
 .comment-root {
 	background-color: _palette(bg-dark) !important;
@@ -151,13 +143,21 @@
 #main > * {
 	margin-left: auto;
 	margin-right: auto;
-	max-width: 68em;
+	max-width: 46rem;
 }
 
 // ul.actions offsets its first item with a negative margin, which the auto
 // margins above cancel; drop the padding instead so buttons start on the edge.
 #main > ul.actions > li:first-child {
 	padding-left: 0;
+}
+
+// The theme's large button is 54px, nearly the height of the whole header bar.
+// Matching the search field keeps it a comfortable target but far less bulky.
+#main > ul.actions.pagination a.button {
+	height: 2.5rem;
+	line-height: 2.5rem;
+	padding: 0 1.5rem;
 }
 
 // Contains a figure's float so it cannot overlap neighbouring blocks or let
@@ -257,10 +257,11 @@
 
 }
 
-@media (prefers-color-scheme: dark) {
+// Applied either by preference or by the toggle, so it has to be a mixin rather
+// than a bare media query.
+@mixin dark-theme {
 
-	body,
-	#menu {
+	body {
 		color: _palette(fg-dark);
 		background-color: _palette(bg-dark);
 	}
@@ -292,9 +293,57 @@
 		color: _palette(fg-dark);
 	}
 
-	.post,
-	#header,
-	.mini-post {
+	// The icon font colours these for a light background.
+	#footer .icons a,
+	#footer .icons a:before {
+		color: _palette(fg-dark);
+	}
+
+	// The accent is a mid blue on a mid grey, which leaves body links at roughly
+	// 1.2:1. Lightened it clears 3:1; the page colour caps the best possible at
+	// 5.9:1, so the dotted underline still carries part of the signal.
+	section.post a:not(.icon):not(.btn):not(.header),
+	article.post a:not(.icon):not(.btn):not(.header),
+	section.page a,
+	article.page a {
+		// Accent itself only reaches 2.9:1 here; +12% lightness clears AA while
+		// still reading as the same blue.
+		color: lighten(_palette(accent), 12%);
+
+		// The theme's hover colour is flagged !important.
+		&:hover {
+			color: lighten(_palette(accent), 30%) !important;
+		}
+	}
+
+	// Form colours assume a light field; the placeholder lands on the same value
+	// as the dark background. The theme sets it per vendor prefix with
+	// !important, so each has to be answered in kind.
+	#search-bar input {
+		color: _palette(fg-dark);
+
+		&::placeholder {
+			color: _palette(fg-dark) !important;
+			opacity: 0.6;
+		}
+
+		&::-webkit-input-placeholder {
+			color: _palette(fg-dark) !important;
+			opacity: 0.6;
+		}
+
+		&::-moz-placeholder {
+			color: _palette(fg-dark) !important;
+			opacity: 0.6;
+		}
+
+		&:-ms-input-placeholder {
+			color: _palette(fg-dark) !important;
+			opacity: 0.6;
+		}
+	}
+
+	#header {
 		background: _palette(bg-dark-alt);
 	}
 
@@ -305,4 +354,341 @@
 	.comment-root * {
 		color: _palette(fg-dark) !important;
 	}
+
+	.post-list .post-meta,
+	.post > header .meta,
+	#footer .footer-tagline,
+	#footer .footer-sep {
+		color: _palette(fg-dark);
+		opacity: 0.7;
+	}
+}
+
+// Dark is the site default; only an explicit choice of light opts out of it.
+html:not([data-theme='light']) {
+	@include dark-theme;
+}
+
+/* Simplified reading layout */
+
+// The wordmark sits next to a small avatar rather than a large intro block.
+#header {
+	// The theme's light header sits on an almost identical body colour, so the
+	// default hairline reads as no edge at all.
+	border-bottom-color: _palette(border-alt);
+	// Shares the reading column's width so the wordmark and nav line up with the
+	// content edges rather than centring on the viewport.
+	.inner {
+		align-items: center;
+		display: flex;
+		height: inherit;
+		margin: 0 auto;
+		// Padding is added to the cap so the content box still measures 46rem and
+		// lines up with the column, while narrow screens keep their gutter.
+		max-width: calc(46rem + #{_size(section-spacing) * 2});
+		padding: 0 _size(section-spacing);
+		width: 100%;
+
+		@include breakpoint('<=small') {
+			max-width: calc(46rem + #{_size(section-spacing-small) * 2});
+			padding: 0 _size(section-spacing-small);
+		}
+	}
+
+	h1 {
+		// The theme gives headings a bottom margin and stretches this to the bar
+		// height, which pushes it off-centre next to the nav.
+		height: auto;
+		line-height: 1;
+		margin: 0 auto 0 0;
+		padding-left: 0;
+
+		a {
+			align-items: center;
+			display: inline-flex;
+
+			.avatar {
+				border-radius: 50%;
+				height: 32px;
+				margin-right: 0.9em;
+				width: 32px;
+			}
+		}
+	}
+
+	.header-nav {
+		align-items: center;
+		display: flex;
+		flex: 0 1 auto;
+	}
+
+	.links {
+		border-left: 0;
+		flex: 0 0 auto;
+		height: auto;
+		line-height: 1;
+		margin-left: 0;
+		padding-left: 0;
+
+		// Inline items sit on a baseline, which lands a couple of pixels below the
+		// centre next to the icon buttons.
+		ul,
+		li {
+			align-items: center;
+			display: flex;
+		}
+	}
+
+	.tools {
+		align-items: center;
+		display: flex;
+		flex: 0 0 auto;
+		margin-left: 1.25em;
+
+		button {
+			align-items: center;
+			background: none;
+			border: 0;
+			box-shadow: none;
+			color: inherit;
+			cursor: pointer;
+			display: inline-flex;
+			// Buttons inherit a much smaller size from the bar, which shrinks the glyph.
+			font-size: 1rem;
+			height: 2.25em;
+			justify-content: center;
+			line-height: 1;
+			padding: 0;
+			width: 2.25em;
+
+			// The icon font rules colour the glyph for a light bar, so it vanishes
+			// against the dark header.
+			&:before {
+				color: inherit;
+				font-size: 1em;
+			}
+		}
+
+		svg {
+			display: block;
+		}
+	}
+
+	#search-bar {
+		left: 0;
+		// Only the input is visible, so the rest of the strip must not swallow
+		// clicks meant for the content behind it.
+		pointer-events: none;
+		position: absolute;
+		top: 100%;
+		width: 100%;
+
+		.inner {
+			height: auto;
+			justify-content: flex-end;
+			padding-bottom: 0.75em;
+			padding-top: 0.75em;
+		}
+
+		input {
+			// The theme styles inputs by type and does not cover search, so this
+			// would otherwise fall back to the browser's own control and focus ring.
+			border: solid 1px _palette(border-alt);
+			margin: 0;
+			max-width: 14em;
+			pointer-events: auto;
+			width: 100%;
+
+			&:focus {
+				border-color: _palette(accent);
+				outline: 2px solid _palette(accent);
+				outline-offset: 1px;
+			}
+		}
+	}
+
+	// Below this the bar may not fit on one line, so its parts are allowed to
+	// wrap. Source order is kept so the links never jump ahead of the buttons.
+	@include breakpoint('<=small') {
+		height: auto;
+
+		.inner {
+			flex-wrap: wrap;
+			padding-bottom: 0.6em;
+			padding-top: 0.6em;
+			row-gap: 0.6em;
+		}
+
+		h1 a .avatar {
+			margin-right: 0.6em;
+		}
+
+		// Below roughly 320px even the nav row is too narrow for both parts.
+		.header-nav {
+			flex-wrap: wrap;
+			row-gap: 0.6em;
+		}
+
+		.tools {
+			margin-left: 0.6em;
+		}
+
+		.links li + li {
+			padding-left: 0.6em;
+		}
+	}
+}
+
+// The button offers the theme you are not currently using. Scoped under #header
+// so it outranks the blanket `svg { display: block }` on the tool buttons.
+#header #theme-toggle .icon-sun {
+	display: none;
+}
+
+html:not([data-theme='light']) #header #theme-toggle {
+	.icon-moon {
+		display: none;
+	}
+
+	.icon-sun {
+		display: block;
+	}
+}
+
+// Headings inherit uppercase and 0.25em kerning from the theme, which is too
+// loud for running text at this width.
+#main {
+	h1, h2, h3, h4, h5, h6 {
+		letter-spacing: 0;
+		text-transform: none;
+	}
+
+	h1 {
+		font-size: 1.5em;
+		font-weight: _font(weight-heading-bold);
+	}
+}
+
+// Listings are a plain list: date, title, excerpt. No card, button or chrome.
+.post-list {
+	list-style: none;
+	margin: 0;
+	padding-left: 0;
+
+	> li {
+		margin: 0 0 2.25em 0;
+		padding-left: 0;
+	}
+
+	.post-meta {
+		color: _palette(fg);
+		display: block;
+		font-size: 0.8em;
+		margin-bottom: 0.15em;
+	}
+
+	h2 {
+		font-size: 1.2em;
+		font-weight: _font(weight-heading-bold);
+		line-height: 1.4;
+		margin: 0 0 0.4em 0;
+	}
+
+	p {
+		margin-bottom: 0;
+	}
+}
+
+// Articles read as plain text rather than bordered cards.
+.post {
+	background: none;
+	border: 0;
+	padding: 0;
+
+	> header {
+		border-bottom: 0;
+		display: block;
+		left: auto;
+		margin: 0 0 1.5em 0;
+		width: auto;
+
+		.title {
+			padding: 0;
+
+			h2 {
+				font-size: 1.6em;
+				font-weight: _font(weight-heading-bold);
+			}
+		}
+
+		.meta {
+			border-left: 0;
+			color: _palette(fg);
+			font-size: 0.8em;
+			letter-spacing: 0;
+			padding: 0;
+			text-align: left;
+			text-transform: none;
+
+			.published {
+				letter-spacing: 0;
+				text-transform: none;
+			}
+		}
+	}
+
+	// Tags render at 0.6em/400, which is too faint to read as links whatever
+	// colour they are.
+	> footer .stats li {
+		font-size: 0.75em;
+		font-weight: _font(weight-heading-bold);
+	}
+}
+
+// Matches the header: same column, label on the left and links on the right.
+#sidebar {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 46rem;
+}
+
+#footer {
+	align-items: baseline;
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 0.85em;
+	justify-content: space-between;
+
+	.footer-left {
+		flex: 1 1 18em;
+		margin-bottom: 0;
+	}
+
+	.footer-links {
+		flex: 0 0 auto;
+	}
+
+	.footer-tagline,
+	.footer-sep {
+		color: _palette(fg);
+	}
+
+	.icons {
+		margin: 0;
+	}
+
+	.copyright {
+		flex: 1 1 100%;
+		// Inherits the heading face, uppercase and 0.25em tracking, which makes it
+		// read louder than anything else down here.
+		font-family: _font(family);
+		font-size: 0.9em;
+		letter-spacing: 0;
+		margin: 0.75em 0 0 0;
+		text-transform: none;
+	}
+}
+
+html:not([data-theme='light']) .post-list .post-meta {
+	opacity: 0.7;
 }

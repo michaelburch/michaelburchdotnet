@@ -4,10 +4,11 @@
 <div id="wrapper">
   {% include "partials/header.html" %}
   <div id="main" class="index">
-    {% include "partials/intro.html" %}
-    {%- for post in paginator.pages %}
-    {%- include "partials/post_card.html" %}
-    {%- endfor %}
+    <ul class="post-list">
+      {%- for post in paginator.pages %}
+      {%- include "partials/post_item.html" %}
+      {%- endfor %}
+    </ul>
 
     <ul class="actions pagination">
       <li><a href="{{ paginator.previous | default(value='#') }}" class="button large next{% if not paginator.previous %} disabled{% endif %}">Newer Posts</a></li>

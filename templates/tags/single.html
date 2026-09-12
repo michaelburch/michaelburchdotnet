@@ -4,7 +4,6 @@
 <div id="wrapper">
   {% include "partials/header.html" %}
   <div id="main" class="index">
-    {% include "partials/intro.html" %}
     <div class="post">
       <h1>Posts tagged '{{ term.name }}'</h1>
       <div id="tagCloud">
@@ -15,9 +14,11 @@
       </div>
     </div>
     <div id="tagPosts">
-      {%- for post in paginator.pages %}
-      {%- include "partials/post_card.html" %}
-      {%- endfor %}
+      <ul class="post-list">
+        {%- for post in paginator.pages %}
+        {%- include "partials/post_item.html" %}
+        {%- endfor %}
+      </ul>
       {%- if paginator.number_pagers > 1 %}
       <ul class="actions pagination">
         <li><a href="{{ paginator.previous | default(value='#') }}" class="button large next{% if not paginator.previous %} disabled{% endif %}">Newer Posts</a></li>

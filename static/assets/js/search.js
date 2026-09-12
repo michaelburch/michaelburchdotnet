@@ -30,7 +30,7 @@
     var d = new Date(value);
     if (isNaN(d.getTime())) return "";
     return d.toLocaleDateString("en-US", {
-      month: "long",
+      month: "short",
       day: "numeric",
       year: "numeric",
       timeZone: "UTC",
@@ -38,60 +38,33 @@
   }
 
   function buildResult(doc, query) {
-    var article = document.createElement("article");
-    article.className = "post";
-
-    var header = document.createElement("header");
-    var titleWrap = document.createElement("div");
-    titleWrap.className = "title";
-    var h2 = document.createElement("h2");
-    var link = document.createElement("a");
-    link.className = "header";
-    // doc.id is absolute against config.base_url, so it would leave the current host.
-    var href = doc.path || "/";
-    link.href = href;
-    link.textContent = doc.title;
-    h2.appendChild(link);
-    titleWrap.appendChild(h2);
-
-    if (doc.description) {
-      var lead = document.createElement("p");
-      lead.textContent = doc.description;
-      titleWrap.appendChild(lead);
-    }
-    header.appendChild(titleWrap);
+    var item = document.createElement("li");
 
     var formatted = formatDate(doc.date);
     if (formatted) {
-      var meta = document.createElement("div");
-      meta.className = "meta";
+      var meta = document.createElement("span");
+      meta.className = "post-meta";
       var time = document.createElement("time");
-      time.className = "published";
       time.setAttribute("datetime", doc.date);
       time.textContent = formatted;
       meta.appendChild(time);
-      header.appendChild(meta);
+      item.appendChild(meta);
     }
-    article.appendChild(header);
+
+    var h2 = document.createElement("h2");
+    var link = document.createElement("a");
+    link.className = "post-link";
+    // doc.id is absolute against config.base_url, so it would leave the current host.
+    link.href = doc.path || "/";
+    link.textContent = doc.title;
+    h2.appendChild(link);
+    item.appendChild(h2);
 
     var p = document.createElement("p");
     p.textContent = snippet(doc.body, query);
-    article.appendChild(p);
+    item.appendChild(p);
 
-    var footer = document.createElement("footer");
-    var actions = document.createElement("ul");
-    actions.className = "actions";
-    var item = document.createElement("li");
-    var more = document.createElement("a");
-    more.className = "button large";
-    more.href = href;
-    more.textContent = "Continue Reading";
-    item.appendChild(more);
-    actions.appendChild(item);
-    footer.appendChild(actions);
-    article.appendChild(footer);
-
-    return article;
+    return item;
   }
 
   function run() {
@@ -130,10 +103,19 @@
           resultsEl.appendChild(empty);
           return;
         }
-        results.forEach(function (result) {
-          var doc = index.documentStore.getDoc(result.ref);
-          if (doc) resultsEl.appendChild(buildResult(doc, query));
-        });
+        // elasticlunr returns by relevance; the listings are chronological, so
+        // results should read the same way.
+        results
+          .map(function (result) {
+            return index.documentStore.getDoc(result.ref);
+          })
+          .filter(Boolean)
+          .sort(function (a, b) {
+            return new Date(b.date || 0) - new Date(a.date || 0);
+          })
+          .forEach(function (doc) {
+            resultsEl.appendChild(buildResult(doc, query));
+          });
       })
       .catch(function () {
         resultsEl.textContent = "";

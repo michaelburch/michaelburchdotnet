@@ -1,6 +1,18 @@
 <section id="sidebar">
   <section id="footer">
-    <p class="copyright">&copy; Copyright {{ now() | date(format="%Y") }}, {{ config.author }}. Design: <a
-        href="{{ config.extra.design_credit_url }}" target="_blank" rel="noopener">{{ config.extra.design_credit_name }}</a></p>
+    <div class="footer-left">
+      <span class="footer-title">{{ config.author }}</span>
+      <span class="footer-sep">&mdash;</span>
+      <span class="footer-tagline">{{ config.extra.intro }}</span>
+    </div>
+    <nav class="footer-links">
+      <ul class="icons">
+        {%- for item in config.extra.social %}
+        <li><a href="{{ item.url }}" class="{{ item.icon }}"{% if item.external %} target="_blank" rel="noopener"{% endif %}>
+            {{ item.name }}<span class="label">{{ item.name }}</span></a></li>
+        {%- endfor %}
+      </ul>
+    </nav>
+    <p class="copyright">&copy; Copyright {{ now() | date(format="%Y") }}, {{ config.author }}.</p>
   </section>
 </section>

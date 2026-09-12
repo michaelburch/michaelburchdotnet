@@ -1,0 +1,5 @@
+<li>
+  <span class="post-meta"><time datetime="{{ post.date | date(format='%Y-%m-%d') }}">{{ post.date | date(format="%b %-d, %Y") }}</time></span>
+  <h2><a class="post-link" href="{{ post.permalink }}">{{ post.title }}</a></h2>
+  {{ post.summary | trim | regex_replace(pattern="</p>$", rep="&hellip;</p>") | safe }}
+</li>
