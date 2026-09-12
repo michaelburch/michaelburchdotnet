@@ -506,8 +506,8 @@ html[data-theme='dark'] {
 		}
 	}
 
-	// The title, nav and buttons together need about 550px, so below that the
-	// nav drops onto its own row rather than running off the edge.
+	// Below this the bar may not fit on one line, so the nav is allowed to drop
+	// to a second row. Ordering it last means that only happens once it has to.
 	@include breakpoint('<=small') {
 		height: auto;
 
@@ -515,21 +515,28 @@ html[data-theme='dark'] {
 			flex-wrap: wrap;
 			padding-bottom: 0.6em;
 			padding-top: 0.6em;
+			row-gap: 0.6em;
 		}
 
 		h1 {
 			order: 1;
+
+			a .avatar {
+				margin-right: 0.6em;
+			}
 		}
 
 		.tools {
-			margin-left: auto;
+			margin-left: 0.6em;
 			order: 2;
 		}
 
 		.links {
-			flex: 1 0 100%;
-			margin-top: 0.6em;
 			order: 3;
+
+			li + li {
+				padding-left: 0.6em;
+			}
 		}
 	}
 }
