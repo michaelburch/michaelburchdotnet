@@ -12,6 +12,11 @@ metadata:
     app.kubernetes.io/name: blog
 spec:
   replicas: 2
+  # A rolling update would briefly serve two builds at once. nginx ignores the
+  # ?h= cache-busting query, so an old pod answers a new asset URL with old
+  # bytes, and the CDN pins that pairing for a year. Swap all pods at once.
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app.kubernetes.io/name: blog
