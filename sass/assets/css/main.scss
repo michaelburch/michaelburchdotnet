@@ -364,13 +364,8 @@
 	}
 }
 
-@media (prefers-color-scheme: dark) {
-	html:not([data-theme='light']) {
-		@include dark-theme;
-	}
-}
-
-html[data-theme='dark'] {
+// Dark is the site default; only an explicit choice of light opts out of it.
+html:not([data-theme='light']) {
 	@include dark-theme;
 }
 
@@ -419,6 +414,12 @@ html[data-theme='dark'] {
 				width: 32px;
 			}
 		}
+	}
+
+	.header-nav {
+		align-items: center;
+		display: flex;
+		flex: 0 1 auto;
 	}
 
 	.links {
@@ -506,8 +507,8 @@ html[data-theme='dark'] {
 		}
 	}
 
-	// Below this the bar may not fit on one line, so the nav is allowed to drop
-	// to a second row. Ordering it last means that only happens once it has to.
+	// Below this the bar may not fit on one line, so its parts are allowed to
+	// wrap. Source order is kept so the links never jump ahead of the buttons.
 	@include breakpoint('<=small') {
 		height: auto;
 
@@ -518,25 +519,22 @@ html[data-theme='dark'] {
 			row-gap: 0.6em;
 		}
 
-		h1 {
-			order: 1;
+		h1 a .avatar {
+			margin-right: 0.6em;
+		}
 
-			a .avatar {
-				margin-right: 0.6em;
-			}
+		// Below roughly 320px even the nav row is too narrow for both parts.
+		.header-nav {
+			flex-wrap: wrap;
+			row-gap: 0.6em;
 		}
 
 		.tools {
 			margin-left: 0.6em;
-			order: 2;
 		}
 
-		.links {
-			order: 3;
-
-			li + li {
-				padding-left: 0.6em;
-			}
+		.links li + li {
+			padding-left: 0.6em;
 		}
 	}
 }
@@ -547,7 +545,7 @@ html[data-theme='dark'] {
 	display: none;
 }
 
-html[data-theme='dark'] #header #theme-toggle {
+html:not([data-theme='light']) #header #theme-toggle {
 	.icon-moon {
 		display: none;
 	}
@@ -691,8 +689,6 @@ html[data-theme='dark'] #header #theme-toggle {
 	}
 }
 
-@media (prefers-color-scheme: dark) {
-	html:not([data-theme='light']) .post-list .post-meta {
-		opacity: 0.7;
-	}
+html:not([data-theme='light']) .post-list .post-meta {
+	opacity: 0.7;
 }

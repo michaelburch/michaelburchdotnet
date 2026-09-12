@@ -38,12 +38,12 @@
   <meta charset="utf-8" />
   <meta http-equiv="Content-Language" content="en" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  {#- Tells the browser, and extensions like Dark Reader, that the site ships
-     its own dark theme via prefers-color-scheme. #}
-  <meta name="color-scheme" content="light dark" />
+  {#- The site is dark by default, so declare that order for form controls and
+     for extensions like Dark Reader. #}
+  <meta name="color-scheme" content="dark light" />
   <link rel="stylesheet" href="{{ get_url(path='assets/css/main.css', cachebust=true) }}" />
-  <link id="hl-light" rel="stylesheet" href="{{ get_url(path='giallo-light.css', cachebust=true) }}" media="(prefers-color-scheme: light)" />
-  <link id="hl-dark" rel="stylesheet" href="{{ get_url(path='giallo-dark.css', cachebust=true) }}" media="(prefers-color-scheme: dark)" />
+  <link id="hl-light" rel="stylesheet" href="{{ get_url(path='giallo-light.css', cachebust=true) }}" media="not all" />
+  <link id="hl-dark" rel="stylesheet" href="{{ get_url(path='giallo-dark.css', cachebust=true) }}" media="all" />
   <meta name="description" content="{{ config.description }}" />
   <link type="application/rss+xml" rel="alternate" title="{{ config.title }}" href="{{ get_url(path='feed/index.rss') }}" />
   <link type="application/atom+xml" rel="alternate" title="{{ config.title }}" href="{{ get_url(path='feed/index.xml') }}" />
@@ -83,7 +83,7 @@
       }
       var stored = null;
       try { stored = localStorage.getItem("theme"); } catch (e) {}
-      apply(stored ? stored === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches);
+      apply(stored !== "light");
       window.__setTheme = apply;
     })();
   </script>
