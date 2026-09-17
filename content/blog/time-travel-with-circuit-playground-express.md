@@ -1,7 +1,6 @@
 +++
 title = "Time Travel with Circuit Playground Express"
 date = 2020-05-28
-aliases = ["/blog/time-travel-with-circuit-playground-express.html"]
 
 [taxonomies]
 tags = ["Circuit Playground", "Javascript", "MakeCode", "Kid Projects", "Homeschool"]

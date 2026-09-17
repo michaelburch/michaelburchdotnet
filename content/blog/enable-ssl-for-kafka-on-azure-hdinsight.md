@@ -1,7 +1,6 @@
 +++
 title = "Enable SSL for Kafka on Azure HDInsight"
 date = 2020-01-07
-aliases = ["/blog/enable-ssl-for-kafka-on-azure-hdinsight.html"]
 
 [taxonomies]
 tags = ["Cloud", "Azure", "Kafka", "HDInsight", "SSL"]

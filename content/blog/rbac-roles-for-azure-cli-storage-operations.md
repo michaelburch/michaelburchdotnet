@@ -1,7 +1,6 @@
 +++
 title = "RBAC Roles for Azure CLI storage operations"
 date = 2020-03-03
-aliases = ["/blog/rbac-roles-for-azure-cli-storage-operations.html"]
 
 [taxonomies]
 tags = ["Azure", "CLI", "blob storage", "Azure DevOps", "Azure CLI", "RBAC", "PowerShell"]

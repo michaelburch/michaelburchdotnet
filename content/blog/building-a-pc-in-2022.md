@@ -1,7 +1,6 @@
 +++
 title = "Building a PC in 2022"
 date = 2022-09-13
-aliases = ["/blog/building-a-pc-in-2022.html"]
 
 [taxonomies]
 tags = ["DIY", "Framework", "Hardware", "Kid Projects"]

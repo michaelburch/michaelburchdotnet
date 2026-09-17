@@ -1,7 +1,6 @@
 +++
 title = "Serverless Python Apps on Azure Functions"
 date = 2020-10-30
-aliases = ["/blog/serverless-python-apps-on-azure-functions.html"]
 
 [taxonomies]
 tags = ["Azure Functions", "Python", "CosmosDB", "Azure", "Serverless", "Svelte", "Todo"]

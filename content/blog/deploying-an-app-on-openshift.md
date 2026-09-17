@@ -1,7 +1,6 @@
 +++
 title = "Deploying an App on OpenShift"
 date = 2020-05-12
-aliases = ["/blog/deploying-an-app-on-openshift.html"]
 
 [taxonomies]
 tags = ["OpenShift", "RedHat", "Kubernetes", "Microsoft SQL", "dotnet", "C#", "Svelte", "Todo"]

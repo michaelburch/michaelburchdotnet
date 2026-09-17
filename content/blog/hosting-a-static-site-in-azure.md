@@ -1,7 +1,6 @@
 +++
 title = "Hosting a Static Site in Azure"
 date = 2019-09-04
-aliases = ["/blog/hosting-a-static-site-in-azure.html"]
 
 [taxonomies]
 tags = ["Azure", "Wyam", "blob storage", "dotnet"]

@@ -69,24 +69,8 @@
   <script defer src="https://app.tinyanalytics.io/pixel/372hZCQ7steBAejd"></script>
   <!-- END Pixel Code -->
   {%- block head %}{% endblock head %}
-  {# Runs before paint so a stored preference does not flash the other theme. #}
-  <script>
-    (function () {
-      function apply(dark) {
-        var root = document.documentElement;
-        root.dataset.theme = dark ? "dark" : "light";
-        root.style.colorScheme = dark ? "dark" : "light";
-        var light = document.getElementById("hl-light");
-        var night = document.getElementById("hl-dark");
-        if (light) light.media = dark ? "not all" : "all";
-        if (night) night.media = dark ? "all" : "not all";
-      }
-      var stored = null;
-      try { stored = localStorage.getItem("theme"); } catch (e) {}
-      apply(stored !== "light");
-      window.__setTheme = apply;
-    })();
-  </script>
+  {# Must stay render-blocking and after the two highlight sheets it swaps. #}
+  <script src="{{ get_url(path='assets/js/theme.js', cachebust=true) }}"></script>
 </head>
 
 <body class="is-preload">

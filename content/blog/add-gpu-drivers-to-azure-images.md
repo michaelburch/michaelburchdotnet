@@ -1,7 +1,6 @@
 +++
 title = "Add GPU drivers to Azure Images"
 date = 2023-01-31
-aliases = ["/blog/add-gpu-drivers-to-azure-images.html"]
 
 [taxonomies]
 tags = ["Azure", "GPU", "NVIDIA", "CUDA", "RHEL", "RedHat", "Linux", "Packer"]

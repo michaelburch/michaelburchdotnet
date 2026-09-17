@@ -1,7 +1,6 @@
 +++
 title = "Last Day at Microsoft"
 date = 2023-09-22
-aliases = ["/blog/last-day-at-microsoft.html"]
 
 [taxonomies]
 tags = ["Microsoft", "Work", "Consulting"]

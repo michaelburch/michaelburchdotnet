@@ -1,7 +1,6 @@
 +++
 title = "Getting Started with OpenShift 4.4"
 date = 2020-05-05
-aliases = ["/blog/getting-started-with-openshift.html"]
 
 [taxonomies]
 tags = ["OpenShift", "RedHat", "Kubernetes", "Docker", "Hyper-V"]

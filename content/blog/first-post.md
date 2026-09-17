@@ -1,7 +1,6 @@
 +++
 title = "First Post"
 date = 2019-08-28
-aliases = ["/blog/first-post.html"]
 
 [taxonomies]
 tags = ["Introduction"]

@@ -1,7 +1,6 @@
 +++
 title = "Multi-language, multi-cloud deployments with Pulumi"
 date = 2020-04-07
-aliases = ["/blog/multi-language-multi-cloud-deployments-with-pulumi.html"]
 
 [taxonomies]
 tags = ["Pulumi", "Azure", "ASP.NET", "C#", "TypeScript"]

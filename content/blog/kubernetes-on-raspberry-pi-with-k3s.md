@@ -1,7 +1,6 @@
 +++
 title = "Kubernetes on Raspberry Pi with K3s"
 date = 2020-03-10
-aliases = ["/blog/kubernetes-on-raspberry-pi-with-k3s.html"]
 
 [taxonomies]
 tags = ["Raspberry Pi", "Docker", "Kubernetes", "K3s", "MongoDB"]

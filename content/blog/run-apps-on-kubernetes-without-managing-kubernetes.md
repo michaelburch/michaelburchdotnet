@@ -1,7 +1,6 @@
 +++
 title = "Run apps on Kubernetes without managing Kubernetes"
 date = 2023-01-20
-aliases = ["/blog/run-apps-on-kubernetes-without-managing-kubernetes.html"]
 
 [taxonomies]
 tags = ["Azure", "Kubernetes", "Containers"]

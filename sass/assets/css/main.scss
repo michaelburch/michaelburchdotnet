@@ -364,6 +364,17 @@
 	}
 }
 
+// Tells form controls and scrollbars which theme they are in. Set here rather
+// than from the toggle, because assigning element.style counts as inline style
+// and the CSP does not allow it.
+html {
+	color-scheme: dark;
+}
+
+html[data-theme='light'] {
+	color-scheme: light;
+}
+
 // Dark is the site default; only an explicit choice of light opts out of it.
 html:not([data-theme='light']) {
 	@include dark-theme;
