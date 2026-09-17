@@ -25,13 +25,16 @@
       {{ page.content | safe }}
 
       <section id="post-footer">
-        <div><a href="{{ get_url(path='/about') }}" class="logo"><img src="{{ get_url(path=config.extra.author_image) }}"
-              alt="{{ config.author }} profile." /></a>{{ config.extra.author_bio }}</div>
-        <ul>
-          <li><a href="https://github.com/michaelburch" class="icon icon-github" target="_blank" rel="noopener"> GitHub<span class="label">GitHub</span></a></li>
-          <li><a href="https://linkedin.com/in/michaelpburch" class="icon icon-linkedin" target="_blank" rel="noopener"> LinkedIn<span class="label">LinkedIn</span></a></li>
-          <li><a href="{{ get_url(path='/about') }}" class="icon icon-info-circle"> About<span class="label">About</span></a></li>
-        </ul>
+        <a href="{{ get_url(path='/about') }}" class="logo"><img src="{{ get_url(path=config.extra.author_image) }}"
+            alt="{{ config.author }} profile." /></a>
+        <div class="bio">
+          <p>{{ config.extra.author_bio }}</p>
+          <ul>
+            <li><a href="https://github.com/michaelburch" class="icon icon-github" target="_blank" rel="noopener"> GitHub<span class="label">GitHub</span></a></li>
+            <li><a href="https://linkedin.com/in/michaelpburch" class="icon icon-linkedin" target="_blank" rel="noopener"> LinkedIn<span class="label">LinkedIn</span></a></li>
+            <li><a href="{{ get_url(path='/about') }}" class="icon icon-info-circle"> About<span class="label">About</span></a></li>
+          </ul>
+        </div>
       </section>
 
       <footer>

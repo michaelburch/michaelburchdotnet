@@ -4,52 +4,66 @@
 /// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 ///
 
-/* Intro */
+/* Post footer */
 
 	#post-footer {
+		align-items: center;
 		background: _palette(border-bg);
-			border-left: solid 4px _palette(accent);
-			font-style: italic;
-			margin: 0 0 _size(element-margin) 0;
-			padding: (_size(element-margin) / 200)  (_size(element-margin) / 2) _size(element-margin);
-
+		border-left: solid 4px _palette(accent);
+		display: flex;
+		gap: 1.5em;
+		margin: 0 0 _size(element-margin) 0;
+		padding: (_size(element-margin) * 0.75);
 
 		.logo {
-			
 			border-bottom: 0;
-			overflow: hidden;
-			position: relative;
-			&:before {
-				content: '';
-				display: block;
-				height: 100%;
-				left: 0;
-				position: absolute;
-				top: 0;
-				width: 100%;
-			}
+			flex: 0 0 auto;
 
 			img {
-				display: block;
-				margin-left: -0.25em;
-				margin-right: 1em;
-				width: 4.5em;
 				border-radius: 50%;
-				float: left;
-				height: 110px;
-				width: 110px;
+				display: block;
+				height: 96px;
+				width: 96px;
 			}
 		}
-		ul {
-			list-style:none;
-			padding: 0;
-			columns: 2;
-			font-size: 1rem;
-			
-		}	
 
+		.bio {
+			flex: 1 1 auto;
+			// Without this a long word in the bio would push the row wider than
+			// the column instead of wrapping.
+			min-width: 0;
 
+			p {
+				font-style: italic;
+				margin: 0 0 0.9em 0;
+			}
 
+			ul {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.4em 1.75em;
+				list-style: none;
+				margin: 0;
+				padding: 0;
 
+				li {
+					padding-left: 0;
+				}
+			}
+		}
 
+		@include breakpoint('<=small') {
+			gap: 1.25em;
+			padding: (_size(element-margin) * 0.6);
+
+			.logo img {
+				height: 72px;
+				width: 72px;
+			}
+		}
+
+		@include breakpoint('<=xsmall') {
+			align-items: flex-start;
+			flex-direction: column;
+		}
 	}
