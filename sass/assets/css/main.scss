@@ -604,16 +604,25 @@ html:not([data-theme='light']) #header #theme-toggle {
 	background: none;
 	border: 0;
 	padding: 0;
+	// On narrow screens the theme pulls the card outside the page gutter and
+	// re-adds the gutter as its own padding. With that padding dropped the pull
+	// is all that survives, so the text reaches the edge and the featured image
+	// overhangs it.
+	left: auto;
+	margin-right: auto;
+	width: auto;
 
 	> header {
 		border-bottom: 0;
 		display: block;
 		left: auto;
 		margin: 0 0 1.5em 0;
+		padding: 0;
 		width: auto;
 
 		.title {
 			padding: 0;
+			text-align: left;
 
 			h2 {
 				font-size: 1.6em;
@@ -622,6 +631,7 @@ html:not([data-theme='light']) #header #theme-toggle {
 		}
 
 		.meta {
+			align-items: flex-start;
 			border-left: 0;
 			color: _palette(fg);
 			font-size: 0.8em;
@@ -635,6 +645,12 @@ html:not([data-theme='light']) #header #theme-toggle {
 				text-transform: none;
 			}
 		}
+	}
+
+	> .image.featured {
+		margin-left: 0;
+		margin-top: 0;
+		width: 100%;
 	}
 
 	// Tags render at 0.6em/400, which is too faint to read as links whatever
@@ -665,7 +681,9 @@ html:not([data-theme='light']) #header #theme-toggle {
 	}
 
 	.footer-links {
-		flex: 0 0 auto;
+		// Must be allowed to shrink, or the icon row keeps its max-content width
+		// and pushes past the viewport on the narrowest phones.
+		flex: 0 1 auto;
 	}
 
 	.footer-tagline,
