@@ -459,7 +459,9 @@ html:not([data-theme='light']) {
 			justify-content: center;
 			line-height: 1;
 			padding: 0;
-			width: 2.25em;
+			// Square boxes leave ~10px of air on either side of a 16px glyph, which
+			// reads as a gap between the two icons. The height keeps the tap target.
+			width: 1.75em;
 
 			// The icon font rules colour the glyph for a light bar, so it vanishes
 			// against the dark header.
@@ -530,7 +532,7 @@ html:not([data-theme='light']) {
 		}
 
 		.tools {
-			margin-left: 0.6em;
+			margin-left: 1.25em;
 		}
 
 		.links li + li {
